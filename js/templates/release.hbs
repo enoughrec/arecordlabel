@@ -1,0 +1,25 @@
+<div class="release" rel="{{ idx }}">
+	<div class="controls" rel="{{ idx }}">
+		<div class="control info">i</div>
+		<div class="control other">D</div>
+	</div>
+	<div class="card">
+		<div class="face front">
+			<div class="tags">{{tags}}</div>
+		    <div class="cover">
+		        <img src="{{ cover }}" />
+		    </div>
+		    <div class="titles">
+		        <span class="album">{{{ album }}}</span><br/>
+		        <span class="artist">{{{ artist }}}</span>
+		    </div>
+		</div>
+
+		<div class="face back">
+			<h2>{{album}} {{title}}</h2>
+			
+			<p>{{{info_en}}}</p>
+			<p>{{{info_pt}}}</p>
+		</div>
+	</div>
+</div>

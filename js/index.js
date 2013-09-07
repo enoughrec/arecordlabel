@@ -19,9 +19,10 @@ var list = new ReleaseListView({
 	collection: releases
 });
 
-$("#main").append(list.el);
+
 
 list.render();
+$("#main").append(list.el);
 
 // expose
 

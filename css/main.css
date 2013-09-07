@@ -8,6 +8,11 @@ body {
     margin: 4px;
 }
 
+#main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
 #sidebar {
     position: fixed;
     width: 220px;
