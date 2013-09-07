@@ -8,7 +8,9 @@
     "handlebars": "~1.0.12",
     "jquery-browserify": "~1.8.1",
     "handlebars-runtime": "~1.0.12",
-    "hbsfy": "~0.1.5"
+    "hbsfy": "~0.1.5",
+    "underscore.string": "~2.3.3",
+    "uglify-js": "~2.4.0"
   },
   "author": "Dan Peddle <dan@flarework.com>",
   "contributors": [
@@ -23,6 +25,6 @@
     "build": "build"
   },
   "scripts": {
-    "build": "browserify -t hbsfy js/index.js > build/build.js"
+    "build": "browserify -t hbsfy js/index.js | uglifyjs -o build/build.js --stats"
   }
 }
