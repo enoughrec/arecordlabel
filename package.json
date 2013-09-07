@@ -23,6 +23,6 @@
     "build": "build"
   },
   "scripts": {
-    "build": "browserify js/index.js > build/build.js"
+    "build": "browserify -t hbsfy js/index.js > build/build.js"
   }
 }
