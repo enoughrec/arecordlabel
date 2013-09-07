@@ -18,7 +18,9 @@ var data = require('../data/clean.json');
 
 
 // releases collection
-var releases = new Releases(data);
+var releases = new Releases(data,{
+	parse: true
+});
 
 // view where it will all live
 var list = new ReleaseListView({
