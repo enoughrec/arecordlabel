@@ -1,14 +1,26 @@
 {
-	"name": "arecordlabel",
-	"version": "0.0.1",
-	"dependencies": {
-		"browserify": "~2.29.1",
-		"backbone": "~1.0.0"
-	},
-	"directories":{
-		"build":"build"
-	},
-	"scripts": {
-		"build": "browserify js/index.js > build/build.js"
-	}
+  "name": "enough-records",
+  "description": "a record label site",
+  "version": "0.0.1",
+  "dependencies": {
+    "browserify": "~2.29.1",
+    "backbone": "~1.0.0",
+    "handlebars": "~1.0.12",
+    "jquery-browserify": "~1.8.1"
+  },
+  "author": "Dan Peddle <dan@flarework.com>",
+  "contributors": [
+    "ps <psenough@gmail.com>",
+    "Dan Peddle <dan@flarework.com>"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dazld/arecordlabel.git"
+  },
+  "directories": {
+    "build": "build"
+  },
+  "scripts": {
+    "build": "browserify js/index.js > build/build.js"
+  }
 }
