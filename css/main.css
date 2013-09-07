@@ -1,0 +1,232 @@
+
+@import url('reset.css');
+@import url('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700');
+
+body {
+    font-family: 'Roboto Condensed', sans-serif;
+    background: #a3a3a3 ;
+    margin: 4px;
+}
+
+#sidebar {
+    position: fixed;
+    width: 220px;
+    xheight: 440px;
+}
+
+#holder {
+    margin-left: 235px;
+    padding-left: 8px;
+
+}
+
+#sidebar h1 {
+    display: block;
+    padding: 4px 0;
+    margin: 4px 0;
+    text-shadow: 0 0 2px white;
+}
+
+
+.tag-holder {
+    display: inline-block;
+    padding: 2px 4px;
+    font-weight: 300;
+    font-size: 11px;
+    background: #efefef;
+    border: 1px solid #6a6a6a;
+    border-radius: 4px;
+    line-height: 12px;
+    margin: 2px 0;
+    cursor: pointer;
+}
+
+.tag-holder:hover {
+    background: #dfdfdf;
+    border: 1px solid #6a6a6a;
+}
+
+.tag-holder.active {
+    color: white;
+    background: #acacac;
+    border: 1px solid #6a6a6a;
+}
+
+.release:hover {
+    border: 1px solid #aa3333;
+    xbackground: #efefef;
+}
+
+.release:hover .tags {
+    opacity: 0.7;
+}
+
+.card {
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style: preserve-3d;
+
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+}
+
+.release {
+    background: white;
+    float: left;
+    width: 220px;
+    height: 254px;
+    padding: 4px;
+    border: 1px solid #000;
+    margin: 2px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.release.expanded {
+    width: 456px;
+    height: 478px;
+    -webkit-perspective: 1000;
+    -moz-perspective: 1000;
+    perspective: 1000;
+    z-index: 2;
+}
+
+.release .face {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    -ms-backface-visibility: hidden;
+    -o-backface-visibility: hidden;
+    position: absolute;
+    width: 100%;
+}
+
+.release .front {
+    z-index: 2;
+}
+
+.release .back {
+    z-index: 1;
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+}
+
+h2 {
+    display: block;
+    font-weight: 300;
+    font-size: 24px;
+    margin: 4px 0;
+    padding: 2px 0;
+}
+
+p {
+    font-size: 14px;
+    margin: 4px 0;
+    line-height: 16px;
+}
+
+
+.release.flip .card {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+}
+
+.release .tags {
+    -webkit-transition: opacity 0.333s ease-in-out;
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    opacity: 0;
+    position: absolute;
+    z-index:1;
+    top: 20%;
+    left: -20%;
+    padding: 4px 0;
+    background: #A33;
+    border: 1px solid #933;
+    text-align: center;
+    font-size: 13px;
+    width: 200px;
+    color: white;
+    white-space: nowrap;
+    box-shadow: 0 0 5px rgba(32, 32, 32, 0.8);
+    text-align: center;
+}
+
+.release.expanded .tags {
+    min-width: 400px;
+}
+
+.release .cover img {
+    width: 220px;
+    height: 220px;
+}
+
+.release.expanded .cover img {
+    width: 456px;
+    height: 456px;
+}
+
+.release .controls {
+    opacity: 0;
+    position: absolute;
+    z-index: 10;
+    left: 4px;
+    bottom: 4px;
+}
+
+.release .controls .control {
+    padding: 2px 4px;
+    border: 1px solid #CCC;
+    background: #EFEFEF;
+    display: inline-block;
+    min-width: 12px;
+    text-align: center;
+    line-height: 12px;
+    font-size: 11px;
+    height: 14px;
+}
+
+.release.expanded:hover .controls {
+    opacity: 1;
+}
+
+.titles {
+    font-size: 11px;
+    text-align: right;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.titles span {
+   height: 11px;
+   display: inline-block;
+}
+
+.album-title {
+    font-weight: 400;
+}
+
+.artist {
+    font-weight: 300;
+}
+
+#bottom-bar {
+    position: fixed;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 55px;
+    line-height: 55px;
+    background: rgba(128,128,128,0.8);
+    border-top: 1px solid #333;
+    text-indent: 12px;
+    text-shadow: -1px 0 1px #eee;
+}
