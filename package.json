@@ -1,0 +1,14 @@
+{
+	"name": "arecordlabel",
+	"version": "0.0.1",
+	"dependencies": {
+		"browserify": "~2.29.1",
+		"backbone": "~1.0.0"
+	},
+	"directories":{
+		"build":"build"
+	},
+	"scripts": {
+		"build": "browserify js/index.js > build/build.js"
+	}
+}
