@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore'); // augmented by _.str in index.js
 var path = require('path');
-
+var moment = window.moment = require('moment');
 
 var ReleaseModel = Backbone.Model.extend({
 	initialize: function() {
@@ -22,7 +22,12 @@ var ReleaseModel = Backbone.Model.extend({
 			return _.isString(val) ? val : _.result(this.defaults['album']);
 		},
 		'release_date': function(date) {
-			console.log()
+			if (!date || date === '0000-00-00') {
+				date = '2002-01-01';
+			};
+
+			this.set('momented',moment(date));
+			return date;
 		}
 	},
 	get: function(attr) {
@@ -72,8 +77,7 @@ var ReleaseModel = Backbone.Model.extend({
 		tags: function() {
 			return [];
 		},
-		visible: false,
-		momented: false
+		visible: false
 	}
 });
 

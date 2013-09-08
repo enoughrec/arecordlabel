@@ -8,8 +8,7 @@ var Releases = Backbone.Collection.extend({
 	model: ReleaseModel,
 	currentSort: 'release_date',
 	comparator: function(model1, model2){
-		// argh artist name is null occasionally
-		return (''+model2.get('artist')).toLowerCase() > (''+model1.get('artist')).toLowerCase() ? -1 : 1;
+		return model1.get('momented') > model2.get('momented') ? -1 : 1;
 	},
 	search : function(letters){
 		if(letters == "") return this;
@@ -22,6 +21,12 @@ var Releases = Backbone.Collection.extend({
 	},
 	getTags: function(){
 		return _.unique(_.flatten(this.pluck('tags'))).sort();
+	},
+	getCountries: function(){
+		var tags = this.getTags();
+		return _.filter(tags, function(tag){
+			return tag[0] === '.';
+		});
 	},
 	getArtists: function(){
 		return _.unique(this.pluck('artist')).sort(function(a,b){
