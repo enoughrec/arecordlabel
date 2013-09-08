@@ -66,7 +66,6 @@ var searchHandler = function(){
 	}
 
 	if (this.value.length === 0) {
-		console.log('reset vis', Date.now())
 		releases.resetVisibility();
 		return;
 	} else {

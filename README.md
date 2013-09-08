@@ -2,7 +2,7 @@
 
 ## Rebooted site for enough records (in progress)
 
-Site is built using browserify, and is using npm.
+Using browserify and npm.
 
 ### installation
 
@@ -22,7 +22,7 @@ While developing, can use:
 
 `watchify -v -t hbsfy js/index.js -o build/build.js`
 
-to watch the 
+to rebuild any modified files on the fly.
 
 
 
