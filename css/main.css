@@ -73,22 +73,25 @@ a {
 }
 
 .year-sep {
-display: block;
-clear: both;
-font-size: 36px;
-font-weight: 400;
-background: white;
-height: 48px;
-line-height: 48px;
-text-indent: 38px;
-text-decoration: line-through;
-width: 314px;
-position: relative;
-left: 124px;
-top: 150px;
-
-float: left;
--webkit-transform: rotate(-90deg);
+    display: block;
+    clear: both;
+    font-size: 36px;
+    font-weight: 400;
+    background: white;
+    height: 48px;
+    line-height: 48px;
+    text-indent: 38px;
+    text-decoration: line-through;
+    width: 314px;
+    position: relative;
+    left: 124px;
+    top: 150px;
+    float: left;
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 
 .release-full {
