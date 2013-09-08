@@ -47,9 +47,9 @@ if ($cat) {
 			}
 			//echo $remotedir.'<br>';
 			$doc = new DOMDocument();
-			$doc->loadHTMLFile($remotedir);
+			@$doc->loadHTMLFile($remotedir);
 			//var_dump($doc);
-			$links = $doc->getElementsByTagName('a');
+			@$links = $doc->getElementsByTagName('a');
 			//var_dump($links);
 			foreach ($links as $link) {
 				$filetype = substr($link->nodeValue,-4);
