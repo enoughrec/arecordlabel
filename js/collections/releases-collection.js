@@ -5,6 +5,7 @@ _.str = require('underscore.string');
 
 
 var Releases = Backbone.Collection.extend({
+
 	model: ReleaseModel,
 	currentSort: 'release_date',
 	comparator: function(model1, model2){
@@ -15,9 +16,18 @@ var Releases = Backbone.Collection.extend({
  
 		var pattern = new RegExp(letters,"gi");
 		var releases = this.filter(function(data) {
-		  	return pattern.test(data.get("artist"));
+			var searchString = data.getSearchData();
+
+		  	var hit = pattern.test(searchString);
+		  	data.set('visible', hit);
+		  	
 		});
 
+	},
+	resetVisibility: function(){
+		this.invoke('set',{
+			visible: true
+		});
 	},
 	getTags: function(){
 		return _.unique(_.flatten(this.pluck('tags'))).sort();

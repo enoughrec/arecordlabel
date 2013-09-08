@@ -6,10 +6,10 @@ var Router = Backbone.Router.extend({
 		'release/*cat': 'release'
 	},
 	home: function(){
-		console.log('home')
+		this.trigger('home');
 	},
 	release: function(cat){
-		console.log(cat);
+		this.trigger('release',cat);
 	}
 });
 

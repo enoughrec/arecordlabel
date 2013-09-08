@@ -72,6 +72,12 @@ a {
     padding-bottom: 80px;
 }
 
+.release-full {
+    float: left;
+    background: white;
+    padding: 56px 10px;
+}
+
 .release:hover {
     border: 1px solid #aa3333;
     xbackground: #efefef;
