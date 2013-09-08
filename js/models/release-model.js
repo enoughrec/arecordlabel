@@ -8,7 +8,10 @@ var ReleaseModel = Backbone.Model.extend({
 
 	},
 	getters: {
-
+		'cover': function(){
+			var ret = this.get('cover');
+			return ret+'lala';
+		}
 	},
 	setters: {
 		'cover': function(val) {
@@ -46,16 +49,17 @@ var ReleaseModel = Backbone.Model.extend({
 			for (singleAttr in attr) {
 				this.set.call(this, singleAttr, attr[singleAttr]);
 			}
+			
+			return this;
+
 		} else {
 			if (typeof this.setters[attr] === 'function') {
 				var normalised = this.setters[attr].call(this, val);
-				Backbone.Model.prototype.set.call(this, attr, normalised);
+				return Backbone.Model.prototype.set.call(this, attr, normalised);
 			} else {
 				return Backbone.Model.prototype.set.apply(this, arguments);
 			}
 		}
-
-
 
 	},
 	defaults: {

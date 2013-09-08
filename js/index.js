@@ -12,6 +12,20 @@ _.str = require('underscore.string');
 var Releases = require('./collections/releases-collection');
 var ReleaseView = require('./views/release-view');
 var ReleaseListView = require('./views/release-list-view');
+var Router = require('./router');
+
+var router = new Router();
+
+// Trigger 'route' event on router instance."
+router.on('release', function(name, args) {
+  console.log(name, args); 
+});
+
+Backbone.history.start({pushState:true});
+
+
+
+
 
 // should be an API, but flat object for now 
 var data = require('../data/clean.json');
