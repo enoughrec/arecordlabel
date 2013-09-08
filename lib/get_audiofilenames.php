@@ -1,15 +1,16 @@
 <?php 
 
-header('Content-type: application/json');
+// header('Content-type: application/json');
 
-//error_reporting(E_ALL);
-//ini_set('display_errors', '1');
+// error_reporting(E_ALL);
+// ini_set('display_errors', '1');
 
 
-$cat = $_GET['cat'];
-
+// $cat = $_GET['cat'] ||  'enrmp326';
+$cat = true;
 //output
 $audiolist = array();
+$mp3s = new stdClass();
 
 //echo 'hello world '.$_GET['cat'].'<br>';
 
@@ -21,10 +22,16 @@ if ($cat) {
 	//echo 'loading json<br>';
 	$data = file_get_contents('original.json');
 	$data = json_decode($data);
+
+	// print_r($data);
 	
 	foreach($data as $k => $entry){
 	
-		if ($entry->cat == $cat) {
+		if (!isset($mp3s->{$entry->cat})) {
+			$mp3s->{$entry->cat} = array();
+		}
+
+		if (true) {
 			//echo $entry->download.'<br>';
 			
 			//$composite = explode("/",$entry->download);
@@ -51,7 +58,9 @@ if ($cat) {
 					$thisfile = $remotedir."/".$link->nodeValue;
 					//echo $thisfile."<br>";
 					
-					array_push($audiolist, $thisfile);
+					// array_push($audiolist, $thisfile);
+					
+					array_push($mp3s->{$entry->cat}, $thisfile);
 				}
 			}
 		}   
@@ -60,6 +69,7 @@ if ($cat) {
 }
 
 //var_dump($audiolist);
-$output = json_encode($audiolist);
+$output = json_encode($mp3s);
 echo $output;
-?>
+
+
