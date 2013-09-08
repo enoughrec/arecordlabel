@@ -2,3 +2,4 @@
 /node_modules/
 /js/.tern-port
 .tern-port
+/build/.build.js
