@@ -1,7 +1,7 @@
-<a class="release" href="/release/{{cat}}">
+<a class="release {{#if visible}}hidden{{/if}}" href="/release/{{cat}}">
 	<div class="card">
 		<div class="face front">
-			<div class="tags">{{tags}}</div>
+			<div class="tags">{{#each tags}} <span class="tag">{{ this }}</span>  {{/each}}</div>
 		    <div class="cover">
 		        <img src="{{ cover }}" />
 		    </div>

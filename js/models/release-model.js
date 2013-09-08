@@ -10,7 +10,9 @@ var ReleaseModel = Backbone.Model.extend({
 	parse: function(hash){
 		
 		_.each(hash,function(item,key){
-
+			if (!_.isString(item)) {
+				return item;
+			};
 			item = _.str.clean(item);
 			item = item.length ? item : false;
 			this[key] = item;
