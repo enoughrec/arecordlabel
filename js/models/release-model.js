@@ -1,25 +1,57 @@
 var Backbone = require('backbone');
-var _  = require('underscore'); // augmented by _.str in index.js
-
+var _ = require('underscore'); // augmented by _.str in index.js
+var path = require('path');
 
 
 var ReleaseModel = Backbone.Model.extend({
-	// initialize: function(hash){
-		
-	// },
-	parse: function(hash){
-		
-		_.each(hash,function(item,key){
-			if (!_.isString(item)) {
-				return item;
-			};
-			item = _.str.clean(item);
-			item = item.length ? item : false;
-			this[key] = item;
+	initialize: function() {
 
-		},hash);
-		
-		return hash;
+	},
+	getters: {
+
+	},
+	setters: {
+		'cover': function(val) {
+			var result = '/covers/' + path.basename(val);
+			return result;
+		},
+		'artist': function(val) {
+			return _.isString(val) ? val : _.result(this.defaults['artist']);
+		},
+		'album': function(val) {
+			return _.isString(val) ? val : _.result(this.defaults['album']);
+		},
+		'release_date': function(date) {
+			console.log()
+		}
+	},
+	get: function(attr) {
+		if (typeof this.getters[attr] === 'function') {
+			return this.getters[attr].call(this, attr);
+		} else {
+			return Backbone.Model.prototype.get.call(this, attr);
+		}
+	},
+	set: function(attr, val) {
+
+		if (typeof attr === 'object') {
+
+			var singleAttr;
+
+			for (singleAttr in attr) {
+				this.set.call(this, singleAttr, attr[singleAttr]);
+			}
+		} else {
+			if (typeof this.setters[attr] === 'function') {
+				var normalised = this.setters[attr].call(this, val);
+				Backbone.Model.prototype.set.call(this, attr, normalised);
+			} else {
+				return Backbone.Model.prototype.set.apply(this, arguments);
+			}
+		}
+
+
+
 	},
 	defaults: {
 		album: "no name",
@@ -33,12 +65,15 @@ var ReleaseModel = Backbone.Model.extend({
 		info_en: false,
 		info_pt: false,
 		jamendo: false,
-		release_date: "2006-11-01",
+		release_date: "2001-01-01",
 		scene_org: false,
 		sonicsquirrel: false,
 		soundcloud: false,
-		tags: [],
-		visible: false
+		tags: function() {
+			return [];
+		},
+		visible: false,
+		momented: false
 	}
 });
 
