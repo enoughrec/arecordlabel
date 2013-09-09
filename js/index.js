@@ -2,6 +2,7 @@
 
 var $ = require('jquery-browserify');
 var Backbone = require('backbone');
+var play = window.play = require('play-audio');
 Backbone.$ = $; // for browserify
 
 // underscore and string methods
@@ -17,7 +18,8 @@ var Router = require('./router');
 var relpage_tpl = require('./templates/details.hbs');
 
 // should be an API, but flat object for now 
-var data = require('../data/clean.json');	
+var data = require('../data/clean.json');
+var files = window.files = require('../lib/files.json');
 
 // releases collection
 var releases = new Releases(data);
@@ -40,7 +42,10 @@ router.on('release', function(cat) {
 	} else {
 		list.remove();
 		var html = relpage_tpl(release[0].toJSON());
-		$("#main").html(html);	
+		$("#main").html(html);
+		$("#main").find('.play').on('click', function(){
+			player.queue(cat);
+		});
 	}
 });
 
@@ -53,6 +58,7 @@ router.on('home', function() {
 var app = {
 	rootURL: '/'
 };
+
 
 
 // search box stuff
@@ -76,6 +82,41 @@ var searchHandler = function(){
 
 $("#top-bar input").on('keyup', _.debounce(searchHandler,333));
 
+
+// player
+
+var controls = document.getElementById('bottom-bar');
+var Player = function(elem){
+	this.elem = elem;
+	this.playing = false;
+	this.widget = play([],elem).controls().autoplay();
+	this.widget.volume(0.5);
+	this.widget.on('ended',this.advance.bind(this));
+}
+
+Player.prototype.advance = function() {
+	if (this.position != this.playlist.length) {
+		this.position = this.position + 1;
+		this.play();
+	} else {
+		// stuff
+	}
+};
+
+Player.prototype.play = function() {
+	var pos = this.position;
+	this.widget.src(this.playlist[pos]);
+};
+
+Player.prototype.queue = function(cat){
+	if (files[cat] && files[cat].length) {
+		this.playlist = files[cat];
+		this.position = 0;
+		this.play();
+	};
+}
+
+var player = window.player = new Player(controls);
 
 // start routing
 Backbone.history.start({ pushState: true, root: app.rootURL });
