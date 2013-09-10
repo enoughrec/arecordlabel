@@ -1,14 +1,31 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<title>Enough Records</title>
-	<link rel="stylesheet" type="text/css" href="/css/main.css">
+    <title>Enough Records</title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css">
 </head>
+
 <body>
-	<div id="top-bar"><a href="/"><h1>Enough Records</h1></a><span><input type="text" placeholder="Search Releases"/></span></div>
-	<div id="main">[ LOADING ]</div>
-	<div id="bottom-bar"></div>
-	<noscript>You will need to enable JS to make this work.</noscript>
-	<script type="text/javascript" src="/build/build.js"></script>
+    <div id="top-bar">
+        <a href="/">
+            <h1>Enough Records</h1>
+        </a>
+        <span>
+            <input type="text" placeholder="Search Releases" />
+        </span>
+        <span class="controls">
+        	<span ctrl="back" class="fa fontawesome-backward"></span>
+        	<span ctrl="stop" class="fa fontawesome-stop"></span>
+        	<span id="play-state" ctrl="play" class="fa fontawesome-play"></span>
+        	<span ctrl="forward" class="fa fontawesome-forward"></span>
+        </span>
+        <span class="now-playing"></span>
+    </div>
+    <div id="main">[ LOADING ]</div>
+    <!-- <div id="bottom-bar"></div> -->
+    <noscript>You will need to enable JS to make this work.</noscript>
+    <script type="text/javascript" src="/build/build.js"></script>
 </body>
+
 </html>

@@ -1,6 +1,44 @@
 
 @import url('reset.css');
 @import url('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700');
+@import url('http://weloveiconfonts.com/api/?family=fontawesome');
+
+/* fontawesome */
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.fa {
+   font-family: 'FontAwesome', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    line-height: 1;
+    text-decoration: none;
+    color: white;
+    padding: 6px 12px 8px 0px;
+    background: rgba(0,0,0,0.1);
+    border-radius: 28%;
+    text-align: center;
+    font-size: 14px;
+    display: inline-block;
+    height: 20px;
+    line-height: 22px;
+    border: 1px solid rgba(64,64,64,0.4);
+    text-shadow: 1px 1px 2px rgba(32,32,32,0.3);
+    cursor: pointer;
+}
+
+.fa:hover {
+    background: rgba(0,0,0,0.2);
+    color: #fafafa;
+}
+
+.fa:active {
+    background: rgba(0,0,0,0.3);
+    color: #eee;   
+}
 
 body {
     font-family: 'Roboto Condensed', sans-serif;
@@ -111,8 +149,9 @@ a {
 
 .release-full {
     float: left;
-    background: white;
-    padding: 56px 10px;
+    background: #fff;
+    padding: 18px 10px;
+    margin-top: 56px;
 }
 
 .release:hover {

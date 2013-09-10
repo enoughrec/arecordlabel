@@ -3,6 +3,7 @@
 var $ = require('jquery-browserify');
 var Backbone = require('backbone');
 var play = window.play = require('play-audio');
+var path = require('path');
 Backbone.$ = $; // for browserify
 
 // underscore and string methods
@@ -42,10 +43,10 @@ router.on('release', function(cat) {
 	} else {
 		list.remove();
 		var html = relpage_tpl(release[0].toJSON());
-		$("#main").html(html);
-		$("#main").find('.play').on('click', function(){
-			player.queue(cat);
-		});
+		$("#main").html(html)
+				  .find('.play').on('click', function(){
+						player.queue(cat);
+					});
 	}
 });
 
@@ -89,18 +90,60 @@ var controls = document.getElementById('bottom-bar');
 var Player = function(elem){
 	this.elem = elem;
 	this.playing = false;
-	this.widget = play([],elem).controls().autoplay();
-	this.widget.volume(0.5);
+	this.widget = play([],elem).autoplay();
+	this.playButton = $("#play-state");
+	this.widget.volume(0);
+	this.widget.on('play', this.togglePlayState.bind(this,true));
 	this.widget.on('ended',this.advance.bind(this));
+	
+	$(".controls span").on('click',this.doControl.bind(this));
 }
 
-Player.prototype.advance = function() {
-	if (this.position != this.playlist.length) {
-		this.position = this.position + 1;
-		this.play();
-	} else {
-		// stuff
+Player.prototype.doControl = function(evt) {
+	if (!this.playlist) {return};
+	var ctrl = evt.target.getAttribute('ctrl');
+	
+	switch (ctrl){
+		case 'stop':
+			this.widget.pause().currentTime(0);
+			this.togglePlayState(false);
+			break;
+		case 'play':
+			if (this.playing) this.widget.pause() && this.togglePlayState(false);
+			else this.widget.play();
+			break;
+		case 'forward':
+			this.advance(true);
+			break;
+		case 'back':
+			this.advance(false);
+			break;
 	}
+
+};
+
+Player.prototype.togglePlayState = function(playing) {
+	this.playButton.removeClass();
+
+	if (playing) {
+		this.playButton.addClass('fa fontawesome-pause');
+		var name = path.basename(this.widget.src());
+		$(".now-playing").html(name);
+		this.playing = true;
+	} else {
+		this.playButton.addClass('fa fontawesome-play');
+		this.playing = false;
+		$(".now-playing").empty();
+	}
+};
+
+Player.prototype.advance = function(fwd) {
+	var mod = fwd ? 1 : -1;
+	this.position = this.position + mod;
+	if(this.position > this.playlist.length-1) this.position = 0;
+	else if(this.position < 0) this.position = this.playlist.length-1;
+	this.play();
+	
 };
 
 Player.prototype.play = function() {
