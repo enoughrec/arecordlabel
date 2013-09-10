@@ -92,7 +92,7 @@ var Player = function(elem){
 	this.playing = false;
 	this.widget = play([],elem).autoplay();
 	this.playButton = $("#play-state");
-	this.widget.volume(0);
+	this.widget.volume(0.5);
 	this.widget.on('play', this.togglePlayState.bind(this,true));
 	this.widget.on('ended',this.advance.bind(this));
 	
