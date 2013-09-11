@@ -161,6 +161,7 @@ a {
 .release-full .leftframe {
     float: left;
     padding-right: 10px;
+    width: 307px;
 }
 
 .release-full .desc {
@@ -170,7 +171,8 @@ a {
 
 .release-full h1 {
     font-size: 22px;
-margin: 12px 0 2px;
+    margin: 12px 0 2px;
+    line-height: 22px;
 }
 
 .release-full a {
