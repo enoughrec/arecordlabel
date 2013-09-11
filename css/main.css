@@ -3,6 +3,11 @@
 @import url('http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700');
 @import url('http://weloveiconfonts.com/api/?family=fontawesome');
 
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
 /* fontawesome */
 [class*="fontawesome-"]:before {
   font-family: 'FontAwesome', sans-serif;
@@ -12,19 +17,17 @@
 }
 
 .fa {
-   font-family: 'FontAwesome', sans-serif;
+    font-family: 'FontAwesome', sans-serif;
     -webkit-font-smoothing: antialiased;
     line-height: 1;
     text-decoration: none;
     color: white;
-    padding: 6px 12px 8px 0px;
+    padding: 6px 8px;
     background: rgba(0,0,0,0.1);
-    border-radius: 28%;
+    border-radius: 20%;
     text-align: center;
     font-size: 14px;
-    display: inline-block;
-    height: 20px;
-    line-height: 22px;
+    display: inline;
     border: 1px solid rgba(64,64,64,0.4);
     text-shadow: 1px 1px 2px rgba(32,32,32,0.3);
     cursor: pointer;
@@ -147,6 +150,7 @@ a {
 }
 
 .release-full {
+    float: left;
     background: #fff;
     padding: 18px 10px;
     margin-top: 56px;
@@ -177,8 +181,8 @@ a {
 .release {
     background: white;
     float: left;
-    width: 300px;
-    height: 336px;
+    width: 310px;
+    height: 350px;
     padding: 4px;
     border: 1px solid #000;
     margin: 2px;
@@ -187,14 +191,7 @@ a {
     z-index: 1;
 }
 
-.release.expanded {
-    width: 456px;
-    height: 478px;
-    -webkit-perspective: 1000;
-    -moz-perspective: 1000;
-    perspective: 1000;
-    z-index: 2;
-}
+
 
 .release .face {
 
@@ -205,13 +202,6 @@ a {
     z-index: 2;
 }
 
-.release .back {
-    z-index: 1;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -ms-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-}
 
 h2 {
     display: block;
@@ -359,6 +349,54 @@ left: -13%;
     display: inline;
     position: relative;
     top: -1px;
+}
+
+::-webkit-input-placeholder {
+   text-shadow: 1px 1px 0 white;
+   text-decoration: line-through;
+   font-style: italic;
+   color: rgba(106,106,106,0.5);
+   font-size: 13px;
+   text-transform: lowercase;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   text-shadow: 1px 1px 0 white;
+   text-decoration: line-through;
+   font-style: italic;
+   color: rgba(106,106,106,0.5);
+   font-size: 13px;
+   text-transform: lowercase;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   text-shadow: 1px 1px 0 white;
+   text-decoration: line-through;
+   font-style: italic;
+   color: rgba(106,106,106,0.5);
+   font-size: 13px;
+   text-transform: lowercase;
+}
+
+:-ms-input-placeholder {  
+   text-shadow: 1px 1px 0 white;
+   text-decoration: line-through;
+   font-style: italic;
+   color: #6a6a6a;
+   font-size: 13px;
+   text-transform: lowercase;
+}
+
+.now-playing {
+   font-size: 13px;
+    margin-left: 9px;
+    color: white;
+    font-style: italic;
+    text-shadow: 1px 1px 0 #6a6a6a;
+}
+
+.now-playing.nothing {
+    text-decoration: line-through;
 }
 
 #bottom-bar {

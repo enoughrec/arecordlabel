@@ -41,8 +41,10 @@ router.on('release', function(cat) {
 	if (!release) {
 		Backbone.history.navigate('/');
 	} else {
+		var relData = release[0].toJSON();
 		list.remove();
-		var html = relpage_tpl(release[0].toJSON());
+		var html = relpage_tpl(relData);
+		document.title = '' + relData.album + ' - ' + relData.artist + '  | '+relData.cat.toUpperCase();
 		$("#main").html(html)
 				  .find('.play').on('click', function(){
 						player.queue(cat);
@@ -51,7 +53,9 @@ router.on('release', function(cat) {
 });
 
 router.on('home', function() {
+	document.title = 'Enough Records';
   	list.render();
+  	document.title
 	$("#main").empty().append(list.el);
 });
 
@@ -128,12 +132,12 @@ Player.prototype.togglePlayState = function(playing) {
 	if (playing) {
 		this.playButton.addClass('fa fontawesome-pause');
 		var name = path.basename(this.widget.src());
-		$(".now-playing").html(name);
+		$(".now-playing").removeClass('nothing').html(name);
 		this.playing = true;
 	} else {
 		this.playButton.addClass('fa fontawesome-play');
 		this.playing = false;
-		$(".now-playing").empty();
+		$(".now-playing").html('nothing playing').addClass('nothing');
 	}
 };
 
@@ -156,7 +160,9 @@ Player.prototype.queue = function(cat){
 		this.playlist = files[cat];
 		this.position = 0;
 		this.play();
-	};
+	} else {
+		alert('This release has no playable files, sorry.');
+	}
 }
 
 var player = window.player = new Player(controls);

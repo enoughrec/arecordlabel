@@ -15,14 +15,17 @@ var ReleaseModel = Backbone.Model.extend({
 	// },
 	setters: {
 		'cover': function(val) {
+
 			var result = '/covers/' + path.basename(val);
 			return result;
 		},
 		'artist': function(val) {
-			return _.isString(val) ? val : _.result(this.defaults['artist']);
+			val = _.isString(val) ? val : _.result(this.defaults, 'artist');
+			return val;
 		},
 		'album': function(val) {
-			return _.isString(val) ? val : _.result(this.defaults['album']);
+			val = _.isString(val) ? val : _.result(this.defaults, 'album');
+			return val;
 		},
 		'release_date': function(date) {
 			if (!date || date === '0000-00-00') {
@@ -43,13 +46,10 @@ var ReleaseModel = Backbone.Model.extend({
 	set: function(attr, val, options) {
 
 		if (typeof attr === 'object') {
-
 			var singleAttr;
-
 			for (singleAttr in attr) {
 				this.set.call(this, singleAttr, attr[singleAttr], options);
 			}
-			
 			return this;
 
 		} else {
@@ -64,19 +64,16 @@ var ReleaseModel = Backbone.Model.extend({
 	},
 	getSearchData: function(){
 		if (this.cache['searchData']) return this.cache['searchData'];
-
 		var artist = this.get('artist') || '',
 			album = this.get('album') || '',
 			// info = this.get('info_en') || '',
 			cat = this.get('cat') || '';
-
 		var searchString = [artist,album,cat].join(' ');
-
 		return searchString;
 	},
 	defaults: {
-		album: "no name",
-		artist: "no artist",
+		album: "",
+		artist: "",
 		bandcamp: null,
 		cat: "ENR",
 		clearbits: false,
