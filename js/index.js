@@ -42,6 +42,7 @@ router.on('release', function(cat) {
 		Backbone.history.navigate('/');
 	} else {
 		var relData = release[0].toJSON();
+		relData.formattedDate = release[0].get('momented').format('MMMM Do YYYY');
 		list.remove();
 		var html = relpage_tpl(relData);
 		document.title = '' + relData.album + ' - ' + relData.artist + '  | '+relData.cat.toUpperCase();
@@ -57,6 +58,7 @@ router.on('home', function() {
   	list.render();
   	document.title
 	$("#main").empty().append(list.el);
+	$("#top-bar input").focus();
 });
 
 

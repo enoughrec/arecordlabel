@@ -2,16 +2,17 @@
 	<div class="leftframe">
 		<div class="cover"><img src="{{cover}}" alt="{{album}} - {{artist}}"></div>
 		<div class="titles">
-			<h1>{{album}} - {{artist}}</h1>
+			<h1><span class="album">{{album}}</span> <span class="artist">{{artist}}</span></h1>
 		</div>
 	</div>
 	
 	<div class="details">
 
-		<div class="info_en">[en] {{{info_en}}}</div>
+		<div class="desc info_en">[en] {{{info_en}}}</div>
 		<br>
-		<div class="info_pt">[pt] {{{info_pt}}}</div>
+		{{#if info_pt}}<div class="desc info_pt">[pt] {{{info_pt}}}</div>
 		<br>
+		{{/if}}
 		<div class="download_links">Download links:<br>
 			{{#if fma}}
 				<a href="{{fma}}"><img src="/iconss/fma.png"></a>
@@ -69,6 +70,7 @@
 			{{/if}}
 		</div>
 		<br>
+		<div class="release-date">Released on <span>{{formattedDate}}</span></div>
 		<div class="button play">Play</div>
 	
 	</div>
