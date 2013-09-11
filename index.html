@@ -14,16 +14,18 @@
         <span>
             <input type="text" placeholder="Search Releases" />
         </span>
-        <span class="controls">
-        	<span ctrl="back" class="fa fontawesome-backward"></span>
-        	<span ctrl="stop" class="fa fontawesome-stop"></span>
-        	<span id="play-state" ctrl="play" class="fa fontawesome-play"></span>
-        	<span ctrl="forward" class="fa fontawesome-forward"></span>
-        </span>
-        <span class="now-playing"></span>
+        
     </div>
     <div id="main">[ LOADING ]</div>
-    <!-- <div id="bottom-bar"></div> -->
+    <div id="bottom-bar">
+        <span class="controls">
+            <span ctrl="back" class="fa fontawesome-backward"></span>
+            <span ctrl="stop" class="fa fontawesome-stop"></span>
+            <span id="play-state" ctrl="play" class="fa fontawesome-play"></span>
+            <span ctrl="forward" class="fa fontawesome-forward"></span>
+        </span>
+        <span class="now-playing nothing">nothing playing</span>
+    </div>
     <noscript>You will need to enable JS to make this work.</noscript>
     <script type="text/javascript" src="/build/build.js"></script>
 </body>
