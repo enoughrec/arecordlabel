@@ -8,9 +8,9 @@
 	
 	<div class="details">
 
-		<div class="desc info_en">[en] {{{info_en}}}</div>
-		<br>
-		{{#if info_pt}}<div class="desc info_pt">[pt] {{{info_pt}}}</div>
+		{{#if info_en}}<div class="desc info_en">{{{info_en}}}</div>
+		<br>{{/if}}
+		{{#if info_pt}}<div class="desc info_pt">{{{info_pt}}}</div>
 		<br>
 		{{/if}}
 		<div class="download_links">Download links:<br>
@@ -71,7 +71,8 @@
 		</div>
 		<br>
 		<div class="release-date">Released on <span>{{formattedDate}}</span></div>
-		<div class="button play">Play</div>
+		{{#if numTracks}}<div class="release-date">{{numTracks}} tracks</span></div>
+		<div class="button play">Play</div>{{/if}}
 	
 	</div>
 		

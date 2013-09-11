@@ -41,9 +41,11 @@ router.on('release', function(cat) {
 	if (!release) {
 		Backbone.history.navigate('/');
 	} else {
+		list.remove();
 		var relData = release[0].toJSON();
 		relData.formattedDate = release[0].get('momented').format('MMMM Do YYYY');
-		list.remove();
+		relData.numTracks = files[cat] ? files[cat].length : false;
+		
 		var html = relpage_tpl(relData);
 		document.title = '' + relData.album + ' - ' + relData.artist + '  | '+relData.cat.toUpperCase();
 		$("#main").html(html)
@@ -53,12 +55,16 @@ router.on('release', function(cat) {
 	}
 });
 
+router.on('error',function(){
+	Backbone.history.navigate('/');
+});
+
 router.on('home', function() {
 	document.title = 'Enough Records';
   	list.render();
   	document.title
 	$("#main").empty().append(list.el);
-	$("#top-bar input").focus();
+	// $("#top-bar input").focus();
 });
 
 

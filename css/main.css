@@ -161,12 +161,20 @@ a {
 .release-full .leftframe {
     float: left;
     padding-right: 10px;
-    width: 307px;
+    width: 310px;
 }
 
 .release-full .desc {
     line-height: 25px;
     font-size: 18px; 
+}
+
+.info_en:before {
+    content: '[en]  ';
+}
+
+.info_pt:before {
+    content: '[pt]  ';
 }
 
 .release-full h1 {
