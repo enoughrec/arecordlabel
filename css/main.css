@@ -70,7 +70,7 @@ a {
 }
 
 #main {
-    width: 1256px;
+    width: 95%;
     margin: 0 auto;
 
 }
@@ -134,7 +134,6 @@ a {
     height: 48px;
     line-height: 48px;
     text-indent: 38px;
-    text-decoration: line-through;
     width: 314px;
     position: relative;
     left: 124px;
@@ -148,11 +147,21 @@ a {
 }
 
 .release-full {
-    float: left;
     background: #fff;
     padding: 18px 10px;
     margin-top: 56px;
+    overflow: auto;
 }
+
+.release-full .leftframe {
+    float: left;
+    padding-right: 10px;
+}
+
+.release-full a {
+    text-decoration: underline;
+}
+
 
 .release:hover {
     border: 1px solid #aa3333;
