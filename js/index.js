@@ -43,7 +43,7 @@ router.on('release', function(cat) {
 	} else {
 		list.remove();
 		var relData = release[0].toJSON();
-		relData.formattedDate = release[0].get('momented').format('MMMM Do YYYY');
+		relData.formattedDate = release[0].get('momented').format('MMMM Do, YYYY');
 		relData.numTracks = files[cat] ? files[cat].length : false;
 		
 		var html = relpage_tpl(relData);

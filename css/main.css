@@ -183,6 +183,10 @@ a {
     line-height: 22px;
 }
 
+.release-full h1 span {
+    display: block;
+}
+
 .release-full a {
     text-decoration: underline;
     color: #6a6a6a;
