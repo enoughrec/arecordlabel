@@ -27,6 +27,12 @@ var ReleaseModel = Backbone.Model.extend({
 			val = _.isString(val) ? val : _.result(this.defaults, 'album');
 			return val;
 		},
+		'info_en': function(text){
+			return _.isString(text) ? _.unescape(text) : '';
+		},
+		'info_pt': function(text){
+			return _.isString(text) ? _.unescape(text) : '';
+		},
 		'release_date': function(date) {
 			if (!date || date === '0000-00-00') {
 				date = '2002-01-01';

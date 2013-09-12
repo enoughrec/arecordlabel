@@ -18,9 +18,8 @@ var Router = require('./router');
 
 var relpage_tpl = require('./templates/details.hbs');
 
-// should be an API, but flat object for now 
-var data = require('../data/clean.json');
-var files = window.files = require('../lib/files.json');
+// could be an API, but flat object for now 
+var data = require('../data/all.json');
 
 // releases collection
 var releases = new Releases(data);
@@ -43,14 +42,15 @@ router.on('release', function(cat) {
 	} else {
 		list.remove();
 		var relData = release[0].toJSON();
+
 		relData.formattedDate = release[0].get('momented').format('MMMM Do, YYYY');
-		relData.numTracks = files[cat] ? files[cat].length : false;
+		relData.numTracks = relData.tracks ? relData.tracks.length : false;
 		
 		var html = relpage_tpl(relData);
 		document.title = '' + relData.album + ' - ' + relData.artist + '  | '+relData.cat.toUpperCase();
 		$("#main").html(html)
 				  .find('.play').on('click', function(){
-						player.queue(cat);
+						player.queue(relData.tracks);
 					});
 	}
 });
@@ -163,9 +163,9 @@ Player.prototype.play = function() {
 	this.widget.src(this.playlist[pos]);
 };
 
-Player.prototype.queue = function(cat){
-	if (files[cat] && files[cat].length) {
-		this.playlist = files[cat];
+Player.prototype.queue = function(files){
+	if (files && files.length) {
+		this.playlist = files;
 		this.position = 0;
 		this.play();
 	} else {

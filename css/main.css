@@ -200,6 +200,12 @@ a {
 }
 
 .release-date {
+    font-style: italic;
+    color: #9A9A9A;
+    text-shadow: 1px 1px 0 #EEE;
+}
+
+.block {
     margin: 12px 0;
 }
 
@@ -228,17 +234,13 @@ a {
     z-index: 1;
 }
 
-
-
 .release .face {
-
     width: 100%;
 }
 
 .release .front {
     z-index: 2;
 }
-
 
 h2 {
     display: block;
@@ -253,9 +255,6 @@ p {
     margin: 4px 0;
     line-height: 16px;
 }
-
-
-
 
 .release .tags {
     -webkit-transition: opacity 0.333s ease-in-out;

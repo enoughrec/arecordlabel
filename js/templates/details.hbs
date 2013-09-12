@@ -9,11 +9,11 @@
 	</div>
 	
 	<div class="details">
-		<div class="release-date">Released on <span>{{formattedDate}}</span></div>
-		{{#if info_en}}<hr><div class="desc info_en">{{{info_en}}}</div>{{/if}}
-		{{#if info_pt}}<hr><div class="desc info_pt">{{{info_pt}}}</div>{{/if}}
-		<hr>
-		<div class="download_links">Download links:<br>
+		<div class="release-date block">Released on <span>{{formattedDate}}</span></div>
+		{{#if info_en}}<div class="block info_en">{{{info_en}}}</div>{{/if}}
+		{{#if info_pt}}<div class="block info_pt">{{{info_pt}}}</div>{{/if}}
+		
+		<div class="download_links block">Download links:<br>
 			{{#if fma}}
 				<a href="{{fma}}"><img src="/iconss/fma.png"></a>
 			{{/if}}
@@ -72,7 +72,7 @@
 				<a href="{{musicbrainz}}"><img src="/iconss/musicbrainz.png"></a>
 			{{/if}}
 		</div>
-		<hr>
+		
 		{{#if numTracks}}<div class="button play">Play ({{numTracks}} tracks)</div>{{/if}}
 	</div>
 	
