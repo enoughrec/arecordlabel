@@ -160,13 +160,20 @@ a {
 
 .release-full .leftframe {
     float: left;
-    padding-right: 10px;
     width: 310px;
+    padding-right: 10px;
 }
 
-.release-full .desc {
+.release-full .details {
     line-height: 25px;
-    font-size: 18px; 
+    font-size: 18px;
+    margin-left: 310px;
+    margin-top: -16px;
+}
+
+.release-full .details a img {
+    margin-top: 6px;
+    margin-left: 6px;
 }
 
 .info_en:before {
@@ -440,4 +447,8 @@ p {
     border-top: 1px solid #333;
     text-indent: 12px;
     text-shadow: -1px 0 1px #eee;
+}
+
+.clear {
+    clear: both;
 }
