@@ -1,18 +1,18 @@
 <div class="release-full">
+
 	<div class="leftframe">
 		<div class="cover"><img src="{{cover}}" alt="{{album}} - {{artist}}"></div>
 		<div class="titles">
 			<h1><span class="album">{{album}}</span> <span class="artist">{{artist}}</span></h1>
 		</div>
+		{{#if cc}}<div class="cc"><a href="{{cc}}"><img src="/iconss/{{cc_img}}"/></a></div>{{/if}}
 	</div>
 	
 	<div class="details">
-
-		{{#if info_en}}<div class="desc info_en">{{{info_en}}}</div>
-		<br>{{/if}}
-		{{#if info_pt}}<div class="desc info_pt">{{{info_pt}}}</div>
-		<br>
-		{{/if}}
+		<div class="release-date">Released on <span>{{formattedDate}}</span></div>
+		{{#if info_en}}<hr><div class="desc info_en">{{{info_en}}}</div>{{/if}}
+		{{#if info_pt}}<hr><div class="desc info_pt">{{{info_pt}}}</div>{{/if}}
+		<hr>
 		<div class="download_links">Download links:<br>
 			{{#if fma}}
 				<a href="{{fma}}"><img src="/iconss/fma.png"></a>
@@ -44,6 +44,9 @@
 			{{#if soundcloud}}
 				<a href="{{soundcloud}}"><img src="/iconss/soundcloud.png"></a>
 			{{/if}}
+			{{#if mixcloud}}
+				<a href="{{mixcloud}}"><img src="/iconss/mixcloud.png"></a>
+			{{/if}}
 			{{#if lastfm}}
 				<a href="{{lastfm}}"><img src="/iconss/lastfm.png"></a>
 			{{/if}}
@@ -69,11 +72,10 @@
 				<a href="{{musicbrainz}}"><img src="/iconss/musicbrainz.png"></a>
 			{{/if}}
 		</div>
-		<br>
-		<div class="release-date">Released on <span>{{formattedDate}}</span></div>
-		{{#if numTracks}}<div class="release-date">{{numTracks}} tracks</span></div>
-		<div class="button play">Play</div>{{/if}}
-	
+		<hr>
+		{{#if numTracks}}<div class="button play">Play ({{numTracks}} tracks)</div>{{/if}}
 	</div>
+	
+	<div class="clear"></div>
 		
 </div>
