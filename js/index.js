@@ -5,7 +5,11 @@ var Backbone = require('backbone');
 var play = window.play = require('play-audio');
 var path = require('path');
 Backbone.$ = $; // for browserify
-
+var hbs = require('handlebars-runtime');
+hbs.registerHelper('pluralize', function(num, single, plural) {
+  if (parseInt(num,10) === 1) { return single; }
+  else { return plural; }
+});
 // underscore and string methods
 var _ = require('underscore');
 _.str = require('underscore.string');
@@ -196,11 +200,3 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 		Backbone.history.navigate(href.attr, true);
 	}
 });
-
-// expose
-window.list = list;
-window._ = _;
-window.$ = $;
-window.Backbone = Backbone;
-window.data = data;
-window.rels = releases;
