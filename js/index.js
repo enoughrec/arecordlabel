@@ -64,6 +64,7 @@ router.on('release', function(cat) {
 
 router.on('about',function(){
 	this.currentPage = 'about';
+	document.title = 'About Us';
 	list.remove();
 	var content = about_tpl();
 	$("#main").empty().html(content);
