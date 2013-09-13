@@ -50,10 +50,7 @@ var Releases = Backbone.Collection.extend({
 		return _.unique(_.flatten(this.pluck('tags'))).sort();
 	},
 	getCountries: function(){
-		var tags = this.getTags();
-		return _.filter(tags, function(tag){
-			return tag[0] === '.';
-		});
+		return _.unique(_.flatten(this.pluck('country'))).sort();
 	},
 	getArtists: function(){
 		return _.unique(this.pluck('artist')).sort(function(a,b){

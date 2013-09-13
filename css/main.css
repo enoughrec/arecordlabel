@@ -474,3 +474,12 @@ p {
 .clear {
     clear: both;
 }
+
+
+@media screen and (max-width:360px) {
+    .release-full .cover {
+        display: block;
+        clear: both;
+    }
+}
+

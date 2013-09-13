@@ -40,6 +40,25 @@ var ReleaseModel = Backbone.Model.extend({
 
 			this.set('momented',moment(date));
 			return date;
+		},
+		'tags': function(tags){
+
+			var musictags = [];
+			var country = false;
+
+			if (_.isArray(tags)) {
+
+				
+				_.each(tags, function(tag){
+					if (tag[0] === '.') {
+						country = tag;
+					} else {
+						musictags.push(tag);
+					}
+				});
+			};
+			this.set('country', country);
+			return musictags;
 		}
 	},
 	// get: function(attr) {
