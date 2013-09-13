@@ -245,14 +245,14 @@ a {
 h2 {
     display: block;
     font-weight: 300;
-    font-size: 24px;
-    margin: 4px 0;
+    font-size: 20px;
+    margin: 8px 0;
     padding: 2px 0;
 }
 
 p {
     font-size: 14px;
-    margin: 4px 0;
+    margin: 8px 0;
     line-height: 16px;
 }
 
@@ -370,6 +370,16 @@ p {
     border-right: 1px solid black;
     display: inline;
     padding-right: 8px;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#top-bar a span {
+    text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
+    border-right: 1px solid black;
+    display: inline;
+    padding-right: 8px;
+    
     font-size: 18px;
 }
 

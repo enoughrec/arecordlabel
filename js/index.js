@@ -20,7 +20,9 @@ var ReleaseView = require('./views/release-view');
 var ReleaseListView = require('./views/release-list-view');
 var Router = require('./router');
 
+// templates
 var relpage_tpl = require('./templates/details.hbs');
+var about_tpl = require('./templates/about.hbs');
 
 // could be an API, but flat object for now 
 var data = require('../data/all.json');
@@ -37,6 +39,7 @@ var list = new ReleaseListView({
 var router = new Router();
 
 router.on('release', function(cat) {
+	this.currentPage = 'release';
 	var release = releases.filter(function(rel){
 		return rel.get('cat') === cat;
 	});
@@ -59,16 +62,24 @@ router.on('release', function(cat) {
 	}
 });
 
+router.on('about',function(){
+	this.currentPage = 'about';
+	list.remove();
+	var content = about_tpl();
+	$("#main").empty().html(content);
+});
+
 router.on('error',function(){
 	Backbone.history.navigate('/');
 });
 
 router.on('home', function() {
+	this.currentPage = 'home';
 	document.title = 'Enough Records';
   	list.render();
   	document.title
 	$("#main").empty().append(list.el);
-	// $("#top-bar input").focus();
+
 });
 
 
@@ -81,7 +92,9 @@ var app = {
 // search box stuff
 var lastSearch = false;
 var searchHandler = function(){
-
+	if (router.currentPage !== 'home') {
+		Backbone.history.navigate('/',{trigger:true});
+	};
 	if(this.value === lastSearch){
 		return;
 	} else {
