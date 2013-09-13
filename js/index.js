@@ -214,3 +214,7 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 		Backbone.history.navigate(href.attr, true);
 	}
 });
+
+
+window.rels = releases;
+

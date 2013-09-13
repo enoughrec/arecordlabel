@@ -17,39 +17,34 @@ var Releases = Backbone.Collection.extend({
 		var pattern = new RegExp(letters,"gi");
 		var years = [];
 		var releases = this.filter(function(data) {
-			var searchString = data.getSearchData();
 
+			var searchString = data.getSearchData();
 		  	var hit = pattern.test(searchString);
 		  	
 		  	if (hit) {
 		  		var year = data.get('momented').year();
-		  		console.log(years);
 		  		if (years.lastIndexOf(year) === -1) {
-		  			console.log(years);
 		  			years.push(year);
 		  		};
-		  		console.log(years);
 		  	};
 
 		  	data.set('visible', hit);
-		  	
 		});
 
-		console.log(years);
 
 		$(".year-sep").each(function(){
-
 			var year = parseInt(this.getAttribute('year'),10);
-
 			$(this).toggleClass('hidden', years.indexOf(year) === -1);
-			
 		});
 
 	},
 	resetVisibility: function(){
+		$("#main").addClass('hidden');
+		$(".year-sep").removeClass('hidden');
 		this.invoke('set',{
 			visible: true
 		});
+		$("#main").removeClass('hidden');
 	},
 	getTags: function(){
 		return _.unique(_.flatten(this.pluck('tags'))).sort();
