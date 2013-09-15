@@ -71,6 +71,11 @@ a {
     text-decoration: none;
 }
 
+#top-bar a:hover {
+    color: #fcfcfc;
+    text-shadow: 1px 1px 0 #333;
+}
+
 #main {
     width: 95%;
     margin: 0 auto;
@@ -146,6 +151,8 @@ a {
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
+    text-decoration: line-through;
+    text-shadow: 1px 1px 0 #FFF;
 }
 
 .release-full {
@@ -156,6 +163,12 @@ a {
     overflow: auto;
     margin-bottom: 80px;
     width: 100%;
+}
+
+.release-full .cover {
+    display: block;
+    width: 300px;
+    height: 300px;
 }
 
 .release-full .leftframe {
@@ -200,6 +213,12 @@ a {
 }
 
 .release-date {
+    font-style: italic;
+    color: #9A9A9A;
+    text-shadow: 1px 1px 0 #EEE;
+}
+
+.block {
     margin: 12px 0;
 }
 
@@ -228,10 +247,7 @@ a {
     z-index: 1;
 }
 
-
-
 .release .face {
-
     width: 100%;
 }
 
@@ -239,23 +255,19 @@ a {
     z-index: 2;
 }
 
-
 h2 {
     display: block;
     font-weight: 300;
-    font-size: 24px;
-    margin: 4px 0;
+    font-size: 20px;
+    margin: 8px 0;
     padding: 2px 0;
 }
 
 p {
     font-size: 14px;
-    margin: 4px 0;
+    margin: 8px 0;
     line-height: 16px;
 }
-
-
-
 
 .release .tags {
     -webkit-transition: opacity 0.333s ease-in-out;
@@ -269,14 +281,14 @@ p {
     opacity: 0;
     position: absolute;
     z-index:1;
-    top: 14%;
-    left: -13%;
+    top: 20%;
+    left: -23%;
     padding: 4px 0;
     background: #A33;
     border: 1px solid #933;
     text-align: center;
-    font-size: 10px;
-    width: 200px;
+    font-size: 13px;
+    width: 300px;
     color: white;
     white-space: nowrap;
     box-shadow: 0 0 5px rgba(32, 32, 32, 0.8);
@@ -371,6 +383,16 @@ p {
     border-right: 1px solid black;
     display: inline;
     padding-right: 8px;
+    margin-right: 8px;
+    font-size: 18px;
+}
+
+#top-bar a span {
+    text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
+    border-right: 1px solid black;
+    display: inline;
+    padding-right: 8px;
+    
     font-size: 18px;
 }
 
@@ -452,3 +474,12 @@ p {
 .clear {
     clear: both;
 }
+
+
+@media screen and (max-width:360px) {
+    .release-full .cover {
+        display: block;
+        clear: both;
+    }
+}
+

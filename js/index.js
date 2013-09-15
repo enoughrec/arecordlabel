@@ -5,6 +5,24 @@ var Backbone = require('backbone');
 var play = window.play = require('play-audio');
 var path = require('path');
 Backbone.$ = $; // for browserify
+var hbs = require('handlebars-runtime');
+hbs.registerHelper('pluralize', function(num, single, plural) {
+	if (parseInt(num, 10) === 1) {
+		return single;
+	} else {
+		return plural;
+	}
+});
+
+// hbs.registerHelper('removeDot', function(word) {
+// 	if (word && _.isString(word)) {
+// 		if (word[0] === '.') {
+// 			word = word.substr(1,word.length-1)
+// 		};
+// 	};
+
+// 	return word;
+// });
 
 // underscore and string methods
 var _ = require('underscore');
@@ -16,11 +34,12 @@ var ReleaseView = require('./views/release-view');
 var ReleaseListView = require('./views/release-list-view');
 var Router = require('./router');
 
+// templates
 var relpage_tpl = require('./templates/details.hbs');
+var about_tpl = require('./templates/about.hbs');
 
-// should be an API, but flat object for now 
-var data = require('../data/clean.json');
-var files = window.files = require('../lib/files.json');
+// could be an API, but flat object for now 
+var data = require('../data/all.json');
 
 // releases collection
 var releases = new Releases(data);
@@ -34,7 +53,8 @@ var list = new ReleaseListView({
 var router = new Router();
 
 router.on('release', function(cat) {
-	var release = releases.filter(function(rel){
+	this.currentPage = 'release';
+	var release = releases.filter(function(rel) {
 		return rel.get('cat') === cat;
 	});
 
@@ -43,28 +63,38 @@ router.on('release', function(cat) {
 	} else {
 		list.remove();
 		var relData = release[0].toJSON();
+
 		relData.formattedDate = release[0].get('momented').format('MMMM Do, YYYY');
-		relData.numTracks = files[cat] ? files[cat].length : false;
-		
+		relData.numTracks = relData.tracks ? relData.tracks.length : false;
+
 		var html = relpage_tpl(relData);
-		document.title = '' + relData.album + ' - ' + relData.artist + '  | '+relData.cat.toUpperCase();
+		document.title = '' + relData.album + ' - ' + relData.artist + '  | ' + relData.cat.toUpperCase();
 		$("#main").html(html)
-				  .find('.play').on('click', function(){
-						player.queue(cat);
-					});
+			.find('.play').on('click', function() {
+			player.queue(relData.tracks);
+		});
 	}
 });
 
-router.on('error',function(){
+router.on('about', function() {
+	this.currentPage = 'about';
+	document.title = 'About Us';
+	list.remove();
+	var content = about_tpl();
+	$("#main").empty().html(content);
+});
+
+router.on('error', function() {
 	Backbone.history.navigate('/');
 });
 
 router.on('home', function() {
+	this.currentPage = 'home';
 	document.title = 'Enough Records';
-  	list.render();
-  	document.title
+	list.render();
+	document.title
 	$("#main").empty().append(list.el);
-	// $("#top-bar input").focus();
+
 });
 
 
@@ -76,9 +106,13 @@ var app = {
 
 // search box stuff
 var lastSearch = false;
-var searchHandler = function(){
-
-	if(this.value === lastSearch){
+var searchHandler = function() {
+	if (router.currentPage !== 'home') {
+		Backbone.history.navigate('/', {
+			trigger: true
+		});
+	};
+	if (this.value === lastSearch) {
 		return;
 	} else {
 		lastSearch = this.value;
@@ -93,29 +127,31 @@ var searchHandler = function(){
 
 }
 
-$("#top-bar input").on('keyup', _.debounce(searchHandler,333));
+$("#top-bar input").on('keyup', _.debounce(searchHandler, 333));
 
 
 // player
 
 var controls = document.getElementById('bottom-bar');
-var Player = function(elem){
+var Player = function(elem) {
 	this.elem = elem;
 	this.playing = false;
-	this.widget = play([],elem).autoplay();
+	this.widget = play([], elem).autoplay();
 	this.playButton = $("#play-state");
 	this.widget.volume(0.5);
-	this.widget.on('play', this.togglePlayState.bind(this,true));
-	this.widget.on('ended',this.advance.bind(this));
-	
-	$(".controls span").on('click',this.doControl.bind(this));
+	this.widget.on('play', this.togglePlayState.bind(this, true));
+	this.widget.on('ended', this.advance.bind(this));
+
+	$(".controls span").on('click', this.doControl.bind(this));
 }
 
 Player.prototype.doControl = function(evt) {
-	if (!this.playlist) {return};
+	if (!this.playlist) {
+		return
+	};
 	var ctrl = evt.target.getAttribute('ctrl');
-	
-	switch (ctrl){
+
+	switch (ctrl) {
 		case 'stop':
 			this.widget.pause().currentTime(0);
 			this.togglePlayState(false);
@@ -152,10 +188,10 @@ Player.prototype.togglePlayState = function(playing) {
 Player.prototype.advance = function(fwd) {
 	var mod = fwd ? 1 : -1;
 	this.position = this.position + mod;
-	if(this.position > this.playlist.length-1) this.position = 0;
-	else if(this.position < 0) this.position = this.playlist.length-1;
+	if (this.position > this.playlist.length - 1) this.position = 0;
+	else if (this.position < 0) this.position = this.playlist.length - 1;
 	this.play();
-	
+
 };
 
 Player.prototype.play = function() {
@@ -163,9 +199,9 @@ Player.prototype.play = function() {
 	this.widget.src(this.playlist[pos]);
 };
 
-Player.prototype.queue = function(cat){
-	if (files[cat] && files[cat].length) {
-		this.playlist = files[cat];
+Player.prototype.queue = function(files) {
+	if (files && files.length) {
+		this.playlist = files;
 		this.position = 0;
 		this.play();
 	} else {
@@ -176,7 +212,10 @@ Player.prototype.queue = function(cat){
 var player = window.player = new Player(controls);
 
 // start routing
-Backbone.history.start({ pushState: true, root: app.rootURL });
+Backbone.history.start({
+	pushState: true,
+	root: app.rootURL
+});
 
 $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 	// Get the absolute anchor href.
@@ -197,10 +236,5 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 	}
 });
 
-// expose
-window.list = list;
-window._ = _;
-window.$ = $;
-window.Backbone = Backbone;
-window.data = data;
+
 window.rels = releases;
