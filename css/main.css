@@ -151,7 +151,6 @@ a {
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    text-decoration: line-through;
     text-shadow: 1px 1px 0 #FFF;
 }
 
@@ -224,7 +223,7 @@ a {
 
 
 .release:hover {
-    border: 1px solid #aa3333;
+    border: 1px solid #3ea8da;
     xbackground: #efefef;
 }
 
@@ -284,8 +283,8 @@ p {
     top: 20%;
     left: -23%;
     padding: 4px 0;
-    background: #A33;
-    border: 1px solid #933;
+    background: #3ea8da;
+    border: 1px solid #3ea8aa;
     text-align: center;
     font-size: 13px;
     width: 300px;
@@ -372,7 +371,7 @@ p {
     left: 0;
     right: 0;
     height: 48px;
-    background: rgba(249, 58, 43,0.9);
+    background: rgba(62, 168, 218, 0.9);
     border-bottom: 1px solid #333;
     line-height: 48px;
     text-indent: 12px;
