@@ -1,7 +1,6 @@
 var Backbone = require('backbone');
 var tpl = require('../templates/release.hbs');
 
-
 var ReleaseView = Backbone.View.extend({
 	tagName: 'div',
 	className: 'release',
