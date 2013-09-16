@@ -5,7 +5,7 @@
 		<div class="titles">
 			<h1><span class="album">{{album}}</span> <span class="artist">{{artist}}</span></h1>
 		</div>
-		{{#if country}}<img class="artist-country" src="/flags/_flag_{{country}}.png" />{{/if}}
+		{{#if country}}<img class="artist-country" src="/flags/_flag_{{removeDot country}}.png" />{{/if}}
 		{{#if cc}}<div class="cc"><a href="{{cc}}"><img src="/iconss/{{cc_img}}"/></a></div>{{/if}}
 	</div>
 	

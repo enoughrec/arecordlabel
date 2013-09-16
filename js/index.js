@@ -14,15 +14,15 @@ hbs.registerHelper('pluralize', function(num, single, plural) {
 	}
 });
 
-// hbs.registerHelper('removeDot', function(word) {
-// 	if (word && _.isString(word)) {
-// 		if (word[0] === '.') {
-// 			word = word.substr(1,word.length-1)
-// 		};
-// 	};
+hbs.registerHelper('removeDot', function(word) {
+	if (word && _.isString(word)) {
+		if (word[0] === '.') {
+			word = word.substr(1,word.length-1)
+		};
+	};
 
-// 	return word;
-// });
+	return word;
+});
 
 // underscore and string methods
 var _ = require('underscore');
