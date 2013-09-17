@@ -7,9 +7,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
    	<link rel="icon" type="image/gif" href="/covers/32_ambient.gif" />
     <link rel="stylesheet" type="text/css" href="/css/main.css">
+    <script type="text/javascript">
+    
+		function queryString(key) {
+			var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
+			var offset = location.search.search( re );
+			if ( offset == -1 ) return null;
+			return RegExp.$1;
+		}
+		
+		function checkUrl(){
+			var cat = queryString( "cat" );
+			if (cat) {
+				window.location.href = "/releases/"+cat;
+			}
+			var tag = queryString( "tag" );
+			if (tag) {
+				//window.location.href = "http://enoughrecords.scene.org/imageflow/?tag="+tag;
+				
+				//todo: how the hell can i do a search by tag with this thing?
+			}
+		}
+		
+    </script>
 </head>
 
-<body>
+<body onload="checkUrl()">
     <div id="top-bar">
         <a href="/">
             <h1>Enough Records</h1>
