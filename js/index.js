@@ -17,7 +17,7 @@ hbs.registerHelper('pluralize', function(num, single, plural) {
 hbs.registerHelper('removeDot', function(word) {
 	if (word && _.isString(word)) {
 		if (word[0] === '.') {
-			word = word.substr(1,word.length-1)
+			word = word.substr(1, word.length - 1)
 		};
 	};
 
@@ -43,6 +43,9 @@ var data = require('../data/all.json');
 
 // releases collection
 var releases = new Releases(data);
+
+var tags = releases.getTags();
+
 
 // view where it will all live
 var list = new ReleaseListView({
