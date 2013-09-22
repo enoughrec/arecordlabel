@@ -38,6 +38,28 @@ var Releases = Backbone.Collection.extend({
 		});
 
 	},
+	searchByTag: function(tags){
+		var years = [];
+		this.filter(function(item){
+			var itemTags = item.get('tags');
+			var result = _.intersection(tags, itemTags);
+
+			var hit = result.length === tags.length;
+
+			if (hit) {
+		  		var year = item.get('momented').year();
+		  		if (years.lastIndexOf(year) === -1) {
+		  			years.push(year);
+		  		};
+		  	};
+
+			item.set('visible',hit);
+		});
+		$(".year-sep").each(function(){
+			var year = parseInt(this.getAttribute('year'),10);
+			$(this).toggleClass('hidden', years.indexOf(year) === -1);
+		});
+	},
 	resetVisibility: function(){
 		$("#main").addClass('hidden');
 		$(".year-sep").removeClass('hidden');
@@ -61,8 +83,6 @@ var Releases = Backbone.Collection.extend({
 		return  _(this.filter(function(data){
 			return !!~(data.get('tags').indexOf(tag));
 		}));
-
-		
 	}
 });
 

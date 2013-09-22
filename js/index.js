@@ -45,10 +45,19 @@ var data = require('../data/all.json');
 var releases = new Releases(data);
 
 
+var tagSearch = [];
+
 var tagClickHandler = function(tag){
 	return function(){
 		$(this).toggleClass('active');
-		console.log(releases.getByTag(tag).value());
+		if (tagSearch.indexOf(tag) === -1) {
+			tagSearch.push(tag);
+		} else {
+			tagSearch.splice(tagSearch.indexOf(tag),1);
+		}
+
+		releases.searchByTag(tagSearch);
+
 	};
 }
 
@@ -273,4 +282,5 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 });
 
 // expose some stuff to window for debug 
+window._ = _;
 window.rels = releases;
