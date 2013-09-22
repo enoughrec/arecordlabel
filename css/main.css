@@ -436,7 +436,7 @@ cursor: pointer;
 }
 
 .tag-choice.active {
-    background: rgba(92, 92, 128, 0.9);
+    background: rgba(164, 92, 192, 0.9);
 }
 
 #top-bar span:first-child {

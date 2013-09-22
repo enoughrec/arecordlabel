@@ -44,18 +44,30 @@ var data = require('../data/all.json');
 // releases collection
 var releases = new Releases(data);
 
+
+var tagClickHandler = function(tag){
+	return function(){
+		$(this).toggleClass('active');
+		console.log(releases.getByTag(tag).value());
+	};
+}
+
 var tags = releases.getTags();
+var $tv = $(".tagvis");
 var $tn = $(".tag-navigation");
 tags.forEach(function(item){
 	var tag = document.createElement('div');
 	tag.className = 'tag-choice';
 	tag.innerHTML = item;
-	tag.onclick = function(){
-		console.log(releases.getByTag(item).value());
-	}
+	tag.onclick = tagClickHandler(item);
 	$tn[0].appendChild(tag);
 },tags);
 
+
+
+$tv.on('click',function(e){
+	$tn.toggleClass('hidden');
+});
 
 // view where it will all live
 var list = new ReleaseListView({
