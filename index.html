@@ -34,21 +34,17 @@
 
 <body onload="checkUrl()">
     <div id="top-bar">
-        <span class="fontawesome-reorder"></span>
-        <a href="/">
-            <h1>Enough Records</h1>
-        </a>
-        <a href="/about">
-            <span>About</span>
-        </a>
-        <a href="http://enoughrecords.org">
-            <span>Blog</span>
-        </a>
         
-        <span id="top-bar-searchbox">
+        <span><a class="fontawesome-reorder"></a></span>
+        <span><h1><a href="/">Enough Records</a></h1></span>
+        <span><a href="/about">About</a></span>
+        <span><a href="http://enoughrecords.org">Blog</a></span>
+        
+        <div id="top-bar-searchbox">
             <input type="text" placeholder="Search Releases" />
-        </span>
-        
+            <div class="fontawesome-remove hidden"></div>
+        </div>
+        <div class="tag-navigation hidden"></div>
     </div>
     <div id="sidebar">
         

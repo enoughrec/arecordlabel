@@ -45,6 +45,16 @@ var data = require('../data/all.json');
 var releases = new Releases(data);
 
 var tags = releases.getTags();
+var $tn = $(".tag-navigation");
+tags.forEach(function(item){
+	var tag = document.createElement('div');
+	tag.className = 'tag-choice';
+	tag.innerHTML = item;
+	tag.onclick = function(){
+		console.log(releases.getByTag(item).value());
+	}
+	$tn[0].appendChild(tag);
+},tags);
 
 
 // view where it will all live
@@ -87,17 +97,18 @@ router.on('about', function() {
 	$("#main").empty().html(content);
 });
 
-router.on('error', function() {
-	Backbone.history.navigate('/');
-});
-
 router.on('home', function() {
+	console.log('home');
 	this.currentPage = 'home';
 	document.title = 'Enough Records';
 	list.render();
 	document.title
 	$("#main").empty().append(list.el);
 
+});
+
+router.on('error', function() {
+	alert('Hey, something is screwy. please refresh, and if it happens again, let us know!');
 });
 
 
@@ -109,12 +120,20 @@ var app = {
 
 // search box stuff
 var lastSearch = false;
-var searchHandler = function() {
+var closeBox = $(".fontawesome-remove");
+
+var searchHandler = function(e) {
+	if (e.keyCode === 27) { // reset on escape
+		this.value = '';
+	};
 	if (router.currentPage !== 'home') {
 		Backbone.history.navigate('/', {
 			trigger: true
 		});
 	};
+
+	// @TODO need to normalize input values here (can actually put valid regex in, if should so want)
+
 	if (this.value === lastSearch) {
 		return;
 	} else {
@@ -122,9 +141,11 @@ var searchHandler = function() {
 	}
 
 	if (this.value.length === 0) {
+		closeBox.addClass('hidden');
 		releases.resetVisibility();
 		return;
 	} else {
+		closeBox.removeClass('hidden');
 		releases.search(this.value);
 	}
 
@@ -212,7 +233,7 @@ Player.prototype.queue = function(files) {
 	}
 }
 
-var player = window.player = new Player(controls);
+var player = new Player(controls);
 
 // start routing
 Backbone.history.start({
@@ -239,5 +260,5 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 	}
 });
 
-
+// expose some stuff to window for debug 
 window.rels = releases;

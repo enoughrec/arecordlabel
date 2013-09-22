@@ -82,6 +82,14 @@ a {
 	float: right;
 }
 
+#top-bar-searchbox .fontawesome-remove {
+    position: absolute;
+    right: 14px;
+    top: -1px;
+    color: #5A5A5A;
+    height: 12px;
+}
+
 #main {
     width: 95%;
     margin: 0 auto;
@@ -176,7 +184,7 @@ a {
 .release-full .details {
     line-height: 25px;
     font-size: 18px;
-    margin-left: 310px;
+    margin-left: 314px;
     margin-top: -16px;
 }
 
@@ -379,28 +387,69 @@ white-space: nowrap;
 }
 
 #top-bar h1 {
-    text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
-    border-right: 1px solid black;
+   /* text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
+    border-right: 1px solid black;*/
     display: inline;
-    padding-right: 8px;
+    /*padding-right: 8px;
     margin-right: 8px;
+    font-size: 18px;*/
+}
+
+#top-bar span {
+    text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
+    border-left: 1px solid black;
+    display: inline;
+    padding-left: 12px;
+    margin-left: 7px;
     font-size: 18px;
 }
 
-#top-bar a span {
-    text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
-    border-right: 1px solid black;
-    display: inline;
-    padding-right: 8px;
-    margin-right: 8px;
-    font-size: 18px;
+.tag-navigation {
+top: 48px;
+left: 0px;
+background: rgba(43, 22, 170, 0.2);
+right: 0;
+font-size: 13px;
+line-height: 25px;
+padding: 10px 19px 10px 5px;
+text-indent: 0;
+border-right: 1px solid #333;
+border-bottom: 1px solid #333;
+}
+
+.tag-choice {
+display: inline-block;
+padding: 5px 4px;
+border-radius: 4px;
+color: #FFF;
+background: rgba(128, 128, 192, 0.4);
+line-height: 1em;
+margin: 2px 4px;
+font-size: 14px;
+font-weight: 400;
+border: 1px solid rgba(0, 0, 0, 0.9);
+cursor: pointer;
+}
+
+.tag-choice:hover {
+    background: rgba(92, 92, 164, 0.8);
+}
+
+.tag-choice.active {
+    background: rgba(92, 92, 128, 0.9);
+}
+
+#top-bar span:first-child {
+    border-left: 0;
+    margin-left: 0;
+    padding-left: 0;
 }
 
 #top-bar input {
     font-size: 15px;
-    padding: 2px 4px;
+    padding: 2px 18px 2px 4px;
     margin: 0 9px;
-    border: 1px solid #fafafa;
+    border: 1px solid #FAFAFA;
     vertical-align: initial;
     line-height: 22px;
     display: inline;
