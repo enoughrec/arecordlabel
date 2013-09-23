@@ -125,7 +125,6 @@ router.on('home', function() {
 	list.render();
 	document.title
 	$("#main").empty().append(list.el);
-
 });
 
 router.on('error', function() {
@@ -141,9 +140,19 @@ var app = {
 
 // search box stuff
 var lastSearch = false;
+var searchBox = $("#top-bar input");
+
+function clearSearchBox() {
+	searchBox[0].value = '';
+	closeBox.addClass('hidden');
+	releases.resetVisibility();
+}
+
 var closeBox = $(".fontawesome-remove");
+closeBox.on('click', clearSearchBox);
 
 var searchHandler = function(e) {
+
 	if (e.keyCode === 27) { // reset on escape
 		this.value = '';
 	};
@@ -172,8 +181,9 @@ var searchHandler = function(e) {
 
 }
 
-$("#top-bar input").on('keyup', _.debounce(searchHandler, 333));
+searchBox.on('keyup', _.debounce(searchHandler, 333));
 
+$('#home').on('click', clearSearchBox);
 
 // player
 
