@@ -90,21 +90,25 @@ a {
     height: 12px;
 }
 
+#top-bar-searchbox span {
+	text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
+    border-left: 0px;
+    display: inline;
+    margin-right: 7px;
+    font-size: 18px;
+}
+
 #main {
     width: 95%;
     margin: 0 auto;
 
 }
 
-
-
 #holder {
     margin-left: 235px;
     padding-left: 8px;
 
 }
-
-
 
 .tag-holder {
     display: inline-block;
@@ -403,6 +407,7 @@ white-space: nowrap;
     margin-left: 7px;
     font-size: 18px;
 }
+
 
 .tag-navigation {
 top: 48px;
