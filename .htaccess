@@ -1,8 +1,5 @@
 RewriteEngine on
 
-
-
-
 # RewriteRule ^js/(.*)$ 			assets/js/$1 [NC,L]
 # RewriteRule ^css/(.*)$ 			assets/css/$1 [NC,L]
 # RewriteRule ^img/(.*)$ 			assets/img/$1 [NC,L]
