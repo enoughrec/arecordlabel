@@ -171,6 +171,7 @@ a {
     overflow: auto;
     margin-bottom: 80px;
     width: 100%;
+    line-height: 20px;
 }
 
 .release-full .cover {
@@ -285,7 +286,7 @@ ul {
 
 li {
     font-size: inherit;
-    margin-left: 14px;
+    margin: 6px 24px 6px;
 }
 
 .release .tags {
