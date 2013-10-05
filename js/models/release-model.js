@@ -44,14 +44,14 @@ var ReleaseModel = Backbone.Model.extend({
 		'tags': function(tags){
 
 			var musictags = [];
-			var country = false;
+			var country = [];
 
 			if (_.isArray(tags)) {
 
 				
 				_.each(tags, function(tag){
 					if (tag[0] === '.') {
-						country = tag;
+						country.push(tag);
 					} else {
 						musictags.push(tag);
 					}

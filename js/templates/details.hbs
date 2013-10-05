@@ -12,8 +12,12 @@
 		<div class="release-date block">Released on <span>{{formattedDate}}</span></div>
 		{{#if info_en}}<div class="block info_en">{{{info_en}}}</div>{{/if}}
 		{{#if info_pt}}<div class="block info_pt">{{{info_pt}}}</div>{{/if}}
+		{{#if country}}<div class="block">Nationality:<br>
+			{{#each country}}
+			<img class="artist-country" src="/flags/_flag_{{removeDot this}}.png" />
+		{{/each}}
 		
-		{{#if country}}<div class="block">Nationality:<br><img class="artist-country" src="/flags/_flag_{{removeDot country}}.png" /></div>{{/if}}
+		</div>{{/if}}
 		
 		<div class="download_links block">Download links:<br>
 			{{#if fma}}
