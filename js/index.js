@@ -270,7 +270,7 @@ var player = new Player(controls);
 
 // start routing
 Backbone.history.start({
-	pushState: true,
+	// pushState: true,
 	root: app.rootURL
 });
 

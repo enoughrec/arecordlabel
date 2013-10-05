@@ -1,11 +1,11 @@
-RewriteEngine on
+# RewriteEngine on
 
 # RewriteRule ^js/(.*)$ 			assets/js/$1 [NC,L]
 # RewriteRule ^css/(.*)$ 			assets/css/$1 [NC,L]
 # RewriteRule ^img/(.*)$ 			assets/img/$1 [NC,L]
 
-RewriteCond %{REQUEST_FILENAME} 				!-d
-RewriteCond %{REQUEST_FILENAME} 				!-f
+# RewriteCond %{REQUEST_FILENAME} 				!-d
+# RewriteCond %{REQUEST_FILENAME} 				!-f
 
 
-RewriteRule ^(.*)+$ 			index.html?/$1 [NC,L]
+# RewriteRule ^(.*)+$ 			index.html?/$1 [NC,L]
