@@ -87,6 +87,7 @@ var list = new ReleaseListView({
 var router = new Router();
 
 router.on('release', function(cat) {
+
 	this.currentPage = 'release';
 	var release = releases.filter(function(rel) {
 		return rel.get('cat') === cat;
@@ -107,6 +108,7 @@ router.on('release', function(cat) {
 			.find('.play').on('click', function() {
 			player.queue(relData.tracks);
 		});
+		window.scrollTo(0);			
 	}
 });
 
