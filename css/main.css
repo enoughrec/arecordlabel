@@ -80,6 +80,7 @@ a {
 
 #top-bar-searchbox {
 	float: right;
+    position: relative;
 }
 
 #top-bar-searchbox .fontawesome-remove {
@@ -196,6 +197,12 @@ a {
 .release-full .details a img {
     margin-top: 6px;
     margin-left: 6px;
+}
+
+.text-clamped {
+    max-width: 512px;
+    padding-left: 12px;
+    border-left: 2px solid #3A3A3A;
 }
 
 .info_en:before {
@@ -411,6 +418,7 @@ white-space: nowrap;
 
 
 .tag-navigation {
+    position: absolute;
 top: 48px;
 left: 0px;
 background: rgba(43, 22, 170, 0.2);
@@ -531,10 +539,36 @@ cursor: pointer;
 }
 
 
-@media screen and (max-width:360px) {
-    .release-full .cover {
-        display: block;
-        clear: both;
+/* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+
+    /* Styles */
+
+    .tag-navigation {
+        top: 100px;
+
     }
+
+    .year-sep {
+        -webkit-transform: none;
+        -moz-transform: none;
+        position: inherit;
+    }
+
+    #main {
+        padding-top: 20px;
+    }
+
+    #top-bar {
+        height: 100px;
+    }
+
+    .release-full .details {
+        clear: right;
+        margin-left: 0;
+    }
+
 }
+
+
 

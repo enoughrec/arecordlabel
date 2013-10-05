@@ -9,45 +9,42 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script type="text/javascript">
     
-		function queryString(key) {
-			var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
-			var offset = location.search.search( re );
-			if ( offset == -1 ) return null;
-			return RegExp.$1;
-		}
+		// function queryString(key) {
+		// 	var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
+		// 	var offset = location.search.search( re );
+		// 	if ( offset == -1 ) return null;
+		// 	return RegExp.$1;
+		// }
 		
-		function checkUrl(){
-			var cat = queryString( "cat" );
-			if (cat) {
-				window.location.href = "/releases/"+cat;
-			}
-			var tag = queryString( "tag" );
-			if (tag) {
-				//window.location.href = "http://enoughrecords.scene.org/imageflow/?tag="+tag;
+		// function checkUrl(){
+		// 	var cat = queryString( "cat" );
+		// 	if (cat) {
+		// 		window.location.href = "/releases/"+cat;
+		// 	}
+		// 	var tag = queryString( "tag" );
+		// 	if (tag) {
+		// 		//window.location.href = "http://enoughrecords.scene.org/imageflow/?tag="+tag;
 				
-				//todo: how the hell can i do a search by tag with this thing?
-			}
-		}
+		// 		//todo: how the hell can i do a search by tag with this thing?
+		// 	}
+		// }
+
+        // we need to do this in a different way @TODO
 		
     </script>
 </head>
 
-<body onload="checkUrl()">
+<body>
     <div id="top-bar">
-        
         <span id="home"><h1><a href="/">Enough Records</a></h1></span>
         <span><a href="/about">About</a></span>       
-        <span><a href="http://enoughrecords.org">Blog</a></span>
-             
+        <span><a href="http://enoughrecords.org">Blog</a></span>   
         <div id="top-bar-searchbox">
         	<span><a class="fontawesome-reorder tagvis"></a></span>
             <input type="text" placeholder="Search Releases" />
             <div class="fontawesome-remove hidden"></div>
         </div>
         <div class="tag-navigation hidden"></div>
-    </div>
-    <div id="sidebar">
-        
     </div>
     <div id="main">[ LOADING ]</div>
     <div id="bottom-bar">
