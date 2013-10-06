@@ -89,6 +89,7 @@ var router = new Router();
 router.on('release', function(cat) {
 
 	this.currentPage = 'release';
+	
 	var release = releases.filter(function(rel) {
 		return rel.get('cat') === cat;
 	});

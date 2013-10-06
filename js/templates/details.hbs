@@ -12,6 +12,11 @@
 		<div class="release-date block">Released on <span>{{formattedDate}}</span></div>
 		{{#if info_en}}<div class="block info_en text-clamped">{{{info_en}}}</div>{{/if}}
 		{{#if info_pt}}<div class="block info_pt text-clamped">{{{info_pt}}}</div>{{/if}}
+		<div class="block">
+			Tags:<br/>
+			<div class="tags">{{#each tags}} <span class="tag fontawesome-tag">{{ this }}</span>  {{/each}}</div>	
+		</div>
+		
 		{{#if country}}
 		<div class="block">Nationality:<br>
 			{{#each country}}
