@@ -53,7 +53,7 @@ var Releases = Backbone.Collection.extend({
 				var result = _.intersection(tags, itemTags);
 
 				if (result.length) {
-					// calc levenshtein distance (science time!)
+					// calc levenshtein distance between the intersection and the search array
 					var dist = _.str.levenshtein(result.join(' '), tags.join(' '));
 					if (Math.log(dist) < 1.5) { // this value needs tuning
 						hits.push(item.toJSON());	
