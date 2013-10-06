@@ -4,8 +4,7 @@ var Router = Backbone.Router.extend({
 	routes: {
 		'': 'home',
 		'about':'about',
-		'release/*cat': 'release',
-		'?cat=*': 'release'
+		'release/*cat': 'release'
 	},
 	about: function(){
 		this.trigger('about');

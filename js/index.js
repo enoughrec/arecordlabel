@@ -283,6 +283,13 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 	// Get the absolute root.
 	var root = location.protocol + "//" + location.host + app.rootURL;
 
+
+	// hack for non app urls on same domain
+	if ($(this).parent().hasClass('text-clamped')) {
+		return true;
+	};
+
+
 	// Ensure the root is part of the anchor href, meaning it's relative.
 	if (href.prop.slice(0, root.length) === root) {
 		evt.preventDefault();
