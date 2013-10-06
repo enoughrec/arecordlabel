@@ -1,7 +1,10 @@
 <div class="release-full">
 
 	<div class="leftframe">
-		<div class="cover"><img src="{{cover}}" alt="{{album}} - {{artist}}"></div>
+		<div class="cover">
+			{{#if numTracks}}<div class="playbutton fontawesome-play"></div>{{/if}}
+			<img src="{{cover}}" alt="{{album}} - {{artist}}">
+		</div>
 		<div class="titles">
 			<h1><span class="album">{{album}}</span> <span class="artist">{{artist}}</span></h1>
 		</div>
@@ -85,9 +88,20 @@
 			{{/if}}
 		</div>
 		
-		{{#if numTracks}}<div class="button play">Play ({{numTracks}} {{pluralize numTracks 'track' 'tracks'}})</div>{{/if}}
+		{{#if similar.length}}
+		<div class="related">
+			<h1>You may also like:</h1>
+			{{#each similar}}
+				{{#with this}}
+				<a class="link-release fontawesome-angle-right" href="#/release/{{cat}}">{{cat}}: {{formatTitle this}}</a>
+				{{/with}}
+			{{/each}}
+		</div>
+		{{/if}}
 	</div>
 	
 	<div class="clear"></div>
+
+
 		
 </div>

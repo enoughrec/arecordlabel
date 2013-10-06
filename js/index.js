@@ -24,6 +24,24 @@ hbs.registerHelper('removeDot', function(word) {
 	return word;
 });
 
+hbs.registerHelper('formatTitle', function(ctx){
+	var artist = ctx.artist ? ctx.artist : '';
+	var album = ctx.album ? ctx.album : '';
+
+	var formattedTitle = false;
+
+	if (album && artist) {
+		formattedTitle = album+" - "+artist;
+	} else if (album && !artist){
+		formattedTitle = album;
+	} else if (artist && !album) {
+		formattedTitle = artist;
+	}
+
+	return formattedTitle;
+});
+
+
 // underscore and string methods
 var _ = require('underscore');
 _.str = require('underscore.string');
@@ -37,6 +55,7 @@ var Router = require('./router');
 // templates
 var relpage_tpl = require('./templates/details.hbs');
 var about_tpl = require('./templates/about.hbs');
+
 
 // could be an API, but flat object for now 
 var data = require('../data/all.json');
@@ -89,7 +108,7 @@ var router = new Router();
 router.on('release', function(cat) {
 
 	this.currentPage = 'release';
-	
+
 	var release = releases.filter(function(rel) {
 		return rel.get('cat') === cat;
 	});
@@ -100,13 +119,16 @@ router.on('release', function(cat) {
 		list.remove();
 		var relData = release[0].toJSON();
 
+		relData.similar = releases.getSimilarByTag(relData.tags, relData.cat);
+
 		relData.formattedDate = release[0].get('momented').format('MMMM Do, YYYY');
 		relData.numTracks = relData.tracks ? relData.tracks.length : false;
 
 		var html = relpage_tpl(relData);
+
 		document.title = '' + relData.album + ' - ' + relData.artist + '  | ' + relData.cat.toUpperCase();
 		$("#main").html(html)
-			.find('.play').on('click', function() {
+			.find('.playbutton').on('click', function() {
 			player.queue(relData.tracks);
 		});
 		window.scrollTo(0);			
@@ -115,14 +137,14 @@ router.on('release', function(cat) {
 
 router.on('about', function() {
 	this.currentPage = 'about';
-	document.title = 'About Us';
+	document.title = 'Who we are';
 	list.remove();
 	var content = about_tpl();
 	$("#main").empty().html(content);
 });
 
 router.on('home', function() {
-	console.log('home');
+	// console.log('home');
 	this.currentPage = 'home';
 	document.title = 'Enough Records';
 	list.render();

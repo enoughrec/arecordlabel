@@ -38,6 +38,34 @@ var Releases = Backbone.Collection.extend({
 		});
 
 	},
+	getSimilarByTag: function(tags, ignore){
+		var hits = [];
+
+		if (tags && tags instanceof Array) {
+
+			this.filter(function(item){
+
+				if (item.get('cat') === ignore){
+					return; // it is this release, no need to include
+				};
+
+				var itemTags = item.get('tags');
+				var result = _.intersection(tags, itemTags);
+
+				if (result.length) {
+					// calc levenshtein distance (science time!)
+					var dist = _.str.levenshtein(result.join(' '), tags.join(' '));
+					if (Math.log(dist) < 1.5) { // this value needs tuning
+						hits.push(item.toJSON());	
+					} else {
+						// console.log('nuhuh',Math.log(dist));
+					}
+				};
+			});
+		}
+
+		return hits;
+	},
 	searchByTag: function(tags){
 		var years = [];
 		this.filter(function(item){
@@ -53,8 +81,11 @@ var Releases = Backbone.Collection.extend({
 		  		};
 		  	};
 
+		  	// should return array of hits, not interact directly on the model
 			item.set('visible',hit);
 		});
+
+		// this needs to be put somewhere else
 		$(".year-sep").each(function(){
 			var year = parseInt(this.getAttribute('year'),10);
 			$(this).toggleClass('hidden', years.indexOf(year) === -1);
