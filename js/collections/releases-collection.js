@@ -16,19 +16,19 @@ var Releases = Backbone.Collection.extend({
  
 		var pattern = new RegExp(letters,"gi");
 		var years = [];
-		var releases = this.filter(function(data) {
+		var releases = this.filter(function(item) {
 
-			var searchString = data.getSearchData();
+			var searchString = item.getSearchData();
 		  	var hit = pattern.test(searchString);
 		  	
 		  	if (hit) {
-		  		var year = data.get('momented').year();
+		  		var year = item.get('momented').year();
 		  		if (years.lastIndexOf(year) === -1) {
 		  			years.push(year);
 		  		};
 		  	};
 
-		  	data.set('visible', hit);
+		  	item.set('visible', hit);
 		});
 
 
