@@ -28,10 +28,11 @@ var Releases = Backbone.Collection.extend({
 		  		};
 		  	};
 
+		  	// should not be doing it like this
 		  	item.set('visible', hit);
 		});
 
-
+		// this needs to go somewhere else
 		$(".year-sep").each(function(){
 			var year = parseInt(this.getAttribute('year'),10);
 			$(this).toggleClass('hidden', years.indexOf(year) === -1);
@@ -91,6 +92,8 @@ var Releases = Backbone.Collection.extend({
 			$(this).toggleClass('hidden', years.indexOf(year) === -1);
 		});
 	},
+	// all this jquery needs to die die die
+	// better would be for a view to handle all this
 	resetVisibility: function(){
 		$("#main").addClass('hidden');
 		$(".year-sep").removeClass('hidden');

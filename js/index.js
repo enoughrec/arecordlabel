@@ -1,45 +1,18 @@
+// node stuff
+var path = require('path');
+
 // setup 
 
 var $ = require('jquery-browserify');
 var Backbone = require('backbone');
-var play = window.play = require('play-audio');
-var path = require('path');
 Backbone.$ = $; // for browserify
+
+
+var play = require('play-audio');
+
+
 var hbs = require('handlebars-runtime');
-hbs.registerHelper('pluralize', function(num, single, plural) {
-	if (parseInt(num, 10) === 1) {
-		return single;
-	} else {
-		return plural;
-	}
-});
-
-hbs.registerHelper('removeDot', function(word) {
-	if (word && _.isString(word)) {
-		if (word[0] === '.') {
-			word = word.substr(1, word.length - 1)
-		};
-	};
-
-	return word;
-});
-
-hbs.registerHelper('formatTitle', function(ctx){
-	var artist = ctx.artist ? ctx.artist : '';
-	var album = ctx.album ? ctx.album : '';
-
-	var formattedTitle = false;
-
-	if (album && artist) {
-		formattedTitle = album+" - "+artist;
-	} else if (album && !artist){
-		formattedTitle = album;
-	} else if (artist && !album) {
-		formattedTitle = artist;
-	}
-
-	return formattedTitle;
-});
+var helpersLoaded = require('./helpers');
 
 
 // underscore and string methods
@@ -74,7 +47,7 @@ var tagClickHandler = function(tag){
 		} else {
 			tagSearch.splice(tagSearch.indexOf(tag),1);
 		}
-
+		// @todo convert to publish on app bus
 		releases.searchByTag(tagSearch);
 
 	};
@@ -324,5 +297,5 @@ $(document).on("click", "a[href]:not([data-bypass])", function(evt) {
 });
 
 // expose some stuff to window for debug 
-window._ = _;
-window.rels = releases;
+// window._ = _;
+// window.rels = releases;
