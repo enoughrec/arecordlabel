@@ -258,7 +258,6 @@ a {
 
 }
 
-
 .release:hover {
     border: 1px solid #3ea8da;
     xbackground: #efefef;
@@ -267,8 +266,6 @@ a {
 .release:hover .tags {
     opacity: 1;
 }
-
-
 
 .release {
     background: white;
@@ -372,6 +369,11 @@ li {
     border-left: 1px solid #fff;
     margin-right: 2px;
     padding-left: 4px;
+}
+
+.tagvis {
+    cursor: pointer;
+    cursor: hand;
 }
 
 a.link-release {
@@ -499,30 +501,30 @@ a.link-release.fontawesome-angle-right:before {
 
 .tag-navigation {
     position: absolute;
-top: 48px;
-left: 0px;
-background: rgba(43, 22, 170, 0.2);
-right: 0;
-font-size: 13px;
-line-height: 25px;
-padding: 10px 19px 10px 5px;
-text-indent: 0;
-border-right: 1px solid #333;
-border-bottom: 1px solid #333;
+	top: 48px;
+	left: 0px;
+	background: rgba(43, 22, 170, 0.2);
+	right: 0;
+	font-size: 13px;
+	line-height: 25px;
+	padding: 10px 19px 10px 5px;
+	text-indent: 0;
+	border-right: 1px solid #333;
+	border-bottom: 1px solid #333;
 }
 
 .tag-choice {
-display: inline-block;
-padding: 5px 4px;
-border-radius: 4px;
-color: #FFF;
-background: rgba(128, 128, 192, 0.4);
-line-height: 1em;
-margin: 2px 4px;
-font-size: 14px;
-font-weight: 400;
-border: 1px solid rgba(0, 0, 0, 0.9);
-cursor: pointer;
+	display: inline-block;
+	padding: 5px 4px;
+	border-radius: 4px;
+	color: #FFF;
+	background: rgba(128, 128, 192, 0.4);
+	line-height: 1em;
+	margin: 2px 4px;
+	font-size: 14px;
+	font-weight: 400;
+	border: 1px solid rgba(0, 0, 0, 0.9);
+	cursor: pointer;
 }
 
 .tag-choice:hover {
@@ -653,8 +655,6 @@ cursor: pointer;
         -moz-transform: none;
         position: inherit;
     }
-
-   
 
     #top-bar {
         xheight: 100px;

@@ -5,6 +5,7 @@
     <title>Enough Records</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="keywords" content="enough,enoughrecords,enough records,records,netlabel,music label,music,label,free music,netmusic,netaudio,demoscene,musica grátis,musica gratuita,free download,creative commons,electronic,experimental,idm,ambient,industrial,dark ambient,postrock,alternative,fábrica de som">
    	<link rel="icon" type="image/gif" href="covers/32_ambient.gif" />
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script type="text/javascript">
@@ -29,12 +30,33 @@
 		// 	}
 		}
 
-        // we need to do this in a different way @TODO
+		function SlimStat() {
+			var ref = escape(document.referrer);
+			var res = escape(document.URL);
+	
+			var img = document.createElement('img');
+			img.setAttribute('id','slimstatimg');
+			img.setAttribute('width','1');
+			img.setAttribute('height','1');
+			img.setAttribute('alt','');
+			img.setAttribute('src','http://enoughrecords.scene.org/slimstat/js.stats.php?ref='+ref+'&res='+res);
+			if (document.documentElement) {
+				document.documentElement.appendChild(img);
+			} else {
+				document.appendChild(img);
+			}
+		}
+
+
+		function loadUp() {
+			SlimStat();
+			checkUrl();
+		}
 		
     </script>
 </head>
 
-<body onload="checkUrl();">
+<body onload="loadUp();">
     <div id="top-bar">
         <span id="home"><h1><a href="/">Enough Records</a></h1></span>
         <span><a href="#/about">About</a></span>       
