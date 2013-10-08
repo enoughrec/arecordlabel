@@ -336,7 +336,7 @@ li {
 }
 
 .playbutton {
-    opacity: 0.1;
+    opacity: 0.25;
     position: absolute;
     background: rgba(32, 32, 32, 0.4);
     padding: 20px 22px;
@@ -359,9 +359,9 @@ li {
 }
 
 .playbutton.fontawesome-play:before {
-   padding-left: 8px;
-padding-top: 2px;
-display: inline-block;
+	padding-left: 8px;
+	padding-top: 2px;
+	display: inline-block;
 }
 
 .tag:first-child {
