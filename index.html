@@ -32,14 +32,15 @@
 
 		function SlimStat() {
 			var ref = escape(document.referrer);
-			var res = escape(document.URL);
+			var res = escape(window.screen.availHeight+'x'+window.screen.availWidth);
+			var url = escape(window.location.href);
 	
 			var img = document.createElement('img');
 			img.setAttribute('id','slimstatimg');
 			img.setAttribute('width','1');
 			img.setAttribute('height','1');
 			img.setAttribute('alt','');
-			img.setAttribute('src','http://enoughrecords.scene.org/slimstat/js.stats.php?ref='+ref+'&res='+res);
+			img.setAttribute('src','http://enoughrecords.scene.org/slimstat/stats_js.php?ref='+ref+'&res='+res+'&url='+url);
 			if (document.documentElement) {
 				document.documentElement.appendChild(img);
 			} else {

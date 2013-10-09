@@ -21,12 +21,14 @@
 
 include_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/config.php' );
 
-if ( isset( $_GET['ref'] ) && isset( $_GET['url'] ) && isset( $_GET['res'] ) && isset( $_GET['ttl'] ) ) {
+//echo $_GET['ref'];// ) && isset( $_GET['url'] ) && isset( $_GET['res'] ) && isset( $_GET['ttl']
+
+if ( isset( $_GET['ref'] ) && isset( $_GET['url'] ) && isset( $_GET['res'] ) ) {
 	$_SERVER['HTTP_REFERER'] = $_GET['ref'];
 	
 	$url = @parse_url( $_GET['url'] );
 	$slimstat_resolution = $_GET['res'];
-	$slimstat_title = $_GET['ttl'];
+	$slimstat_title = $_GET['url'];//'/';//$_GET['ttl'];
 	if ( isset( $url['path'] ) ) {
 		if ( isset( $url['query'] ) ) {
 			$_SERVER['REQUEST_URI'] = $url['path'].'?'.$url['query'];
