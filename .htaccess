@@ -1,4 +1,6 @@
-# RewriteEngine on
+# Options +FollowSymLinks
+
+# RewriteEngine On
 
 # RewriteRule ^js/(.*)$ 			assets/js/$1 [NC,L]
 # RewriteRule ^css/(.*)$ 			assets/css/$1 [NC,L]

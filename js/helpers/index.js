@@ -25,7 +25,7 @@ hbs.registerHelper('formatTitle', function(ctx){
 	var formattedTitle = false;
 
 	if (album && artist) {
-		formattedTitle = album+" - "+artist;
+		formattedTitle = "["+ctx.cat+"] "+artist+" - "+album;
 	} else if (album && !artist){
 		formattedTitle = album;
 	} else if (artist && !album) {
