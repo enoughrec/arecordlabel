@@ -99,7 +99,11 @@ router.on('release', function(cat) {
 
 		var html = relpage_tpl(relData);
 
-		document.title = '' + relData.album + ' - ' + relData.artist + '  | ' + relData.cat.toUpperCase();
+		// fix for &#1042; style unicode entities
+		var s = document.createElement('span');
+		s.innerHTML = '' + relData.album + ' - ' + relData.artist + '  | ' + relData.cat.toUpperCase();
+		document.title = s.innerHTML;
+
 		$("#main").html(html)
 			.find('.playbutton').on('click', function() {
 			player.queue(relData.tracks);
