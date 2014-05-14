@@ -4,3 +4,5 @@
 .tern-port
 /build/.build.js
 _site
+edr.php
+getlist4.php
