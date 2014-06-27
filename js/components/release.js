@@ -2,6 +2,35 @@
  * @jsx React.DOM
  */
 var React = require('react');
+
+
+var url = require('url');
+
+var Release = React.createClass({
+	render: function(){
+		var data = this.props.data.toJSON();
+
+		var coverPath = url.parse(data.cover);
+		data.cover = coverPath.path;
+		
+		return (
+			<a className="release" href={"#/release/" + data.cat}>
+				<div className="card">
+					<div className="face front">
+					    <div className="cover">
+					        <img src={data.cover} />
+					    </div>
+					    <div className="titles">
+					        <span className="album">{data.album}</span>
+					        <span className="artist">{data.artist}</span>
+					    </div>
+					</div>
+				</div>
+			</a>
+			)
+	}
+})
+
 /*
 
 {
@@ -35,31 +64,5 @@ var React = require('react');
 
 */
 
-var url = require('url');
-
-var Release = React.createClass({
-	render: function(){
-		var data = this.props.data.toJSON();
-
-		var coverPath = url.parse(data.cover);
-		data.cover = coverPath.path;
-		
-		return (
-			<a className="release" href={"#/release/" + data.cat}>
-				<div className="card">
-					<div className="face front">
-					    <div className="cover">
-					        <img src={data.cover} />
-					    </div>
-					    <div className="titles">
-					        <span className="album">{data.album}</span>
-					        <span className="artist">{data.artist}</span>
-					    </div>
-					</div>
-				</div>
-			</a>
-			)
-	}
-})
 
 module.exports = Release;
