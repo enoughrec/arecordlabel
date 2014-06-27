@@ -8,6 +8,12 @@ var React = require('react');
 var Release = require('./release');
 
 var Releases = React.createClass({
+	componentWillMount : function() {
+		
+		this.props.data.on("reset", function() {
+			this.forceUpdate();
+		}.bind(this));
+    },
 	render: function(){
 		
 		var currentYear = false;
