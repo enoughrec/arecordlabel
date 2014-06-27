@@ -7,12 +7,6 @@ var ReleaseModel = Backbone.Model.extend({
 	initialize: function() {
 		this.cache = {};
 	},
-	// getters: {
-	// 	'cover': function(){
-	// 		var ret = this.get('cover');
-	// 		return ret;
-	// 	}
-	// },
 	setters: {
 		'cover': function(val) {
 
@@ -61,13 +55,6 @@ var ReleaseModel = Backbone.Model.extend({
 			return musictags;
 		}
 	},
-	// get: function(attr) {
-	// 	if (typeof this.getters[attr] === 'function') {
-	// 		return this.getters[attr].call(this, attr);
-	// 	} else {
-	// 		return Backbone.Model.prototype.get.call(this, attr);
-	// 	}
-	// },
 	set: function(attr, val, options) {
 
 		if (typeof attr === 'object') {
@@ -88,7 +75,7 @@ var ReleaseModel = Backbone.Model.extend({
 
 	},
 	getSearchData: function(){
-		if (this.cache['searchData']) return this.cache['searchData'];
+		
 		var artist = this.get('artist') || '',
 			album = this.get('album') || '',
 			// info = this.get('info_en') || '',
