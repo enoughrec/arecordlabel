@@ -14,6 +14,7 @@
     "moment": "~2.1.0",
     "play-audio": "0.0.3",
     "react": "^0.10.0",
+    "react-infinite-scroll": "^0.1.4",
     "react-router-component": "^0.19.0",
     "react-tools": "^0.10.0",
     "reactify": "^0.13.1",
