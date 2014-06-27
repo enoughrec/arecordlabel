@@ -5,6 +5,8 @@
 
 var React = require('react');
 var Releases = require('./components/releases');
+var Topbar = require('./components/topbar');
+var Bottombar = require('./components/bottombar');
 
 
 var ReleasesCollection = require('./collections/releases');
@@ -14,12 +16,15 @@ var enrReleases = window.e = new ReleasesCollection();
 enrReleases.fullReset();
 
 var App = React.createClass({
+	getInitialState: function() {
+    	return {data: enrReleases};
+  	},
 	render: function(){
 		return (
 			<div className="app">
-				<div className="top-bar" />
-				<Releases data={enrReleases} />
-				<div className="bottom-bar" />
+				<Topbar data={this.state.data} />
+				<Releases data={this.state.data} />
+				<Bottombar />
 			</div>
     	)
 	}
