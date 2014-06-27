@@ -22,12 +22,6 @@
 			if (cat) {
 				window.location.href = "http://enoughrecords.scene.org/#/release/"+cat;
 			}
-		// 	var tag = queryString( "tag" );
-		// 	if (tag) {
-		// 		//window.location.href = "http://enoughrecords.scene.org/imageflow/?tag="+tag;
-				
-		// 		//todo: how the hell can i do a search by tag with this thing?
-		// 	}
 		}
 
 		function SlimStat() {
@@ -50,36 +44,15 @@
 
 
 		function loadUp() {
-			SlimStat();
-			checkUrl();
+			// SlimStat();
+			// checkUrl();
 		}
 		
     </script>
 </head>
 
-<body onload="loadUp();">
-    <div id="top-bar">
-        <span id="home"><h1><a href="/">Enough Records</a></h1></span>
-        <span><a href="#/about">About</a></span>       
-        <span><a href="http://enoughrecords.org" target="_blank">Blog</a></span>   
-        <div id="top-bar-searchbox">
-        	<span><a class="fontawesome-tags tagvis"></a></span>
-            <input type="text" placeholder="Search Releases" />
-            <div class="fontawesome-remove hidden"></div>
-        </div>
-        <div class="tag-navigation hidden"></div>
-    </div>
-    <div id="main">[ LOADING ]</div>
-    <div id="bottom-bar">
-        <span class="controls">
-            <span ctrl="back" class="fa fontawesome-backward"></span>
-            <span ctrl="stop" class="fa fontawesome-stop"></span>
-            <span id="play-state" ctrl="play" class="fa fontawesome-play"></span>
-            <span ctrl="forward" class="fa fontawesome-forward"></span>
-        </span>
-        <span class="now-playing nothing">nothing playing</span>
-        <span class="flattr"><script type="text/javascript"> var flattr_url = 'http://enoughrecords.scene.org'; var flattr_btn='compact';</script><script src="http://api.flattr.com/button/load.js" type="text/javascript"></script></span>
-    </div>
+<body>
+<!--     -->
     <noscript>You will need to enable JS to make this work.</noscript>
     <script type="text/javascript" src="build/build.js"></script>
 </body>
