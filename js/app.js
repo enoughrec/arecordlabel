@@ -5,25 +5,29 @@
 
 var React = require('react');
 var Releases = require('./components/releases');
+var ReleaseDetail = require('./components/release-detail');
 var Topbar = require('./components/topbar');
 var Bottombar = require('./components/bottombar');
 
 
-var ReleasesCollection = require('./collections/releases');
-var enrReleases = window.e = new ReleasesCollection();
+var Router = require('react-router-component');
+var Locations = Router.Locations;
+var Location = Router.Location;
 
-// reset to the full data store which the collection has a reference to
-enrReleases.fullReset();
 
 var App = React.createClass({
-	getInitialState: function() {
-    	return {data: enrReleases};
-  	},
+	componentWillMount: function(){
+		this.props.data.fullReset();
+	},
 	render: function(){
+		this.props.data.fullReset();
 		return (
 			<div className="app">
-				<Topbar data={this.state.data} />
-				<Releases data={this.state.data} />
+				<Topbar data={this.props.data} />
+			 	<Locations hash>
+					<Location path="/" handler={Releases} data={this.props.data} />
+					<Location path="/release/:cat" handler={ReleaseDetail} data={this.props.data} />
+		        </Locations>
 				<Bottombar />
 			</div>
     	)
