@@ -15,31 +15,21 @@ var Releases = Backbone.Collection.extend({
 		if(letters == "") return this;
  
 		var pattern = new RegExp(letters,"gi");
-		var years = [];
 		var releases = this.filter(function(item) {
 
 			var searchString = item.getSearchData();
-		  	var hit = pattern.test(searchString);
+		  	return pattern.test(searchString);
 		  	
-		  	if (hit) {
-		  		var year = item.get('momented').year();
-		  		if (years.lastIndexOf(year) === -1) {
-		  			years.push(year);
-		  		};
-		  	};
-
-		  	// should not be doing it like this
-		  	item.set('visible', hit);
 		});
-
+		return new Releases(releases);
 		
 	},
 	getSimilarByTag: function(tags, ignore){
-		var hits = [];
+		var hits = new Releases();
 
 		if (tags && tags instanceof Array) {
 
-			this.filter(function(item){
+			var releases = this.filter(function(item){
 
 				if (item.get('cat') === ignore){
 					return; // it is this release, no need to include
@@ -52,15 +42,20 @@ var Releases = Backbone.Collection.extend({
 					// calc levenshtein distance between the intersection and the search array
 					var dist = _.str.levenshtein(result.join(' '), tags.join(' '));
 					if (Math.log(dist) < 1.5) { // this value needs tuning
-						hits.push(item.toJSON());	
+						// hits.push(item.toJSON());	
+						return true;
 					} else {
+						return false;
 						// console.log('nuhuh',Math.log(dist));
 					}
 				};
 			});
+			hits.reset(releases);
 		}
 
 		return hits;
+
+		
 	},
 	searchByTag: function(tags){
 		var years = [];
@@ -95,9 +90,12 @@ var Releases = Backbone.Collection.extend({
 		});	
 	},
 	getByTag: function(tag){
-		return  _(this.filter(function(data){
+		var hits = _(this.filter(function(data){
 			return !!~(data.get('tags').indexOf(tag));
-		}));
+		})).value();
+
+	return new Releases(hits);
+
 	}
 });
 
