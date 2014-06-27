@@ -1,5 +1,5 @@
 var Backbone = require('backbone');
-var ReleaseModel = require('../models/release-model');
+var ReleaseModel = require('../models/release');
 var _ = require('underscore');
 _.str = require('underscore.string');
 
@@ -7,8 +7,9 @@ var moment = require('moment');
 
 // we only ever deal with one data source, so the collection
 // has a reference to this, and a method to reset to the 
-// full store. hacky, but works and is simple
-// ..and actually may not need this, but lets see where it goes
+// full store. 
+// hacky, but works and is simple ..and actually may not need this, 
+// but lets see where it goes
 var data = require('../../data/all.json').reverse().map(function(item) {
 	item.key = "rel_" + _.uniqueId();
 	item.momented = moment(item.release_date);
@@ -69,11 +70,12 @@ var Releases = Backbone.Collection.extend({
 
 	},
 	searchByTag: function(tags) {
+		tags = tags instanceof Array ? tags : [tags];
 
 		var hits = this.filter(function(item) {
 			var itemTags = item.get('tags');
-			var result = _.intersection(tags, itemTags);
-
+			var result = _.union(tags, itemTags);
+			
 			var hit = result.length === tags.length;
 
 			if (hit) {
