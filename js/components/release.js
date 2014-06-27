@@ -3,6 +3,9 @@
  */
 var React = require('react');
 
+var Router = require('react-router-component');
+var Link = Router.Link;
+
 
 var url = require('url');
 
@@ -14,7 +17,7 @@ var Release = React.createClass({
 		data.cover = coverPath.path;
 		
 		return (
-			<a className="release" href={"#/release/" + data.cat}>
+			<Link className="release" key={data.cat} href={"/release/" + data.cat}>
 				<div className="card">
 					<div className="face front">
 					    <div className="cover">
@@ -26,7 +29,7 @@ var Release = React.createClass({
 					    </div>
 					</div>
 				</div>
-			</a>
+			</Link>
 			)
 	}
 })

@@ -20,11 +20,11 @@ var App = React.createClass({
 		this.props.data.fullReset();
 	},
 	render: function(){
-		this.props.data.fullReset();
+		// this.props.data.fullReset();
 		return (
 			<div className="app">
 				<Topbar data={this.props.data} />
-			 	<Locations hash>
+			 	<Locations>
 					<Location path="/" handler={Releases} data={this.props.data} />
 					<Location path="/release/:cat" handler={ReleaseDetail} data={this.props.data} />
 		        </Locations>
