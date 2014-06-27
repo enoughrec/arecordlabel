@@ -9,10 +9,12 @@ var Release = require('./release');
 
 var Releases = React.createClass({
 	render: function(){
+		
 		var currentYear = false;
-		var releaseNodes = this.props.data.map(function(data){
+
+		var releaseNodes = this.props.data.map(function(release){
 			var yearSep = null;
-			var releaseYear = data.momented.year();
+			var releaseYear = release.get('momented').year();
 			if (releaseYear !== currentYear) {
 				yearSep = <h1 className="year-sep" data-year="{releaseYear}">{releaseYear}</h1>;
 				currentYear = releaseYear;
@@ -20,7 +22,7 @@ var Releases = React.createClass({
 			return (
 				<div>
 					{yearSep}
-					<Release data={data} />
+					<Release data={release} />
 				</div>
 			);
 		});
