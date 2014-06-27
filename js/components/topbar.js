@@ -23,7 +23,7 @@ var Topbar = React.createClass({
 		var comps = links.map(function(link){
 			return (
 				<span>
-					<Link href={link.link } hash>{link.label}</Link>
+					<Link href={link.link }>{link.label}</Link>
 				</span>
 			)
 		});

@@ -3,7 +3,7 @@
  */
 
 var React = require('react');
-
+var InfiniteScroll = require('react-infinite-scroll')(React);
 
 var Release = require('./release');
 
@@ -22,11 +22,11 @@ var Releases = React.createClass({
 			var yearSep = null;
 			var releaseYear = release.get('momented').year();
 			if (releaseYear !== currentYear) {
-				yearSep = <h1 className="year-sep" data-year="{releaseYear}">{releaseYear}</h1>;
+				yearSep = <h1 className="year-sep" key={releaseYear} data-year="{releaseYear}">{releaseYear}</h1>;
 				currentYear = releaseYear;
 			}
 			return (
-				<div>
+				<div key={release.get('cat')}>
 					{yearSep}
 					<Release data={release} />
 				</div>

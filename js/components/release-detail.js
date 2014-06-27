@@ -15,23 +15,74 @@ var ReleaseDetail = React.createClass({
 	render: function(){
 
 		var data = this.props.data.toJSON();
+		var playable = data.tracks && data.tracks.length;
 		var coverPath = url.parse(data.cover);
-		data.cover = coverPath.path;
+		data.cover = '/'+coverPath.path;
 		
 		return (
-			<a className="release" href={"#/release/" + data.cat}>
-				<div className="card">
-					<div className="face front">
-					    <div className="cover">
-					        <img src={data.cover} />
-					    </div>
-					    <div className="titles">
-					        <span className="album">{data.album}</span>
-					        <span className="artist">{data.artist}</span>
-					    </div>
-					</div>
-				</div>
-			</a>
+<div class="release-full">
+	<div class="leftframe">
+		<div class="cover">
+			<div class="playbutton fontawesome-play"></div>
+			<img src="{data.cover}" alt="{data.album} - {data.artist}" />
+		</div>
+		<div class="titles">
+			<h1><span class="album">{data.album}</span> <span class="artist">{data.artist}</span></h1>
+		</div>
+		<div class="cc"><a href=""><img src="/iconss/"/></a></div>
+	</div>
+	
+	<div class="details">
+		<div class="release-date block">Released on <span>formattedDate</span></div>
+		<div class="block info_en text-clamped">{data.info_en}</div>
+		<div class="block info_pt text-clamped">{data.info_pt}</div>
+		<div class="block">
+			Tags:<br />
+			
+		</div>
+		
+		
+		<div class="block">Nationality:<br />
+		
+				<img class="artist-country" title="" src="/flags/_flag_en.png" />
+		
+		</div>
+		
+		
+		<div class="download_links block">Download links:<br />
+				<a href="fma"><img src="/iconss/fma.png" /></a>
+				<a href="archiveorg"><img src="/iconss/archiveorg.png" /></a>
+				<a href="scene_org"><img src="/iconss/sceneorg.png" /></a>
+				<a href="clearbits"><img src="/iconss/legaltorrents.png" /></a>
+				<a href="sonicsquirrel"><img src="/iconss/sonicsquirrel.png" /></a>
+				<a href="soundshiva"><img src="/iconss/soundshiva.png" /></a>
+				<a href="dogmazic"><img src="/iconss/dogmazic.png" /></a>
+				<a href="jamendo"><img src="/iconss/jamendo.png" /></a>
+				<a href="bandcamp"><img src="/iconss/bandcamp.png" /></a>
+				<a href="soundcloud"><img src="/iconss/soundcloud.png" /></a>
+				<a href="mixcloud"><img src="/iconss/mixcloud.png" /></a>
+				<a href="lastfm"><img src="/iconss/lastfm.png" /></a>
+				<a href="itunes"><img src="/iconss/itunes.png" /></a>
+				<a href="amazon"><img src="/iconss/amazon.png" /></a>
+				<a href="googleplay"><img src="/iconss/googleplay.png" /></a>
+				<a href="spotify"><img src="/iconss/spotify.png" /></a>
+				<a href="discogs"><img src="/iconss/discogs.png" /></a>
+				<a href="rym"><img src="/iconss/rym.png" /></a>
+				<a href="musicbrainz"><img src="/iconss/musicbrainz.png" /></a>
+		</div>
+		
+		<div class="related">
+			<h1>You may also like:</h1>
+			
+		</div>
+	</div>
+	
+	<div class="clear"></div>
+
+
+		
+</div>
+
 			)
 	}
 })
