@@ -6,7 +6,7 @@
 var React = require('react');
 var Releases = require('./components/releases');
 var _ = require('lodash');
-var moment = require('moment')
+var moment = require('moment');
 
 var data = require('../data/all.json').reverse().map(function(item){
 	item.key = "rel_"+_.uniqueId();
@@ -14,13 +14,15 @@ var data = require('../data/all.json').reverse().map(function(item){
 	return item;
 });
 
+var ReleasesCollection = require('./collections/releases');
+var enrReleases = window.e = new ReleasesCollection(data);
 
 var App = React.createClass({
 	render: function(){
 		return (
 			<div className="app">
 				<div className="top-bar" />
-				<Releases data={data} />
+				<Releases data={enrReleases} />
 				<div className="bottom-bar" />
 			</div>
     	)

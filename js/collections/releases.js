@@ -58,24 +58,20 @@ var Releases = Backbone.Collection.extend({
 		
 	},
 	searchByTag: function(tags){
-		var years = [];
-		this.filter(function(item){
+		
+		var hits = this.filter(function(item){
 			var itemTags = item.get('tags');
 			var result = _.intersection(tags, itemTags);
 
 			var hit = result.length === tags.length;
 
 			if (hit) {
-		  		var year = item.get('momented').year();
-		  		if (years.lastIndexOf(year) === -1) {
-		  			years.push(year);
-		  		};
-		  	};
+				return true;
+		  	}
 
-		  	// should return array of hits, not interact directly on the model
-			item.set('visible',hit);
 		});
 
+		return new Releases(hits);
 		
 	},
 	getTags: function(){

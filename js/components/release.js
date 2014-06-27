@@ -39,7 +39,7 @@ var url = require('url');
 
 var Release = React.createClass({
 	render: function(){
-		var data = this.props.data;
+		var data = this.props.data.toJSON();
 
 		var coverPath = url.parse(data.cover);
 		data.cover = coverPath.path;
