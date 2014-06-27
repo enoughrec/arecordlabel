@@ -5,17 +5,13 @@
 
 var React = require('react');
 var Releases = require('./components/releases');
-var _ = require('lodash');
-var moment = require('moment');
 
-var data = require('../data/all.json').reverse().map(function(item){
-	item.key = "rel_"+_.uniqueId();
-	item.momented = moment(item.release_date);
-	return item;
-});
 
 var ReleasesCollection = require('./collections/releases');
-var enrReleases = window.e = new ReleasesCollection(data);
+var enrReleases = window.e = new ReleasesCollection();
+
+// reset to the full data store which the collection has a reference to
+enrReleases.fullReset();
 
 var App = React.createClass({
 	render: function(){
