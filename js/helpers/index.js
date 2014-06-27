@@ -1,6 +1,5 @@
-var hbs = require('handlebars-runtime');
 
-hbs.registerHelper('pluralize', function(num, single, plural) {
+var pluralize = function(num, single, plural) {
 	if (parseInt(num, 10) === 1) {
 		return single;
 	} else {
@@ -8,7 +7,7 @@ hbs.registerHelper('pluralize', function(num, single, plural) {
 	}
 });
 
-hbs.registerHelper('removeDot', function(word) {
+var removeDot = function(word) {
 	if (word) {
 		if (word[0] === '.') {
 			word = word.substr(1, word.length - 1)
@@ -18,7 +17,7 @@ hbs.registerHelper('removeDot', function(word) {
 	return word;
 });
 
-hbs.registerHelper('formatTitle', function(ctx){
+var formatTitle = function(ctx){
 	var artist = ctx.artist ? ctx.artist : '';
 	var album = ctx.album ? ctx.album : '';
 
@@ -35,4 +34,8 @@ hbs.registerHelper('formatTitle', function(ctx){
 	return formattedTitle;
 });
 
-module.exports = true; // what should this return?
+module.exports = {
+	pluralize: pluralize,
+	removeDot: removeDot,
+	formatTitle: formatTitle
+}; 
