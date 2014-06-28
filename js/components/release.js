@@ -17,9 +17,12 @@ var Release = React.createClass({
 		data.cover = coverPath.path;
 		
 		return (
-			<Link className="release" key={data.cat} href={"/release/" + data.cat}>
+			<Link className="release" href={"/release/" + data.cat}>
 				<div className="card">
 					<div className="face front">
+						<div className="tags">{data.tags.map(function(tag){
+							return <span className="tag">{tag}</span>
+						})}</div>
 					    <div className="cover">
 					        <img src={data.cover} />
 					    </div>
