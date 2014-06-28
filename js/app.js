@@ -16,11 +16,9 @@ var Location = Router.Location;
 
 
 var App = React.createClass({
-	componentWillMount: function(){
-		this.props.data.fullReset();
-	},
+	
 	render: function(){
-		// this.props.data.fullReset();
+		
 		return (
 			<div className="app">
 				<Topbar data={this.props.data} />
