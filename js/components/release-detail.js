@@ -10,15 +10,20 @@ var ReleaseDetail = React.createClass({
 	componentWillMount: function(){
 		var cat = this.props.cat;
 		this.props.data = this.props.data.findWhere({cat:cat});
+		var data = this.props.data.toJSON();
 
+		// fix for &#1042; style unicode entities
+		var s = document.createElement('span');
+		s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();
+		document.title = s.innerHTML;
 	},
 	render: function(){
 
 		var data = this.props.data.toJSON();
 		var playable = data.tracks && data.tracks.length;
 		var coverPath = url.parse(data.cover);
+		var formattedDate = data.momented.format('MMMM Do, YYYY');
 		data.cover = '/'+coverPath.path;
-		
 		return (
 <div className="release-full">
 	<div className="leftframe">
@@ -33,15 +38,13 @@ var ReleaseDetail = React.createClass({
 	</div>
 	
 	<div className="details">
-		<div className="release-date block">Released on <span>formattedDate</span></div>
+		<div className="release-date block">Released on <span>{formattedDate}</span></div>
 		<div className="block info_en text-clamped">{data.info_en}</div>
 		<div className="block info_pt text-clamped">{data.info_pt}</div>
 		<div className="block">
 			Tags:<br />
-			
 		</div>
-		
-		
+
 		<div className="block">Nationality:<br />
 		
 				<img className="artist-country" title="" src="/flags/_flag_pt.png" />

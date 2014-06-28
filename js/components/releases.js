@@ -3,13 +3,13 @@
  */
 
 var React = require('react');
-var InfiniteScroll = require('react-infinite-scroll')(React);
+// var InfiniteScroll = require('react-infinite-scroll')(React);
 
 var Release = require('./release');
 
 var Releases = React.createClass({
 	componentWillMount : function() {
-		
+		document.title = 'Enough Records';
 		this.props.data.on("reset", function() {
 			this.forceUpdate();
 		}.bind(this));
