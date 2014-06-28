@@ -39,8 +39,8 @@ var ReleaseDetail = React.createClass({
 	
 	<div className="details">
 		<div className="release-date block">Released on <span>{formattedDate}</span></div>
-		<div className="block info_en text-clamped">{data.info_en}</div>
-		<div className="block info_pt text-clamped">{data.info_pt}</div>
+		<div className="block info_en text-clamped " dangerouslySetInnerHTML={{__html: data.info_en}} />
+		<div className="block info_pt text-clamped " dangerouslySetInnerHTML={{__html: data.info_pt}} />
 		<div className="block">
 			Tags:<br />
 		</div>
