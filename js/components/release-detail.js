@@ -20,36 +20,36 @@ var ReleaseDetail = React.createClass({
 		data.cover = '/'+coverPath.path;
 		
 		return (
-<div class="release-full">
-	<div class="leftframe">
-		<div class="cover">
-			<div class="playbutton fontawesome-play"></div>
-			<img src="{data.cover}" alt="{data.album} - {data.artist}" />
+<div className="release-full">
+	<div className="leftframe">
+		<div className="cover">
+			<div className="playbutton fontawesome-play"></div>
+			<img src={data.cover} alt={data.album + ' - ' + data.artist} />
 		</div>
-		<div class="titles">
-			<h1><span class="album">{data.album}</span> <span class="artist">{data.artist}</span></h1>
+		<div className="titles">
+			<h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
 		</div>
-		<div class="cc"><a href=""><img src="/iconss/"/></a></div>
+		<div className="cc"><a href=""><img src={"/iconss/" + data.cc_img}/></a></div>
 	</div>
 	
-	<div class="details">
-		<div class="release-date block">Released on <span>formattedDate</span></div>
-		<div class="block info_en text-clamped">{data.info_en}</div>
-		<div class="block info_pt text-clamped">{data.info_pt}</div>
-		<div class="block">
+	<div className="details">
+		<div className="release-date block">Released on <span>formattedDate</span></div>
+		<div className="block info_en text-clamped">{data.info_en}</div>
+		<div className="block info_pt text-clamped">{data.info_pt}</div>
+		<div className="block">
 			Tags:<br />
 			
 		</div>
 		
 		
-		<div class="block">Nationality:<br />
+		<div className="block">Nationality:<br />
 		
-				<img class="artist-country" title="" src="/flags/_flag_en.png" />
+				<img className="artist-country" title="" src="/flags/_flag_pt.png" />
 		
 		</div>
 		
 		
-		<div class="download_links block">Download links:<br />
+		<div className="download_links block">Download links:<br />
 				<a href="fma"><img src="/iconss/fma.png" /></a>
 				<a href="archiveorg"><img src="/iconss/archiveorg.png" /></a>
 				<a href="scene_org"><img src="/iconss/sceneorg.png" /></a>
@@ -70,17 +70,11 @@ var ReleaseDetail = React.createClass({
 				<a href="rym"><img src="/iconss/rym.png" /></a>
 				<a href="musicbrainz"><img src="/iconss/musicbrainz.png" /></a>
 		</div>
-		
-		<div class="related">
+		<div className="related">
 			<h1>You may also like:</h1>
-			
 		</div>
 	</div>
-	
-	<div class="clear"></div>
-
-
-		
+	<div className="clear"></div>
 </div>
 
 			)
