@@ -319,14 +319,15 @@ li {
     position: absolute;
     z-index: 1;
     top: 81%;
-
     padding: 4px 0;
     background: #3EA8DA;
     border: 1px solid #3EA8AA;
-    font-size: 13px;
+    font-size: 11px;
     width: 300px;
     color: #FFF;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 13px;
 }
 
 .playbutton {
@@ -364,7 +365,7 @@ li {
 
 .tag {
     border-left: 1px solid #fff;
-    margin-right: 2px;
+    margin-right: 5px;
     padding-left: 4px;
 }
 
