@@ -22,7 +22,7 @@ var Topbar = React.createClass({
 
 		var comps = links.map(function(link){
 			return (
-				<span>
+				<span key={link.label}>
 					<Link href={link.link }>{link.label}</Link>
 				</span>
 			)
