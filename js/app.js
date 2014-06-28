@@ -22,10 +22,12 @@ var App = React.createClass({
 		return (
 			<div className="app">
 				<Topbar data={this.props.data} />
-			 	<Locations>
-					<Location path="/" handler={Releases} data={this.props.data} />
-					<Location path="/release/:cat" handler={ReleaseDetail} data={this.props.data} />
-		        </Locations>
+				<div className="main">
+				 	<Locations>
+						<Location path="/" handler={Releases} data={this.props.data} />
+						<Location path="/release/:cat" handler={ReleaseDetail} data={this.props.data} />
+			        </Locations>
+		        </div>
 				<Bottombar />
 			</div>
     	)

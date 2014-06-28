@@ -21,7 +21,7 @@ var Release = React.createClass({
 				<div className="card">
 					<div className="face front">
 						<div className="tags">{data.tags.map(function(tag){
-							return <span className="tag">{tag}</span>
+							return <span className="tag" key={data.cat+tag}>{tag}</span>
 						})}</div>
 					    <div className="cover">
 					        <img src={data.cover} />
