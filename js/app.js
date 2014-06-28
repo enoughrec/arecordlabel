@@ -4,8 +4,11 @@
 
 
 var React = require('react');
+
 var Releases = require('./components/releases');
 var ReleaseDetail = require('./components/release-detail');
+var About = require('./components/about');
+
 var Topbar = require('./components/topbar');
 var Bottombar = require('./components/bottombar');
 
@@ -26,6 +29,7 @@ var App = React.createClass({
 				 	<Locations>
 						<Location path="/" handler={Releases} data={this.props.data} />
 						<Location path="/release/:cat" handler={ReleaseDetail} data={this.props.data} />
+						<Location path="/about" handler={About} data={this.props.data} />
 			        </Locations>
 		        </div>
 				<Bottombar />
