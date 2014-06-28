@@ -17,6 +17,19 @@ var ReleaseDetail = React.createClass({
 		s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();
 		document.title = s.innerHTML;
 	},
+	getDownloadLinks: function(){
+
+		var sources = ["fma", "archiveorg", "scene_org", "clearbits", "sonicsquirrel", "soundshiva", "dogmazic", "archiveorg", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
+		var release = this.props.data.toJSON();
+
+		var downloadLinks = sources.map(function(source){
+			if (release[source]) {
+				return <a href={release[source]}><img src={'/iconss/'+source+'.png'}/></a>;
+			};
+		});
+		return downloadLinks;
+
+	},
 	render: function(){
 
 		var data = this.props.data.toJSON();
@@ -34,9 +47,8 @@ var ReleaseDetail = React.createClass({
 		<div className="titles">
 			<h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
 		</div>
-		<div className="cc"><a href=""><img src={"/iconss/" + data.cc_img}/></a></div>
+		<div className="cc"><img src={"/iconss/" + data.cc_img}/></div>
 	</div>
-	
 	<div className="details">
 		<div className="release-date block">Released on <span>{formattedDate}</span></div>
 		<div className="block info_en text-clamped " dangerouslySetInnerHTML={{__html: data.info_en}} />
@@ -44,34 +56,13 @@ var ReleaseDetail = React.createClass({
 		<div className="block">
 			Tags:<br />
 		</div>
-
 		<div className="block">Nationality:<br />
-		
-				<img className="artist-country" title="" src="/flags/_flag_pt.png" />
-		
+			<img className="artist-country" title="" src="/flags/_flag_pt.png" />
 		</div>
-		
-		
-		<div className="download_links block">Download links:<br />
-				<a href="fma"><img src="/iconss/fma.png" /></a>
-				<a href="archiveorg"><img src="/iconss/archiveorg.png" /></a>
-				<a href="scene_org"><img src="/iconss/sceneorg.png" /></a>
-				<a href="clearbits"><img src="/iconss/legaltorrents.png" /></a>
-				<a href="sonicsquirrel"><img src="/iconss/sonicsquirrel.png" /></a>
-				<a href="soundshiva"><img src="/iconss/soundshiva.png" /></a>
-				<a href="dogmazic"><img src="/iconss/dogmazic.png" /></a>
-				<a href="jamendo"><img src="/iconss/jamendo.png" /></a>
-				<a href="bandcamp"><img src="/iconss/bandcamp.png" /></a>
-				<a href="soundcloud"><img src="/iconss/soundcloud.png" /></a>
-				<a href="mixcloud"><img src="/iconss/mixcloud.png" /></a>
-				<a href="lastfm"><img src="/iconss/lastfm.png" /></a>
-				<a href="itunes"><img src="/iconss/itunes.png" /></a>
-				<a href="amazon"><img src="/iconss/amazon.png" /></a>
-				<a href="googleplay"><img src="/iconss/googleplay.png" /></a>
-				<a href="spotify"><img src="/iconss/spotify.png" /></a>
-				<a href="discogs"><img src="/iconss/discogs.png" /></a>
-				<a href="rym"><img src="/iconss/rym.png" /></a>
-				<a href="musicbrainz"><img src="/iconss/musicbrainz.png" /></a>
+		<div className="download_links block">
+			Download links:<br />
+			{this.getDownloadLinks()}
+				
 		</div>
 		<div className="related">
 			<h1>You may also like:</h1>
