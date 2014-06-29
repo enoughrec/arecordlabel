@@ -27,8 +27,11 @@ var Player = React.createClass({
 			release: false
 		};
 	},
-	componentWillMount: function(){
+	componentDidMount: function(){
 		bus.on('queue', this.queue);
+	},
+	componentWillUnmount: function(){
+		bus.off('queue', this.queue);
 	},
 	doControl: function(evt){
 		if (this.state.release === false) {
