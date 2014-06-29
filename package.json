@@ -5,7 +5,7 @@
   "dependencies": {
     "backbone": "~1.0.0",
     "browserify": "^2.36.1",
-    "envify": "^1.2.1",
+    "envify": "^1.2.0",
     "lodash": "^2.4.1",
     "moment": "~2.1.0",
     "play-audio": "0.0.3",
@@ -21,7 +21,7 @@
   },
   "devDependencies": {
     "browserify": "~2.36.0",
-    "envify": "~0.2.0",
+    "envify": "~1.2.0",
     "reactify": "~0.4.0",
     "statics": "~0.1.0",
     "uglifyjs": "~2.3.6",
