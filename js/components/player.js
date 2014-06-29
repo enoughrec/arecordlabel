@@ -16,8 +16,8 @@ var Player = React.createClass({
 		var playerWidget = play([],document.body).autoplay();
 		playerWidget.volume(0.8);
 
-		playerWidget.on('play', this.togglePlayState.bind(this));
-		playerWidget.on('ended', this.advance.bind(this));
+		playerWidget.on('play', this.togglePlayState);
+		playerWidget.on('ended', this.advance);
 
 		return {
 			widget: playerWidget,
@@ -28,7 +28,7 @@ var Player = React.createClass({
 		};
 	},
 	componentWillMount: function(){
-		bus.on('queue', this.queue.bind(this));
+		bus.on('queue', this.queue);
 	},
 	doControl: function(evt){
 		if (this.state.release === false) {
