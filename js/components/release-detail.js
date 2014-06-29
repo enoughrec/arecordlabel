@@ -11,7 +11,7 @@ var ReleaseDetail = React.createClass({
 		var cat = this.props.cat;
 		this.props.data = this.props.data.findWhere({cat:cat});
 		var data = this.props.data.toJSON();
-
+		window.scrollTo(0,0);
 		// fix for &#1042; style unicode entities
 		var s = document.createElement('span');
 		s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();

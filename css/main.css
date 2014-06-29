@@ -138,12 +138,26 @@ a {
 
 .release-holder {
     padding-bottom: 80px;
-    float: left;
     width: 100%;
 }
 
+
+
+.loader {
+    width: 100%;
+    float: left;
+    background: white;
+    line-height: 28px;
+    height: 28px;
+    color: black;
+}
+
+.release-holder > div > div{
+    display: inline-block;
+}
+
 .year-sep {
-    display: block;
+    display: inline-block;
     clear: both;
     font-size: 36px;
     font-weight: 400;
@@ -154,14 +168,13 @@ a {
     width: 314px;
     position: relative;
     left: 124px;
-    top: 150px;
-    float: left;
+    top: -163px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    text-shadow: 1px 1px 0 #FFF;
+    
 }
 
 .release-full {
@@ -267,7 +280,7 @@ a {
 
 .release {
     background: white;
-    float: left;
+    display: inline-block;
     width: 310px;
     height: 350px;
     padding: 4px;
