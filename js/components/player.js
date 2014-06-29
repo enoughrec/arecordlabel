@@ -63,10 +63,12 @@ var Player = React.createClass({
 		// which has a shuffled track selection based on a tag,
 		// for example
 		var tracks = release.get('tracks');
-
-		this.state.release = release;
-		this.state.playlist = tracks;
-		this.state.position = 0;
+		this.setState({
+			release: release,
+			playlist: tracks,
+			position: 0,
+			playing: false	
+		});
 		this.play();
 	},
 	play: function(){
@@ -77,21 +79,30 @@ var Player = React.createClass({
 	togglePlayState: function(playing){
 
 		if (playing) {
-			this.state.currentTrack = path.basename(this.state.widget.src());
-			this.state.playing = true;
+			this.setState({
+				currentTrack: path.basename(this.state.widget.src()),
+				playing: true
+			});
+			
 		} else {
-			this.state.playing = false;
+			this.setState({
+				currentTrack: false,
+				playing: false
+			});
 		}
-		this.forceUpdate();
 	},
 	advance: function(fwd){
 		var mod = fwd ? 1 : -1;
-		this.state.position = this.state.position + mod;
-		if (this.state.position > this.state.playlist.length - 1) {
-			this.state.position = 0;
+		var next = this.state.position + mod;
+		if (next > this.state.playlist.length - 1) {
+			this.setState({
+				position: 0
+			});
 		}
-		else if (this.state.position < 0){
-			this.state.position = this.state.playlist.length - 1;	
+		else if (next < 0){
+			this.setState({
+				position: this.state.playlist.length - 1
+			});
 		}
 		this.play();
 	},
