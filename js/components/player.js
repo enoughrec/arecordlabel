@@ -30,7 +30,35 @@ var Player = React.createClass({
 	componentWillMount: function(){
 		bus.on('queue', this.queue.bind(this));
 	},
+	doControl: function(evt){
+		if (this.state.release === false) {
+			return;
+		}
+		var ctrl = evt.target.getAttribute('data-ctrl');
+
+		switch (ctrl) {
+			case 'stop':
+				this.state.widget.pause().currentTime(0);
+				this.togglePlayState(false);
+				break;
+			case 'play':
+				if (this.state.playing) this.state.widget.pause() && this.togglePlayState(false);
+				else this.state.widget.play();
+				break;
+			case 'forward':
+				this.advance(true);
+				break;
+			case 'back':
+				this.advance(false);
+				break;
+		}
+	},
 	queue: function(release){
+		// release is a backbone model
+		// the only place we're publishing these events for now
+		// is on the detail page, but could also make a new model
+		// which has a shuffled track selection based on a tag,
+		// for example
 		var tracks = release.get('tracks');
 
 		this.state.release = release;
@@ -69,11 +97,11 @@ var Player = React.createClass({
 
 		return (
 			<div className="player">
-				<span className="controls">
-		            <span ctrl="back" className="fa fontawesome-backward"></span>
-		            <span ctrl="stop" className="fa fontawesome-stop"></span>
-		            <span id="play-state" ctrl="play" className={this.playing ? "fa fontawesome-pause" : "fa fontawesome-play"}></span>
-		            <span ctrl="forward" className="fa fontawesome-forward"></span>
+				<span className="controls" onClick={this.doControl}>
+		            <span data-ctrl="back" className="fa fontawesome-backward"></span>
+		            <span data-ctrl="stop" className="fa fontawesome-stop"></span>
+		            <span data-ctrl="play" id="play-state" className={this.state.playing ? "fa fontawesome-pause" : "fa fontawesome-play"}></span>
+		            <span data-ctrl="forward" className="fa fontawesome-forward"></span>
 		        </span>
 		        <span className={this.state.playing ? 'now-playing' : 'now-playing nothing'}>{trackName}</span>
 	        </div>
