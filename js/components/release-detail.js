@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 var React = require('react');
-
+var bus = require('../bus');
 
 var url = require('url');
 
@@ -30,6 +30,10 @@ var ReleaseDetail = React.createClass({
 		return downloadLinks;
 
 	},
+	startPlaying: function(){
+		// push this release to the playlist queue
+		bus.emit('queue', this.props.data);
+	},
 	render: function(){
 
 		var data = this.props.data.toJSON();
@@ -41,7 +45,7 @@ var ReleaseDetail = React.createClass({
 <div className="release-full">
 	<div className="leftframe">
 		<div className="cover">
-			<div className="playbutton fontawesome-play"></div>
+			<div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
 			<img src={data.cover} alt={data.album + ' - ' + data.artist} />
 		</div>
 		<div className="titles">
