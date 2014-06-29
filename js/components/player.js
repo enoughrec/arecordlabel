@@ -63,12 +63,15 @@ var Player = React.createClass({
 		// which has a shuffled track selection based on a tag,
 		// for example
 		var tracks = release.get('tracks');
+		
+		// this is async 
 		this.setState({
 			release: release,
 			playlist: tracks,
 			position: 0,
 			playing: false	
 		});
+		// this is buggy, as it looks at state before it has been updated
 		this.play();
 	},
 	play: function(){
