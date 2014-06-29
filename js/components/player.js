@@ -38,7 +38,6 @@ var Player = React.createClass({
 			return;
 		}
 		var ctrl = evt.target.getAttribute('data-ctrl');
-
 		switch (ctrl) {
 			case 'stop':
 				this.state.widget.pause().currentTime(0);
@@ -63,16 +62,16 @@ var Player = React.createClass({
 		// which has a shuffled track selection based on a tag,
 		// for example
 		var tracks = release.get('tracks');
-		
-		// this is async 
+
+		// this is async, so have to give it a callback
+		// would be nice with a .then(...) thing
 		this.setState({
 			release: release,
 			playlist: tracks,
 			position: 0,
 			playing: false	
-		});
-		// this is buggy, as it looks at state before it has been updated
-		this.play();
+		}, this.play);
+		
 	},
 	play: function(){
 		var trackNumber = this.state.position;
@@ -98,16 +97,15 @@ var Player = React.createClass({
 		var mod = fwd ? 1 : -1;
 		var next = this.state.position + mod;
 		if (next > this.state.playlist.length - 1) {
-			this.setState({
-				position: 0
-			});
-		}
-		else if (next < 0){
-			this.setState({
-				position: this.state.playlist.length - 1
-			});
-		}
-		this.play();
+			next = 0
+		} else if (next < 0){
+			next = this.state.playlist.length - 1
+		} 
+
+		this.setState({
+			position: next
+		},this.play);
+		
 	},
 	render: function(){
 		var trackName = this.state.playing ? this.state.currentTrack : 'nothing playing';
