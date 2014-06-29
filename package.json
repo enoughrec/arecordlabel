@@ -41,14 +41,15 @@
     "build": "build"
   },
   "scripts": {
-    "start": "STATIC_ROOT=./static watchify -o browser-bundle.js -v -d .",
-    "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > browser-bundle.min.js",
+    "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d .",
+    "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > build/build.js",
     "collect-static": "collect-static . ./static",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserify": {
     "transform": [
-      "reactify"
+      "reactify",
+      "envify"
     ]
   }
 }
