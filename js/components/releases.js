@@ -8,28 +8,33 @@ var InfiniteScroll = require('react-infinite-scroll')(React);
 var Release = require('./release');
 
 var Releases = React.createClass({
-	loadMoreQuantity: 12,
+	loadMoreQuantity: 1,
 	getInitialState: function(){
 		return {
 			items: [],
 			hasMore: true
 		};
 	},
+	resetState: function() {
+		this.setState(this.getInitialState());
+	},
 	componentWillMount : function() {
 		document.title = 'Enough Records';
 		window.e = this.props.data;
-		this.props.data.on("reset", function() {
-			this.setState(this.getInitialState());
-		}.bind(this));
+		this.props.data.on("reset", this.resetState);
+		// console.log(window.scrollY);
+    },
+    componentDidMount: function(){
+    	// console.log(window.scrollY);
     },
     componentWillUnmount: function(){
-
+    	this.props.data.off('reset', this.resetState);
     },
     getReleaseList: function(page){
 
     	var currentYear = false;
     	var offset = page * this.loadMoreQuantity;
-    	var hasMore = this.props.data.length > offset;
+    	
 
     	var releaseNodes = this.props.data.first(offset).map(function(release){
 			var yearSep = null;
@@ -47,12 +52,19 @@ var Releases = React.createClass({
 		}.bind(this));
 
     	
-		this.setState({
-    		hasMore: hasMore,
-    		items: releaseNodes
-    	});	
+		return releaseNodes;
 
 		
+    },
+    updateList: function(page){
+
+    	var releaseNodes = this.getReleaseList(page);
+    	var offset = page * this.loadMoreQuantity;
+    	
+    	this.setState({
+    		hasMore: this.props.data.length > offset,
+    		items: releaseNodes
+    	});
     },
 	render: function(){
 		
@@ -62,7 +74,7 @@ var Releases = React.createClass({
 			<div className="release-holder"> 	
 				<InfiniteScroll
 					pageStart={1}
-				    loadMore={this.getReleaseList}
+				    loadMore={this.updateList}
 				    hasMore={this.state.hasMore}
 				    loader={<div className="loader">Loading ...</div>}>
 				  {releaseNodes}

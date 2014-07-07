@@ -10,6 +10,8 @@ var Locations = Router.Locations;
 var Location = Router.Location;
 var Link = Router.Link;
 
+var Searchbox = require('./searchbox');
+
 var Topbar = React.createClass({
 	render: function(){
 		var links = [{
@@ -32,6 +34,9 @@ var Topbar = React.createClass({
 		return (
 			<div className="top-bar">
 				{comps}
+				<div className="right">
+					<Searchbox data={this.props.data} searchData={this.props.searchData}/>
+				</div>
 			</div>
 		);
 	}

@@ -146,10 +146,12 @@ a {
 .loader {
     width: 100%;
     float: left;
-    background: white;
+    
     line-height: 28px;
     height: 28px;
     color: black;
+    text-align: center;
+    
 }
 
 .release-holder > div > div{
@@ -278,7 +280,26 @@ a {
     opacity: 1;
 }
 
+@-webkit-keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.year-sep {
+    opacity: 0;
+    -webkit-animation: 333ms appear 100ms ease-in-out forwards;
+    -webkit-animation-fill-mode: forwards;
+    
+}
+
 .release {
+    opacity: 0;
+    -webkit-animation: 333ms appear 100ms ease-in-out forwards;
+    -webkit-animation-fill-mode: forwards;
     background: white;
     display: inline-block;
     width: 310px;
