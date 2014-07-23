@@ -19,7 +19,7 @@ var Location = Router.Location;
 
 var App = React.createClass({
 	getInitialState: function(){
-		
+		console.log('geting getInitialState')	
 		return {
 			fullData: this.props.data.clone()
 		}

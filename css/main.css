@@ -78,9 +78,12 @@ a {
     text-shadow: 1px 1px 0 #333;
 }
 
+ 
+
 .top-bar-searchbox {
-	float: right;
-    position: relative;
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
 .top-bar-searchbox .fontawesome-remove {
