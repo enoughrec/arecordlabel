@@ -49,7 +49,7 @@ var Searchbox = React.createClass({
 		
 		return (
 			<div className="top-bar-searchbox">
-				<input onKeyUp={this.onKeyUp} onChange={this.handleChange} value={this.state.value}/>
+				<input onKeyUp={this.onKeyUp} onChange={this.handleChange} value={this.state.value} placeholder="search releases"/>
 				<div className={controlClasses} onClick={this.resetValue} />
 			</div>
 			

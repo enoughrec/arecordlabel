@@ -90,8 +90,13 @@ a {
     position: absolute;
     right: 14px;
     top: -1px;
-    color: #5A5A5A;
+    color: #7a7a7a;
     height: 12px;
+    cursor: pointer;
+}
+
+.top-bar-searchbox .fontawesome-remove:hover {
+    color: #5A5A5A;
 }
 
 .top-bar-searchbox span {
@@ -147,18 +152,23 @@ a {
 
 
 .loader {
-    width: 100%;
-    float: left;
-    
-    line-height: 28px;
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 20px;
     height: 28px;
-    color: black;
+    background: red;
     text-align: center;
     
 }
 
 .release-holder > div > div{
     display: inline-block;
+}
+
+.has-year:before {
+    content: '';
+    display: table-row;
 }
 
 .year-sep {

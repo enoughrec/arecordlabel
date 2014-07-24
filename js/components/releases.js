@@ -8,7 +8,7 @@ var InfiniteScroll = require('react-infinite-scroll')(React);
 var Release = require('./release');
 
 var Releases = React.createClass({
-	loadMoreQuantity: 1,
+	loadMoreQuantity: 12,
 	getInitialState: function(){
 		return {
 			items: [],
@@ -22,10 +22,6 @@ var Releases = React.createClass({
 		document.title = 'Enough Records';
 		window.e = this.props.data;
 		this.props.data.on("reset", this.resetState);
-		// console.log(window.scrollY);
-    },
-    componentDidMount: function(){
-    	// console.log(window.scrollY);
     },
     componentWillUnmount: function(){
     	this.props.data.off('reset', this.resetState);
@@ -36,20 +32,21 @@ var Releases = React.createClass({
     	var offset = page * this.loadMoreQuantity;
     	
 
-    	var releaseNodes = this.props.data.first(offset).map(function(release){
+    	var releaseNodes = this.props.data.first(offset).reduce(function(nodes, release){
 			var yearSep = null;
+				
+
 			var releaseYear = release.get('momented').year();
 			if (releaseYear !== currentYear) {
-				yearSep = <h1 className="year-sep" key={'sep'+releaseYear} data-year="{releaseYear}">{releaseYear}</h1>;
+				yearSep = <h1 className="year-sep" key={'sep'+releaseYear}>{releaseYear}</h1>;
+				nodes.push(<br/>);
+				nodes.push(yearSep);
 				currentYear = releaseYear;
 			}
-			return (
-				<div key={'holder'+release.get('cat')}>
-					{yearSep}
-					<Release key={release.get('cat')} data={release} />
-				</div>
-			);
-		}.bind(this));
+			
+			nodes.push(<Release key={release.get('cat')} data={release} />);
+			return nodes;
+		}.bind(this), []);
 
     	
 		return releaseNodes;
@@ -60,11 +57,12 @@ var Releases = React.createClass({
 
     	var releaseNodes = this.getReleaseList(page);
     	var offset = page * this.loadMoreQuantity;
-    	
     	this.setState({
     		hasMore: this.props.data.length > offset,
     		items: releaseNodes
     	});
+    	// setTimeout(this.setState.bind(this,),66)
+    	
     },
 	render: function(){
 		
@@ -73,10 +71,11 @@ var Releases = React.createClass({
 		return (
 			<div className="release-holder"> 	
 				<InfiniteScroll
+					threshold={330}
 					pageStart={1}
 				    loadMore={this.updateList}
 				    hasMore={this.state.hasMore}
-				    loader={<div className="loader">Loading ...</div>}>
+				    loader={<div className="loader"></div>}>
 				  {releaseNodes}
 				</InfiniteScroll>
 			</div>

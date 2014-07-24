@@ -98,6 +98,13 @@ var Releases = Backbone.Collection.extend({
 			return a.toLowerCase() > b.toLowerCase() ? -1 : 1;
 		});
 	},
+	getByArtist: function(artist){
+		var hits = _(this.filter(function(data) {
+			return data.get('artist') === artist;
+		})).value();
+
+		return new Releases(hits);
+	},
 	getByTag: function(tag) {
 		var hits = _(this.filter(function(data) {
 			return !!~ (data.get('tags').indexOf(tag));
