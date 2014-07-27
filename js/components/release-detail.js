@@ -8,7 +8,7 @@ var url = require('url');
 
 var ReleaseDetail = React.createClass({
 	componentWillMount: function(){
-		var cat = this.props.cat;
+		var cat = this.props.params.cat;
 		this.props.data = this.props.data.findWhere({cat:cat});
 		var data = this.props.data.toJSON();
 		window.scrollTo(0,0);

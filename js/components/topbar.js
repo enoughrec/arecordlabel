@@ -4,10 +4,10 @@
 
 
 var React = require('react');
-var Router = require('react-router-component');
+var Router = require('react-router');
 
-var Locations = Router.Locations;
-var Location = Router.Location;
+var Locations = Router.Routes;
+var Location = Router.Route;
 var Link = Router.Link;
 
 var Searchbox = require('./searchbox');
@@ -25,7 +25,7 @@ var Topbar = React.createClass({
 		var comps = links.map(function(link){
 			return (
 				<span key={link.label}>
-					<Link href={link.link }>{link.label}</Link>
+					<Link to={link.link }>{link.label}</Link>
 				</span>
 			)
 		});
