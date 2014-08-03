@@ -265,6 +265,7 @@ a {
 
 .release-full h1 span {
     display: block;
+    word-wrap: break-word;
 }
 
 .release-full a {
