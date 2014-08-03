@@ -303,16 +303,16 @@ a {
 }
 
 .year-sep {
-    opacity: 0;
+    /*opacity: 0;
     -webkit-animation: 333ms appear 100ms ease-in-out forwards;
-    -webkit-animation-fill-mode: forwards;
+    */-webkit-animation-fill-mode: forwards;
     
 }
 
 .release {
-    opacity: 0;
+    /*opacity: 0;
     -webkit-animation: 333ms appear 100ms ease-in-out forwards;
-    -webkit-animation-fill-mode: forwards;
+    -webkit-animation-fill-mode: forwards;*/
     background: white;
     display: inline-block;
     width: 310px;
