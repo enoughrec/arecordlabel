@@ -290,6 +290,7 @@ a {
 }
 
 .release:hover .tags {
+
     opacity: 1;
 }
 
@@ -432,7 +433,7 @@ li {
     padding: 2px 12px 2px 8px;
     border-radius: 8px 0 8px 0;
     font-size: 15px;
-    margin: 2px 0;
+    margin-top: 2px;
     display: inline-block;
     font-weight: 400;
 }
@@ -668,6 +669,10 @@ li {
 	padding-right: 5px;
 }
 
+.artist-country {
+    display: inline-block;
+    margin-right: 4px;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
