@@ -32,7 +32,7 @@ var Searchbox = React.createClass({
 		}
 	},
 	handleChange: function(evt){
-		this.setState({value: event.target.value},this.queueSearch.bind(null, event.target.value));
+		this.setState({value: evt.target.value},this.queueSearch.bind(null, evt.target.value));
 	},
 	queueSearch: _.debounce(function(searchTerm){
 		this.doSearch(searchTerm);

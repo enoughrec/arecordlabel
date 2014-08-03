@@ -189,7 +189,7 @@ a {
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    
+    vertical-align: bottom;
 }
 
 .release-full {
@@ -325,6 +325,7 @@ a {
     overflow: hidden;
     position: relative;
     z-index: 1;
+    vertical-align: bottom;
 }
 
 .release .face {
