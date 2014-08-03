@@ -44,7 +44,7 @@ var Releases = Backbone.Collection.extend({
 
 			var releases = this.filter(function(item) {
 
-				if (item.get('cat') === ignore) {
+				if (item.get('cat') === ignore || item.get('artist') === ignore) {
 					return; // it is this release, no need to include
 				}
 
@@ -123,6 +123,7 @@ var Releases = Backbone.Collection.extend({
 		return new Releases(hits);
 
 	},
+	
 	fullReset: function(){
 		return this.reset(data);
 	},
@@ -131,10 +132,10 @@ var Releases = Backbone.Collection.extend({
 
 		var hits = new Releases();
 
-		var bySameArtist = this.getByArtist(options.artist, options.ignore);
-		var similarByTag = this.getSimilarByTag(options.tags, options.ignore);
+		// var bySameArtist = this.getByArtist(options.artist, options.ignore);
+		var similarByTag = this.getSimilarByTag(options.tags, options.artist);
 		
-		hits.add(bySameArtist.toJSON(), {sort:false});
+		// hits.add(bySameArtist.toJSON(), {sort:false});
 		hits.add(similarByTag.toJSON(), {sort:false});
 		
 		

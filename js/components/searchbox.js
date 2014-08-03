@@ -5,6 +5,9 @@
 
 var React = require('react/addons');
 var _ = require('lodash');
+var appState = require('../state');
+
+var bus = require('../bus');
 
 var Searchbox = React.createClass({
 	getInitialState: function() {
@@ -34,8 +37,7 @@ var Searchbox = React.createClass({
 		this.doSearch(searchTerm);
 	},300),
 	doSearch: function(searchTerm){
-		var results = this.props.searchData.search(searchTerm);
-		this.props.data.reset(results.toJSON());
+		appState.setSearch(searchTerm);
 	},
 	render: function(){
 
