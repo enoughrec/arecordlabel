@@ -90,7 +90,7 @@ var ReleaseDetail = React.createClass({
     },
     startPlaying: function(){
         // push this release to the playlist queue
-        bus.emit('queue', this.props.data);
+        bus.emit('queue', this.props.release);
     },
     render: function(){
 
