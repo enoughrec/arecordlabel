@@ -15,9 +15,6 @@ var App = React.createClass({
 			fullData: this.props.data.clone()
 		};
 	},
-	nonono: function(){
-		return (<h1>nonono</h1>)
-	},
 	render: function(){
 
 		return (
