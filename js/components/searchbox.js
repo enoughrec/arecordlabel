@@ -6,6 +6,7 @@
 var React = require('react/addons');
 var _ = require('lodash');
 var appState = require('../state');
+var Router = require('react-router');
 
 var bus = require('../bus');
 
@@ -38,6 +39,11 @@ var Searchbox = React.createClass({
 	},300),
 	doSearch: function(searchTerm){
 		appState.setSearch(searchTerm);
+		
+		if (!Router.ActiveState.statics.isActive('/')) {
+			Router.transitionTo('home');
+		}
+		
 	},
 	render: function(){
 
