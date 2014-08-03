@@ -6,16 +6,22 @@ var bus = require('../bus');
 
 var url = require('url');
 
+var Router = require('react-router');
+var Link = Router.Link;
+
 var ReleaseDetail = React.createClass({
 	componentWillMount: function(){
 		var cat = this.props.params.cat;
-		this.props.data = this.props.data.findWhere({cat:cat});
-		var data = this.props.data.toJSON();
-		window.scrollTo(0,0);
+		this.props.release = this.props.data.findWhere({cat:cat});
+		var data = this.props.release.toJSON();
+		
 		// fix for &#1042; style unicode entities
 		var s = document.createElement('span');
 		s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();
 		document.title = s.innerHTML;
+	},
+	componentDidMount: function(){
+		window.scrollTo(0,0);
 	},
 	getDownloadLinks: function(){
 
@@ -30,16 +36,36 @@ var ReleaseDetail = React.createClass({
 		return downloadLinks;
 
 	},
+	getRelatedLinks: function(data){
+		var relatedRelease = this.props.data.getMayAlsoLike({
+			tags: data.tags,
+			artist: data.artist,
+			ignore: data.cat
+		});
+
+		var links = relatedRelease.map(function(model){
+			var data = model.toJSON();
+			return (
+				<Link title={data.album} className="mini-link" to={"/release/" + data.cat}>
+					<img src={data.cover}/>
+				</Link>)
+		});
+
+		return links;
+
+	},
 	startPlaying: function(){
 		// push this release to the playlist queue
 		bus.emit('queue', this.props.data);
 	},
 	render: function(){
 
-		var data = this.props.data.toJSON();
+		var data = this.props.release.toJSON();
 		var playable = data.tracks && data.tracks.length;
 		var coverPath = url.parse(data.cover);
 		var formattedDate = data.momented.format('MMMM Do, YYYY');
+
+		var relatedLinks = this.getRelatedLinks(data);
 		data.cover = '/'+coverPath.path;
 		return (
 <div className="release-full">
@@ -70,6 +96,7 @@ var ReleaseDetail = React.createClass({
 		</div>
 		<div className="related">
 			<h1>You may also like:</h1>
+			{relatedLinks}
 		</div>
 	</div>
 	<div className="clear"></div>
