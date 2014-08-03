@@ -19,7 +19,7 @@ var About = require('./components/about');
 
 
 React.renderComponent(
-	<Routes handler={App}>
+	<Routes>
 		<Route name="home" path="/" handler={App} data={enrReleases}>
 			<Route name="release" 	path="release/:cat" handler={ReleaseDetail} data={enrReleases} />
 			<Route name="aobut" 	path="about" handler={About} data={enrReleases} />

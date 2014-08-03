@@ -19,9 +19,6 @@ var Searchbox = React.createClass({
 			value: ''
 		}, this.doSearch);
 	},
-	componentWillMount: function(){
-		console.log('sb: ',this.props)
-	},
 	onKeyUp: function(evt){
 		var keyPressed = this.keys[evt.keyCode];
 		switch(keyPressed) {
