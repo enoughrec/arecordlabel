@@ -632,6 +632,11 @@ li {
     float: left;
 }
 
+.player img {
+    height: 42px;
+    vertical-align: middle;
+}
+
 .now-playing {
    font-size: 13px;
     margin-left: 9px;

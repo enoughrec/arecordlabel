@@ -7,8 +7,14 @@ var React = require('react');
 var path = require('path');
 var play = require('play-audio');
 
+var Router = require('react-router');
+var Link = Router.Link;
+
 var bus = require('../bus');
 
+function canShow(){
+
+}
 
 
 var Player = React.createClass({
@@ -109,6 +115,17 @@ var Player = React.createClass({
 	},
 	render: function(){
 		var trackName = this.state.playing ? this.state.currentTrack : 'nothing playing';
+		var coverAndLink = null;
+
+		var release = this.state.release;
+		if (release) {
+			release = release.toJSON();
+			coverAndLink = (
+				<Link to={"/release/" + release.cat}>
+					<img src={release.cover} />
+				</Link>
+				)
+		}
 
 		return (
 			<div className="player">
@@ -118,6 +135,7 @@ var Player = React.createClass({
 		            <span data-ctrl="play" id="play-state" className={this.state.playing ? "fa fontawesome-pause" : "fa fontawesome-play"}></span>
 		            <span data-ctrl="forward" className="fa fontawesome-forward"></span>
 		        </span>
+		        {coverAndLink}
 		        <span className={this.state.playing ? 'now-playing' : 'now-playing nothing'}>{trackName}</span>
 	        </div>
 		);
