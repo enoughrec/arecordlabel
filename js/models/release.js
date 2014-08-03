@@ -4,6 +4,7 @@ var path = require('path');
 var moment = window.moment = require('moment');
 
 var ReleaseModel = Backbone.Model.extend({
+	idAttribute: 'cat',
 	initialize: function() {
 		this.cache = {};
 	},
