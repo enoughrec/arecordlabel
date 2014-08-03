@@ -37,7 +37,7 @@ var ReleaseDetail = React.createClass({
 
         var downloadLinks = sources.map(function(source){
             if (release[source]) {
-                return <a href={release[source]}><img src={'/iconss/'+source+'.png'}/></a>;
+                return <a href={release[source]} target="_blank"><img src={'/iconss/'+source+'.png'}/></a>;
             };
         });
         return downloadLinks;
