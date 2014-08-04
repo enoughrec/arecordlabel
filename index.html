@@ -8,7 +8,8 @@
    	<link rel="icon" type="image/gif" href="/covers/32_ambient.gif" />
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script type="text/javascript">
-    
+    	(function(){
+    		
 		function queryString(key) {
 		 	var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
 		 	var offset = location.search.search( re );
@@ -42,10 +43,10 @@
 		}
 
 
-		function loadUp() {
-			// SlimStat();
-			// checkUrl();
-		}
+		
+		SlimStat();
+		checkUrl();
+	})();	
 		
     </script>
 </head>
