@@ -1,4 +1,15 @@
-<div class="release-full">
+/**
+ * @jsx React.DOM
+ */
+
+
+var React = require('react');
+
+var About = React.createClass({
+	render: function(){
+		return (
+
+<div className="release-full">
 
 	<h1>About</h1>
 	
@@ -28,7 +39,7 @@
 	</ul>
 	
 	<h1>News</h1>
-	
+
 	<p>We are present on all major social networks (<a href="https://www.facebook.com/enoughrec">facebook</a>, <a href="https://twitter.com/enoughrec">twitter</a> and <a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts">google plus</a>).</p>
 	
 	<p>We also have a <a href="http://www.enoughrecords.org/mailman/listinfo/announce_enoughrecords.org">mailing list</a>. Please subscribe if you are interested in receiving our latest release announcements.</p>
@@ -46,3 +57,11 @@
 	<p>Current website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, reuse and contribute.</p>
 	
 </div>
+
+
+		);
+	}
+});
+
+
+module.exports = About;

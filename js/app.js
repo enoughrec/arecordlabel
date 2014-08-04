@@ -1,21 +1,33 @@
-
-var events = require('events');
-
-
-var App = function(){
-
-	if (this instanceof App === false) {
-		throw new Error('App should be called as a constructor');
-	};
-
-	this.bus = new events.EventEmitter();
-	this.pages = {};
+/**
+ * @jsx React.DOM
+ */
 
 
-};
+var React = require('react');
 
+var Topbar = require('./components/topbar');
+var Bottombar = require('./components/bottombar');
+var Releases = require('./components/releases');
 
+var App = React.createClass({
+	getInitialState: function(){
+		return {
+			fullData: this.props.data.clone()
+		};
+	},
+	render: function(){
 
+		return (
+			<div className="app">
+				<Topbar data={this.props.data} searchData={this.state.fullData} />
+				<div className="main">
+				 	 {this.props.activeRouteHandler() || Releases({data:this.props.data})}
+		        </div>
+				<Bottombar />
+			</div>
+    	)
+	}
+});
 
 
 module.exports = App;

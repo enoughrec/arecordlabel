@@ -31,6 +31,7 @@
     border: 1px solid rgba(64,64,64,0.4);
     text-shadow: 1px 1px 2px rgba(32,32,32,0.3);
     cursor: pointer;
+    margin-right: 3px;
 }
 
 .fa:hover {
@@ -72,25 +73,33 @@ a {
     text-decoration: none;
 }
 
-#top-bar a:hover {
+.top-bar a:hover {
     color: #fcfcfc;
     text-shadow: 1px 1px 0 #333;
 }
 
-#top-bar-searchbox {
-	float: right;
-    position: relative;
+ 
+
+.top-bar-searchbox {
+    position: absolute;
+    top: 0;
+    right: 0;
 }
 
-#top-bar-searchbox .fontawesome-remove {
+.top-bar-searchbox .fontawesome-remove {
     position: absolute;
     right: 14px;
     top: -1px;
-    color: #5A5A5A;
+    color: #7a7a7a;
     height: 12px;
+    cursor: pointer;
 }
 
-#top-bar-searchbox span {
+.top-bar-searchbox .fontawesome-remove:hover {
+    color: #5A5A5A;
+}
+
+.top-bar-searchbox span {
 	text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
     border-left: 0px;
     display: inline;
@@ -98,10 +107,11 @@ a {
     font-size: 18px;
 }
 
-#main {
+.main {
+    padding-top: 56px;
+    padding-bottom: 80px;  
     width: 95%;
-    margin: 0 auto;
-
+    margin: 0 auto 5em;
 }
 
 #holder {
@@ -135,14 +145,34 @@ a {
 }
 
 .release-holder {
-    padding-top: 56px;
-    float: left;
     padding-bottom: 80px;
-    xmargin-left: 210px;
+    width: 100%;
+}
+
+
+
+.loader {
+    position: fixed;
+    top: 2rem;
+    left: 2rem;
+    width: 20px;
+    height: 28px;
+    background: red;
+    text-align: center;
+    
+}
+
+.release-holder > div > div{
+    display: inline-block;
+}
+
+.has-year:before {
+    content: '';
+    display: table-row;
 }
 
 .year-sep {
-    display: block;
+    display: inline-block;
     clear: both;
     font-size: 36px;
     font-weight: 400;
@@ -153,21 +183,19 @@ a {
     width: 314px;
     position: relative;
     left: 124px;
-    top: 150px;
-    float: left;
+    top: -163px;
     -webkit-transform: rotate(-90deg);
     -moz-transform: rotate(-90deg);
     -o-transform: rotate(-90deg);
     -ms-transform: rotate(-90deg);
     transform: rotate(-90deg);
-    text-shadow: 1px 1px 0 #FFF;
+    vertical-align: bottom;
 }
 
 .release-full {
     float: left;
     background: #fff;
     padding: 18px 10px;
-    margin-top: 56px;
     overflow: auto;
     margin-bottom: 80px;
     width: 100%;
@@ -237,6 +265,7 @@ a {
 
 .release-full h1 span {
     display: block;
+    word-wrap: break-word;
 }
 
 .release-full a {
@@ -262,12 +291,32 @@ a {
 }
 
 .release:hover .tags {
+
     opacity: 1;
 }
 
+@-webkit-keyframes appear {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.year-sep {
+    /*opacity: 0;
+    -webkit-animation: 333ms appear 100ms ease-in-out forwards;
+    */-webkit-animation-fill-mode: forwards;
+    
+}
+
 .release {
+    /*opacity: 0;
+    -webkit-animation: 333ms appear 100ms ease-in-out forwards;
+    -webkit-animation-fill-mode: forwards;*/
     background: white;
-    float: left;
+    display: inline-block;
     width: 310px;
     height: 350px;
     padding: 4px;
@@ -276,6 +325,7 @@ a {
     overflow: hidden;
     position: relative;
     z-index: 1;
+    vertical-align: bottom;
 }
 
 .release .face {
@@ -315,19 +365,20 @@ li {
     -webkit-transition: opacity 0.333s ease-in-out;
     -moz-transition: opacity 0.333s ease-in-out;
     transition: opacity 0.333s ease-in-out;
-
+    transition-delay: 100ms;
     opacity: 0;
     position: absolute;
     z-index: 1;
     top: 81%;
-
     padding: 4px 0;
     background: #3EA8DA;
     border: 1px solid #3EA8AA;
-    font-size: 13px;
+    font-size: 11px;
     width: 300px;
     color: #FFF;
     white-space: nowrap;
+    text-overflow: ellipsis;
+    line-height: 13px;
 }
 
 .playbutton {
@@ -365,7 +416,7 @@ li {
 
 .tag {
     border-left: 1px solid #fff;
-    margin-right: 2px;
+    margin-right: 5px;
     padding-left: 4px;
 }
 
@@ -384,7 +435,7 @@ li {
     padding: 2px 12px 2px 8px;
     border-radius: 8px 0 8px 0;
     font-size: 15px;
-    margin: 2px 0;
+    margin-top: 2px;
     display: inline-block;
     font-weight: 400;
 }
@@ -451,9 +502,10 @@ li {
 .artist {
     font-weight: 600;
     color: #5a5a5a;
+    margin-left: 0.3rem;
 }
 
-#top-bar {
+.top-bar {
     position: fixed;
     z-index: 10;
     top: 0;
@@ -466,7 +518,7 @@ li {
     text-indent: 12px;
 }
 
-#top-bar h1 {
+.top-bar h1 {
    /* text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
     border-right: 1px solid black;*/
     display: inline;
@@ -475,12 +527,12 @@ li {
     font-size: 18px;*/
 }
 
-#top-bar span {
+.top-bar span {
     text-shadow: 1px 1px 0px rgba(192,192,192,0.6);
     border-left: 1px solid black;
     display: inline;
     padding-left: 12px;
-    margin-left: 7px;
+    margin-left: 12px;
     font-size: 18px;
 }
 
@@ -521,13 +573,13 @@ li {
     background: rgba(164, 92, 192, 0.9);
 }
 
-#top-bar span:first-child {
+.top-bar span:first-child {
     border-left: 0;
     margin-left: 0;
     padding-left: 0;
 }
 
-#top-bar input {
+.top-bar input {
     font-size: 15px;
     padding: 2px 18px 2px 4px;
     margin: 0 9px;
@@ -576,6 +628,15 @@ li {
    text-transform: lowercase;
 }
 
+.player {
+    float: left;
+}
+
+.player img {
+    height: 42px;
+    vertical-align: middle;
+}
+
 .now-playing {
    font-size: 13px;
     margin-left: 9px;
@@ -588,7 +649,7 @@ li {
     text-decoration: line-through;
 }
 
-#bottom-bar {
+.bottom-bar {
     position: fixed;
     z-index: 10;
     bottom: 0;
@@ -615,6 +676,10 @@ li {
 	padding-right: 5px;
 }
 
+.artist-country {
+    display: inline-block;
+    margin-right: 4px;
+}
 
 /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
@@ -624,7 +689,7 @@ li {
         xpadding-top: 48px;
     }
 
-    #bottom-bar {
+    .bottom-bar {
         display: none;
     }
 
@@ -632,7 +697,7 @@ li {
         display: none;   
     }
 
-    #top-bar-searchbox  input {
+    .top-bar-searchbox  input {
         display: none;   
     }
 
@@ -651,7 +716,7 @@ li {
         position: inherit;
     }
 
-    #top-bar {
+    .top-bar {
         xheight: 100px;
     }
 
