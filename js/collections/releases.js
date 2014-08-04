@@ -38,6 +38,7 @@ var Releases = Backbone.Collection.extend({
 	},
 	getSimilarByTag: function(tags, ignore, limit) {
 		limit = limit || 20;
+		ignore = ignore || false;
 		var hits = new Releases();
 
 		if (tags && tags instanceof Array) {
@@ -59,18 +60,15 @@ var Releases = Backbone.Collection.extend({
 
 				return result.length;
 			});
-			
 		}
-
-		releases = _.first(releases, limit);
-		hits.reset(releases);
-
-		hits.sort(function(a,b){
+		
+		releases.sort(function(a,b){
 			return a.matchLength > b.matchLength ? -1 : 1;
 		});
+		releases = _.first(releases, limit);
+		hits.reset(releases, {sort:false});
 
 		return hits;
-
 
 	},
 	searchByTag: function(tags) {
