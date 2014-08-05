@@ -11,136 +11,122 @@ var moment = require('moment');
 // hacky, but works and is simple ..and actually may not need this, 
 // but lets see where it goes
 var data = require('../../data/all.json').reverse().map(function(item) {
-	item.key = "rel_" + _.uniqueId();
-	item.momented = moment(item.release_date);
-	return item;
+    item.key = "rel_" + _.uniqueId();
+    item.momented = moment(item.release_date);
+    return item;
 });
 
 var Releases = Backbone.Collection.extend({
 
-	model: ReleaseModel,
-	currentSort: 'release_date',
-	comparator: function(model1, model2) {
-		return model1.get('momented') > model2.get('momented') ? -1 : 1;
-	},
-	search: function(letters) {
-		if (letters == "") return this;
+    model: ReleaseModel,
+    currentSort: 'release_date',
+    comparator: function(model1, model2) {
+        return model1.get('momented') > model2.get('momented') ? -1 : 1;
+    },
+    search: function(letters) {
+        if (letters == "") return this;
 
-		var pattern = new RegExp(letters, "gi");
-		var releases = this.filter(function(item) {
+        var pattern = new RegExp(letters, "gi");
+        var releases = this.filter(function(item) {
+            var searchString = item.getSearchData();
+            return pattern.test(searchString);
+        });
+        return new Releases(releases);
+    },
+    getSimilarByTag: function(tags, ignore, limit) {
+        limit = limit || 20;
+        ignore = ignore || false;
+        var hits = new Releases();
 
-			var searchString = item.getSearchData();
-			return pattern.test(searchString);
+        if (tags && tags instanceof Array) {
 
-		});
-		return new Releases(releases);
+            var releases = this.filter(function(item) {
 
-	},
-	getSimilarByTag: function(tags, ignore, limit) {
-		limit = limit || 20;
-		ignore = ignore || false;
-		var hits = new Releases();
+                if (item.get('cat') === ignore || item.get('artist') === ignore) {
+                    return; // it is this release, no need to include
+                }
 
-		if (tags && tags instanceof Array) {
+                var itemTags = item.get('tags');
+                var result = _.intersection(tags, itemTags);
 
-			var releases = this.filter(function(item) {
+                if (result.length) {
+                    item.matchLength = result.length;
+                } else {
+                    item.matchLength = 0;
+                }
 
-				if (item.get('cat') === ignore || item.get('artist') === ignore) {
-					return; // it is this release, no need to include
-				}
+                return result.length;
+            });
+        }
+        
+        releases.sort(function(a,b){
+            return a.matchLength > b.matchLength ? -1 : 1;
+        });
+        releases = _.first(releases, limit);
+        hits.reset(releases, {sort:false});
 
-				var itemTags = item.get('tags');
-				var result = _.intersection(tags, itemTags);
+        return hits;
 
-				if (result.length) {
-					item.matchLength = result.length;
-				} else {
-					item.matchLength = 0;
-				}
+    },
+    searchByTag: function(tags) {
+        tags = tags.indexOf(',') ? tags.split(',') : tags;
+        tags = tags instanceof Array ? tags : [tags];
+        var hits = this.filter(function(item) {
 
-				return result.length;
-			});
-		}
-		
-		releases.sort(function(a,b){
-			return a.matchLength > b.matchLength ? -1 : 1;
-		});
-		releases = _.first(releases, limit);
-		hits.reset(releases, {sort:false});
+            var itemTags = item.get('tags');
+            var result = _.intersection(tags, itemTags);
+            
 
-		return hits;
+            if (result.length) {
+                return true;
+            }
+        });
 
-	},
-	searchByTag: function(tags) {
-		tags = tags instanceof Array ? tags : [tags];
+        return new Releases(hits);
 
-		var hits = this.filter(function(item) {
-			var itemTags = item.get('tags');
-			var result = _.union(tags, itemTags);
-			
-			var hit = result.length === tags.length;
+    },
+    getTags: function() {
+        return _.unique(_.flatten(this.pluck('tags'))).sort();
+    },
+    getCountries: function() {
+        return _.unique(_.flatten(this.pluck('country'))).sort();
+    },
+    getArtists: function() {
+        return _.unique(this.pluck('artist')).sort(function(a, b) {
+            return a.toLowerCase() > b.toLowerCase() ? -1 : 1;
+        });
+    },
+    getByArtist: function(artist, ignore){
+        artist = artist || '';
+        ignore = ignore || '';
 
-			if (hit) {
-				return true;
-			}
+        artist = artist.toLowerCase().trim();
+        var hits = _(this.filter(function(data) {
+            var isSameArtist = data.get('artist').toLowerCase() === artist;
+            var isIgnored = data.get('cat') === ignore;
+            return isSameArtist && !isIgnored;
+        })).value();
 
-		});
-
-		return new Releases(hits);
-
-	},
-	getTags: function() {
-		return _.unique(_.flatten(this.pluck('tags'))).sort();
-	},
-	getCountries: function() {
-		return _.unique(_.flatten(this.pluck('country'))).sort();
-	},
-	getArtists: function() {
-		return _.unique(this.pluck('artist')).sort(function(a, b) {
-			return a.toLowerCase() > b.toLowerCase() ? -1 : 1;
-		});
-	},
-	getByArtist: function(artist, ignore){
-		artist = artist || '';
-		ignore = ignore || '';
-
-		artist = artist.toLowerCase().trim();
-		var hits = _(this.filter(function(data) {
-			var isSameArtist = data.get('artist').toLowerCase() === artist;
-			var isIgnored = data.get('cat') === ignore;
-			return isSameArtist && !isIgnored;
-		})).value();
-
-		return new Releases(hits);
-	},
-	getByTag: function(tag) {
-		var hits = _(this.filter(function(data) {
-			return !!~ (data.get('tags').indexOf(tag));
-		})).value();
-
-		return new Releases(hits);
-
-	},
-	
-	fullReset: function(){
-		return this.reset(data);
-	},
-	getMayAlsoLike: function(options){
-		options = options || {};
-
-		var hits = new Releases();
-
-		// var bySameArtist = this.getByArtist(options.artist, options.ignore);
-		var similarByTag = this.getSimilarByTag(options.tags, options.artist);
-		
-		// hits.add(bySameArtist.toJSON(), {sort:false});
-		hits.add(similarByTag.toJSON(), {sort:false});
-		
-		
-		
-		return hits;
-
-	}
+        return new Releases(hits);
+    },
+    getByTag: function(tag) {
+        var hits = _(this.filter(function(data) {
+            return !!~ (data.get('tags').indexOf(tag));
+        })).value();
+        return new Releases(hits);
+    },
+    fullReset: function(){
+        return this.reset(data);
+    },
+    getMayAlsoLike: function(options){
+        options = options || {};
+        var hits = new Releases();
+        // var bySameArtist = this.getByArtist(options.artist, options.ignore);
+        var similarByTag = this.getSimilarByTag(options.tags, options.artist);
+        // hits.add(bySameArtist.toJSON(), {sort:false});
+        hits.add(similarByTag.toJSON(), {sort:false});
+        return hits;
+    }
 });
 
 module.exports = Releases;

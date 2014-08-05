@@ -24,7 +24,15 @@ var Releases = React.createClass({
 		window.e = this.props.data;
 		appState.on('change:userSearch', this.updateSearch);
 		this.updateSearch(null, appState.get('userSearch'));
+
+
 		window.scrollTo(0,0);
+        // are we filtering on a tag?
+        if (this.props.params && this.props.params.tag) {
+            this.setState({
+                filteredReleases: this.props.data.searchByTag(this.props.params && this.props.params.tag)
+            }, this.updateList.bind(this, 1));
+        };
     },
     componentWillUnmount: function(){
     	appState.off('change:userSearch', this.updateSearch);

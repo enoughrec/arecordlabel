@@ -53,7 +53,7 @@ var ReleaseDetail = React.createClass({
     getTags: function(tags){
 
         return tags.map(function(tag){
-            return (<span className='tag fontawesome-tag'>{tag}</span>)
+            return (<Link className='tag fontawesome-tag' to={'/tag/'+tag}>{tag}</Link>)
         });
         
     },

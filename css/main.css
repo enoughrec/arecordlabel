@@ -438,6 +438,13 @@ li {
     margin-top: 2px;
     display: inline-block;
     font-weight: 400;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.release-full .tag:hover {
+    background: rgba(32, 138, 198, 0.9);
 }
 
 .tag.fontawesome-tag:before {

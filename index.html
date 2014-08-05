@@ -4,50 +4,50 @@
     <title>Enough Records</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="keywords" content="enough,enoughrecords,enough records,records,netlabel,music label,music,label,free music,netmusic,netaudio,demoscene,musica grátis,musica gratuita,free download,creative commons,electronic,experimental,idm,ambient,industrial,dark ambient,postrock,alternative,fábrica de som">
-   	<link rel="icon" type="image/gif" href="/covers/32_ambient.gif" />
+    <meta name="keywords" content="enough,enoughrecords,enough records,records,netlabel,music label,music,label,free music,netmusic,netaudio,demoscene,musica grátis,musica gratuita,free download,creative commons,electronic,experimental,idm,ambient,industrial,dark ambient,postrock,alternative,fábrica de som">
+    <link rel="icon" type="image/gif" href="/covers/32_ambient.gif" />
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script type="text/javascript">
-    	(function(){
-    		
-		function queryString(key) {
-		 	var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
-		 	var offset = location.search.search( re );
-		 	if ( offset == -1 ) return null;
-		 	return RegExp.$1;
-		}
-		
-		function checkUrl(){
-			var cat = queryString( "cat" );
-			if (cat) {
-				window.location.href = "http://enoughrecords.scene.org/#/release/"+cat;
-			}
-		}
+    (function(){
+            
+        function queryString(key) {
+            var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
+            var offset = location.search.search( re );
+            if ( offset == -1 ) return null;
+            return RegExp.$1;
+        }
+        
+        function checkUrl(){
+            var cat = queryString( "cat" );
+            if (cat) {
+                window.location.href = "http://enoughrecords.scene.org/#/release/"+cat;
+            }
+        }
 
-		function SlimStat() {
-			var ref = escape(document.referrer);
-			var res = escape(window.screen.availHeight+'x'+window.screen.availWidth);
-			var url = escape(window.location.href);
-	
-			var img = document.createElement('img');
-			img.setAttribute('id','slimstatimg');
-			img.setAttribute('width','1');
-			img.setAttribute('height','1');
-			img.setAttribute('alt','');
-			img.setAttribute('src','http://enoughrecords.scene.org/slimstat/stats_js.php?ref='+ref+'&res='+res+'&url='+url+'&r='+Math.floor(Math.random()*10000));
-			if (document.documentElement) {
-				document.documentElement.appendChild(img);
-			} else {
-				document.appendChild(img);
-			}
-		}
+        function SlimStat() {
+            var ref = escape(document.referrer);
+            var res = escape(window.screen.availHeight+'x'+window.screen.availWidth);
+            var url = escape(window.location.href);
+    
+            var img = document.createElement('img');
+            img.setAttribute('id','slimstatimg');
+            img.setAttribute('width','1');
+            img.setAttribute('height','1');
+            img.setAttribute('alt','');
+            img.setAttribute('src','http://enoughrecords.scene.org/slimstat/stats_js.php?ref='+ref+'&res='+res+'&url='+url+'&r='+Math.floor(Math.random()*10000));
+            if (document.documentElement) {
+                document.documentElement.appendChild(img);
+            } else {
+                document.appendChild(img);
+            }
+        }
 
 
-		
-		SlimStat();
-		checkUrl();
-	})();	
-		
+        
+        SlimStat();
+        checkUrl();
+    })();   
+        
     </script>
 </head>
 <body>
