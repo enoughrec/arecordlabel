@@ -4,9 +4,6 @@ var _ = require('underscore'); // augmented by _.str in index.js
 var bus = require('../bus');
 
 var State = Backbone.Model.extend({
-	initialize: function(){
-		bus.on('search', this.setSearch.bind(this));
-	},
 	setSearch: function(value){
 		value = value || '';
 		value = value.toLowerCase().trim();
