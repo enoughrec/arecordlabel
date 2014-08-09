@@ -32,7 +32,7 @@ var ReleaseDetail = React.createClass({
     },
     getDownloadLinks: function(){
 
-        var sources = ["fma", "archiveorg", "scene_org", "clearbits", "sonicsquirrel", "soundshiva", "dogmazic", "archiveorg", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
+        var sources = ["fma", "archiveorg", "scene_org", "clearbits", "sonicsquirrel", "soundshiva", "dogmazic", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
         var release = this.props.release.toJSON();
 
         var downloadLinks = sources.map(function(source){
