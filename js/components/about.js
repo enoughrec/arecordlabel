@@ -42,8 +42,6 @@ var About = React.createClass({
 
 	<p>We are present on all major social networks (<a href="https://www.facebook.com/enoughrec">facebook</a>, <a href="https://twitter.com/enoughrec">twitter</a> and <a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts">google plus</a>).</p>
 	
-	<!--<p>We also have a <a href="http://www.enoughrecords.org/mailman/listinfo/announce_enoughrecords.org">mailing list</a>. Please subscribe if you are interested in receiving our latest release announcements.</p>-->
-	
 	<h1>Contact</h1>
 	
 	<p>Any further inquiries about Enough Records please contact Filipe 'ps' Cruz by <a href="mailto:psenough@gmail.com">email</a>.</p>
