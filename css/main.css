@@ -601,10 +601,11 @@ li {
     position: relative;
     top: -1px;
     outline: none;
+    font-family: "Titillium Web";
 }
 
 ::-webkit-input-placeholder {
-   text-shadow: 1px 1px 0 white;
+   text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
    text-decoration: line-through;
    font-style: italic;
    color: rgba(106,106,106,0.5);
@@ -613,7 +614,7 @@ li {
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   text-shadow: 1px 1px 0 white;
+   text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
    text-decoration: line-through;
    font-style: italic;
    color: rgba(106,106,106,0.5);
@@ -622,7 +623,7 @@ li {
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   text-shadow: 1px 1px 0 white;
+   text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
    text-decoration: line-through;
    font-style: italic;
    color: rgba(106,106,106,0.5);
@@ -631,7 +632,7 @@ li {
 }
 
 :-ms-input-placeholder {  
-   text-shadow: 1px 1px 0 white;
+   text-shadow: 1px 1px 0 rgba(255,255,255,0.7);
    text-decoration: line-through;
    font-style: italic;
    color: #6a6a6a;
