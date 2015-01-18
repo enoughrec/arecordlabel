@@ -8,11 +8,13 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
+var Tag = require('./tag');
+
 var About = React.createClass({
 	render: function(){
 		return (
 
-<div className="release-full">
+<div className="release-full article">
 
 	<h1>About</h1>
 	
@@ -35,10 +37,10 @@ var About = React.createClass({
 	<h1>Sub Labels</h1>
 
 	<ul>
-	<li><b>Catita!</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/c!">c!</Link> in our database. It groups the 4 releases salvaged from digital oblivion as the Catita! netlabel stopped its activities. They focused on 8bit music.</li>
-	<li><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as <Link className="tag fontawesome-tag"  to="/tag/Anon">Anon</Link>. Our socio-political activist sub-label.</li>
-	<li><b>[Esc.] Laboratory</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/[Esc.]">[Esc.]</Link>. This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
-	<li><b>Thisko</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/thisk">thisk</Link>. This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
+	<li><b>Catita!</b>, tagged as <Tag tag="c!">c!</Tag> in our database. It groups the 4 releases salvaged from digital oblivion as the Catita! netlabel stopped its activities. They focused on 8bit music.</li>
+	<li><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as <Tag tag="Anon">Anon</Tag>. Our socio-political activist sub-label.</li>
+	<li><b>[Esc.] Laboratory</b>, tagged as <Tag tag="[Esc.]">[Esc.]</Tag>. This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
+	<li><b>Thisko</b>, tagged as <Tag tag="thisk">thisk</Tag>. This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
 	</ul>
 	
 	<h1>News</h1>

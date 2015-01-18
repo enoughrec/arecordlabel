@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var React = window.React = require('react/addons');
+var React = window.React = require('react');
 var App = require('./app');
 
 var ReleasesCollection = require('./collections/releases');

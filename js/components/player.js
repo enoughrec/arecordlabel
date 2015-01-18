@@ -66,7 +66,6 @@ var Player = React.createClass({
         var tracks = release.get('tracks');
 
         // this is async, so have to give it a callback
-        // would be nice with a .then(...) thing
         this.setState({
             release: release,
             playlist: tracks,
@@ -81,7 +80,7 @@ var Player = React.createClass({
         
     },
     togglePlayState: function(playing){
-
+        
         if (playing) {
             this.setState({
                 currentTrack: path.basename(this.state.widget.src()),
