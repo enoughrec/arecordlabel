@@ -86,7 +86,11 @@ a {
     right: 0;
 }
 
-.top-bar-searchbox .fontawesome-remove {
+.top-bar-searchbox .fontawesome-search {
+    cursor: initial !important;
+}
+
+.top-bar-searchbox .fontawesome-remove, .top-bar-searchbox .fontawesome-search {
     position: absolute;
     right: 14px;
     top: -1px;

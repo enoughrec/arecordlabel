@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <script type="text/javascript">
     (function(){
-            
+        
         function queryString(key) {
             var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
             var offset = location.search.search( re );
@@ -18,34 +18,14 @@
             return RegExp.$1;
         }
         
+        // redirect for old incoming links
         function checkUrl(){
             var cat = queryString( "cat" );
             if (cat) {
                 window.location.href = "http://enoughrecords.scene.org/#/release/"+cat;
             }
         }
-
-        function SlimStat() {
-            var ref = escape(document.referrer);
-            var res = escape(window.screen.availHeight+'x'+window.screen.availWidth);
-            var url = escape(window.location.href);
-    
-            var img = document.createElement('img');
-            img.setAttribute('id','slimstatimg');
-            img.setAttribute('width','1');
-            img.setAttribute('height','1');
-            img.setAttribute('alt','');
-            img.setAttribute('src','http://enoughrecords.scene.org/slimstat/stats_js.php?ref='+ref+'&res='+res+'&url='+url+'&r='+Math.floor(Math.random()*10000));
-            if (document.documentElement) {
-                document.documentElement.appendChild(img);
-            } else {
-                document.appendChild(img);
-            }
-        }
-
-
         
-        SlimStat();
         checkUrl();
     })();   
         

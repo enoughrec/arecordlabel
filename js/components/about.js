@@ -5,6 +5,9 @@
 
 var React = require('react');
 
+var Router = require('react-router');
+var Link = Router.Link;
+
 var About = React.createClass({
 	render: function(){
 		return (
@@ -32,10 +35,10 @@ var About = React.createClass({
 	<h1>Sub Labels</h1>
 
 	<ul>
-	<li><b>Catita!</b>, tagged as "c!" in our database. It groups the 4 releases salvaged from digital oblivion as the Catita! netlabel stopped it's activities. They focused on 8bit music.</li>
-	<li><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as "Anon". Our socio-political activist sub-label.</li>
-	<li><b>[Esc.] Laboratory</b>, tagged as "[Esc.]". This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
-	<li><b>Thisko</b>, tagged as "thisk". This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
+	<li><b>Catita!</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/c!">c!</Link> in our database. It groups the 4 releases salvaged from digital oblivion as the Catita! netlabel stopped its activities. They focused on 8bit music.</li>
+	<li><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as <Link className="tag fontawesome-tag"  to="/tag/Anon">Anon</Link>. Our socio-political activist sub-label.</li>
+	<li><b>[Esc.] Laboratory</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/[Esc.]">[Esc.]</Link>. This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
+	<li><b>Thisko</b>, tagged as <Link className="tag fontawesome-tag" to="/tag/thisk">thisk</Link>. This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
 	</ul>
 	
 	<h1>News</h1>

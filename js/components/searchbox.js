@@ -47,9 +47,13 @@ var Searchbox = React.createClass({
     },
     render: function(){
 
+        var hasSearch = this.state.value.length > 0;
+
+        
+
         var controlClasses = React.addons.classSet({
-            'fontawesome-remove':true,
-            'hidden': this.state.value.length == 0
+            'fontawesome-remove': hasSearch,
+            'fontawesome-search': !hasSearch
         });
         
         return (

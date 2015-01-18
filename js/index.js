@@ -2,7 +2,7 @@
  * @jsx React.DOM
  */
 
-var React = window.React = require('react');
+var React = window.React = require('react/addons');
 var App = require('./app');
 
 var ReleasesCollection = require('./collections/releases');
@@ -17,11 +17,15 @@ var Releases = require('./components/releases');
 var ReleaseDetail = require('./components/release-detail');
 var About = require('./components/about');
 
+// slim stat tracking
+// the router calls it every time the route changes, so we track internal navigation 
+// as well as just first page hits
+var SlimStat = require('./lib/slimstat');
 
 React.renderComponent(
-	<Routes>
+	<Routes onActiveStateChange={SlimStat}>
 		<Route name="home" path="/" handler={App} data={enrReleases}>
-            		<Route name="tag"   path="tag/:tag" handler={Releases} data={enrReleases} />
+    		<Route name="tag"       path="tag/:tag" handler={Releases} data={enrReleases} />
 			<Route name="release" 	path="release/:cat" handler={ReleaseDetail} data={enrReleases} />
 			<Route name="about" 	path="about" handler={About} data={enrReleases} />
 		</Route>
