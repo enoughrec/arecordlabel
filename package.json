@@ -4,8 +4,12 @@
   "version": "0.0.1",
   "dependencies": {
     "backbone": "~1.0.0",
-    "browserify": "^2.36.1",
+    "brfs": "^1.2.0",
+    "bulk-require": "^0.2.1",
+    "bulkify": "^1.0.2",
     "envify": "^1.2.0",
+    "frontmatterify": "^1.0.0",
+    "json-front-matter": "^0.1.6",
     "lodash": "^2.4.1",
     "moment": "~2.1.0",
     "play-audio": "0.0.3",
@@ -19,12 +23,12 @@
     "underscore.string": "~2.3.3"
   },
   "devDependencies": {
-    "browserify": "~2.36.0",
+    "browserify": "~8.1.1",
     "envify": "~1.2.0",
     "reactify": "~0.4.0",
     "statics": "~0.1.0",
     "uglifyjs": "~2.3.6",
-    "watchify": "~0.4.1"
+    "watchify": "^2.2.1"
   },
   "main": "js/index.js",
   "author": "Dan Peddle <dan@flarework.com>",
@@ -40,14 +44,16 @@
     "build": "build"
   },
   "scripts": {
-    "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d .",
+    "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d  .",
     "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "browserify": {
     "transform": [
       "reactify",
-      "envify"
+      "frontmatterify",
+      "envify",
+      "bulkify"
     ]
   }
 }

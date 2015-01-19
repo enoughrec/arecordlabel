@@ -5,6 +5,7 @@
 var React = window.React = require('react');
 var App = require('./app');
 
+var ArticlesCollection = require('./collections/articles');
 var ReleasesCollection = require('./collections/releases');
 var enrReleases = window.e = new ReleasesCollection();
 enrReleases.fullReset(); // load data from our JSON
