@@ -25,16 +25,16 @@ var About = React.createClass({
 	<p>Subscribe to our announcemente mailing list</p>
 
 	<p>
-<div id="mc_embed_signup">
-<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-	<input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
-    <div id="outside"><input type="text" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabindex="-1" value="" /></div>
-    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
-    </div>
-</form>
-</div>
-</p>
+	<div id="mc_embed_signup">
+	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    <div id="mc_embed_signup_scroll">
+		<input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
+	    <div id="outside"><input type="text" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabindex="-1" /></div>
+	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
+	    </div>
+	</form>
+	</div>
+	</p>
 
 	<h1>Release Terms</h1>
 	
