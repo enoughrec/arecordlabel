@@ -21,6 +21,9 @@ var Topbar = React.createClass({
         }, {
             link: '/about',
             label: 'About'
+        }, {
+            link: '/blog',
+            label: 'Blog'
         }];
 
         var comps = links.map(function(link){
@@ -30,7 +33,7 @@ var Topbar = React.createClass({
                 </span>
             )
         });
-        comps.push(<span key={"bloglink"}><a target="_blank" href="https://web.archive.org/web/20141217092309/http://enoughrecords.org/">Blog</a></span>);
+        // comps.push(<span key={"bloglink"}><a target="_blank" href="https://web.archive.org/web/20141217092309/http://enoughrecords.org/">Blog</a></span>);
 
         return (
             <div className="top-bar">

@@ -5,7 +5,7 @@
 var React = window.React = require('react');
 var App = require('./app');
 
-var ArticlesCollection = require('./collections/articles');
+var articles = require('./collections/articles');
 var ReleasesCollection = require('./collections/releases');
 var enrReleases = window.e = new ReleasesCollection();
 enrReleases.fullReset(); // load data from our JSON
@@ -17,6 +17,7 @@ var Route = Router.Route;
 var Releases = require('./components/releases');
 var ReleaseDetail = require('./components/release-detail');
 var About = require('./components/about');
+var Blog = require('./components/blog');
 
 // slim stat tracking
 // the router calls it every time the route changes, so we track internal navigation 
