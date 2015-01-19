@@ -6,6 +6,8 @@ var bus = require('../bus');
 
 var url = require('url');
 
+var Tag = require('./tag');
+
 var Router = require('react-router');
 var Link = Router.Link;
 
@@ -53,7 +55,7 @@ var ReleaseDetail = React.createClass({
     getTags: function(tags){
 
         return tags.map(function(tag){
-            return (<Link className='tag fontawesome-tag' to={'/tag/'+tag}>{tag}</Link>)
+            return (<Tag tag={tag}>{tag}</Tag>)
         });
         
     },
