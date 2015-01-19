@@ -6,9 +6,7 @@ var moment = require('moment');
 var data = require('../../data/articles');
 
 var Article = Backbone.Model.extend({
-    comparator: function(model1, model2) {
-        return model1.get('date') > model2.get('date') ? -1 : 1;
-    },
+    
     parse: function(data){
         var data = {
             title: data.attributes.title,
@@ -20,6 +18,9 @@ var Article = Backbone.Model.extend({
 });
 
 var Articles = Backbone.Collection.extend({
+    comparator: function(model1, model2) {
+        return model1.get('date') > model2.get('date') ? -1 : 1;
+    },
     model: Article
 });
 
