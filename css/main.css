@@ -751,4 +751,8 @@ li {
 	padding-right: 12px;
 }
 
+#outside {
+	position: absolute;
+	left: -5000px;
+}
 
