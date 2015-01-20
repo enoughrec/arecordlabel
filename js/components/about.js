@@ -21,7 +21,7 @@ var About = React.createClass({
 
 	<h1>About</h1>
 	
-	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We been active since 2001 and have no focus on any specific genre.</p>
+	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We have been active since 2001 and have no focus on any specific genre.</p>
 
 	<h1>Release Terms</h1>
 	
@@ -73,6 +73,7 @@ var About = React.createClass({
 	<p>Thanks to everyone who helped us improve, run and promote Enough Records throughout the years, Enough Records would not be what it is without you.</p>
 
 	<p>Website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, re-use and contribute.</p>
+
 	
 </div>
 
