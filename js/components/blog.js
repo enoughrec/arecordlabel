@@ -12,8 +12,8 @@ var Blog = React.createClass({
             var json = article.toJSON();
             return (
                 <div className="article-link">
-                    <div>{json.title}</div>
-                    <div>{article.get('date').format('YYYY-MM-DD')}</div>
+                    <div className="article-title">{json.title}</div>
+                    <div className="article-date">{article.get('date').format('YYYY-MM-DD')}</div>
                     <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
                 </div>
             )
