@@ -11,7 +11,7 @@ var ReleaseModel = Backbone.Model.extend({
 	setters: {
 		'cover': function(val) {
 
-			var result = 'covers/' + path.basename(val);
+			var result = '/covers/' + path.basename(val);
 			return result;
 		},
 		'artist': function(val) {
