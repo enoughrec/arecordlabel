@@ -45,6 +45,7 @@
   },
   "scripts": {
     "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d  .",
+    "build-gzip": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm | gzip -9 - > build/build.js.gz ",
     "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
