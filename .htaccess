@@ -1,13 +1,39 @@
-# Options +FollowSymLinks
+<IfModule mod_rewrite.c>
+    RewriteEngine On
 
-# RewriteEngine On
-
-# RewriteRule ^js/(.*)$ 			assets/js/$1 [NC,L]
-# RewriteRule ^css/(.*)$ 			assets/css/$1 [NC,L]
-# RewriteRule ^img/(.*)$ 			assets/img/$1 [NC,L]
-
-# RewriteCond %{REQUEST_FILENAME} 				!-d
-# RewriteCond %{REQUEST_FILENAME} 				!-f
+    # follow links for files that exist
+    RewriteCond %{REQUEST_FILENAME}      !-d
+    RewriteCond %{REQUEST_FILENAME}      !-f
 
 
-# RewriteRule ^(.*)+$ 			index.html?/$1 [NC,L]
+    # rewrite app urls
+    RewriteRule  ^about$            index.html?/$1 [NC,L]
+    RewriteRule  ^release/(.*)$      index.html?/$1 [NC,L]
+    RewriteRule  ^tag/(.*)$          index.html?/$1 [NC,L]
+    RewriteRule  ^blog/(.*)$         index.html?/$1 [NC,L]
+
+
+
+    RewriteCond %{HTTP:Accept-Encoding} gzip
+    RewriteCond %{REQUEST_FILENAME}.gz -f
+    RewriteRule (.*\.(js|css))$ $1.gz [L]
+
+    
+
+    
+
+    # RewriteRule ^(.*)+$  index.html?/$1 [NC,L]
+
+</IfModule>
+
+AddEncoding x-gzip .gz
+
+<FilesMatch .*\.css.gz>
+    ForceType text/css
+</FilesMatch>
+
+<FilesMatch .*\.js.gz>
+    ForceType application/x-javascript
+</FilesMatch>
+
+

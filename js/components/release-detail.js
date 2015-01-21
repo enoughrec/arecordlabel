@@ -108,18 +108,18 @@ var ReleaseDetail = React.createClass({
         var countries = this.getCountries(data.country);
         var downloadLinks = this.getDownloadLinks();
 
-        data.cover = '/'+coverPath.path;
-
         return (
 <div className="release-full">
     <div className="leftframe">
-        <div className="cover">
-            <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
-            <img src={data.cover} alt={data.album + ' - ' + data.artist} />
-        </div>
-        <div className="titles">
-            <h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
-        </div>
+        <header>
+            <div className="cover">
+                <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
+                <img src={data.cover} alt={data.album + ' - ' + data.artist} />
+            </div>
+            <div className="titles">
+                <h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
+            </div>
+        </header>
         <div className="cc"><img src={"/iconss/" + data.cc_img}/></div>
     </div>
     <div className="details">
