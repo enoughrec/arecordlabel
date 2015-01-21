@@ -11,6 +11,9 @@ var Link = Router.Link;
 var Tag = require('./tag');
 
 var About = React.createClass({
+	componentWillMount: function(){
+		document.title = 'About';
+	},
 	render: function(){
 		return (
 
