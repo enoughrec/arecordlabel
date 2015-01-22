@@ -1,4 +1,5 @@
 var img = document.createElement('img');
+img.setAttribute('style', 'position:absolute;top:-10px;left:0;z-index:-1;');
 img.setAttribute('id', 'slimstatimg');
 img.setAttribute('width', '1');
 img.setAttribute('height', '1');
@@ -7,11 +8,15 @@ img.setAttribute('alt', '');
 var inserted = false;
 
 function SlimStat() {
-    var ref = escape(document.referrer);
-    var res = escape(window.screen.availHeight + 'x' + window.screen.availWidth);
-    var url = escape(window.location.href);
+
+    var ssSrc = '/slimstat/stats_js.php?ref=' + encodeURIComponent(document.referrer)
+        + '&url=' + encodeURIComponent(document.URL)
+        + '&res=' + encodeURIComponent(screen.width+'x'+screen.height)
+        + '&ttl=' + encodeURIComponent(document.title)
+        + '&ts=' + Date.now();
+
     
-    img.setAttribute('src', '/slimstat/stats_js.php?ref=' + ref + '&res=' + res + '&url=' + url + '&r=' + Math.floor(Math.random() * 10000));
+    img.setAttribute('src', ssSrc);
 
     if (!inserted) {
         if (document.documentElement) {

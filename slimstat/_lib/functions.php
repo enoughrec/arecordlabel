@@ -27,7 +27,7 @@ class SlimStat {
 	 */
 	function connect() {
 		global $config;
-		//$config =& SlimStatConfig::get_instance();
+		$config =& SlimStatConfig::get_instance();
 		
 		$connection = @mysql_connect( $config->db_server, $config->db_username, $config->db_password );
 		

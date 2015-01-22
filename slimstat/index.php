@@ -22,7 +22,7 @@
 require_once( realpath( dirname( __FILE__ ) ).'/_lib/config.php' );
 require_once( realpath( dirname( __FILE__ ) ).'/_lib/i18n.php' );
 require_once( realpath( dirname( __FILE__ ) ).'/_lib/functions.php' );
-
+error_reporting( E_ERROR);
 if ( array_key_exists( 'page', $_GET ) ) {
 	$query_string_page = preg_replace( "/[^A-Za-z]/", '', $_GET['page'] );
 } elseif ( array_key_exists( 'QUERY_STRING', $_SERVER ) ) {
@@ -138,7 +138,7 @@ function format_number( $_number, $_dp=1 ) {
  */
 function is_logged_in() {
 	global $config;
-	//$config =& SlimStatConfig::get_instance();
+	$config =& SlimStatConfig::get_instance();
 	
 	if ( $config->slimstat_use_auth ) {
 		return ( isset( $_SESSION ) && array_key_exists( 'slimstatuser', $_SESSION ) && $_SESSION['slimstatuser'] == true );
@@ -154,7 +154,7 @@ function check_login() {
 		return true;
 	}
 	
-	//$config =& SlimStatConfig::get_instance();
+	$config =& SlimStatConfig::get_instance();
 	
 	if ( !$config->slimstat_use_auth ) {
 		return true;
@@ -196,7 +196,7 @@ function set_login_cookie() {
 		return;
 	}
 	
-	//$config =& SlimStatConfig::get_instance();
+	$config =& SlimStatConfig::get_instance();
 	
 	if ( !$config->slimstat_use_auth ) {
 		return;
