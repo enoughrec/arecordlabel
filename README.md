@@ -20,7 +20,7 @@ It will need to be running on a web server to work, or if you are on some *nix l
 
 While developing, can use:
 
-`watchify -v -t hbsfy js/index.js -o build/build.js`
+`npm run-script start`
 
 to rebuild any modified files on the fly.
 
