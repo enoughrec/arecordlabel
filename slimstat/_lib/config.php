@@ -34,9 +34,12 @@ if ( get_magic_quotes_gpc() ) {
 
 require_once ('../auth.php');
 
+
+
 class SlimStatConfig {
 //	global $db;
 	/** Whether SlimStat is enabled */
+	protected static $_instance;
 	var $enabled = true;
 		
 	/** Database tables */
@@ -89,7 +92,19 @@ class SlimStatConfig {
 	
 	/** Maximum number of minutes between hits in a visit */
 	var $visit_length = 30;
-	
+
+	// restoring the get_instance stuff for php 5.6+ (dan)
+	public static function get_instance() {
+      if( self::$_instance === NULL ) {
+        self::$_instance = new self();
+      }
+      return self::$_instance;
+    }
+
+    public static function checkExists() {
+      return self::$_instance;
+    }
+
 	function SlimStatConfig() {
 		//global $config;
 		global $slimstat, $db;

@@ -19,11 +19,18 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
+// getting back the missing global which we need in the include (dan)
+include_once( realpath( dirname( __FILE__ ) ).'/_lib/functions.php' );
 include_once( realpath( dirname( __FILE__ ) ).'/_lib/config.php' );
 
+// getting back the missing global which we need in the include (dan)
+$slimstat = new SlimStat();
+
+// don't sweat strict standards, let's just make it work (dan)
+error_reporting( E_ERROR );
 if ( isset( $_GET['ref'] ) && isset( $_GET['url'] ) && isset( $_GET['res'] ) && isset( $_GET['ttl'] ) ) {
 	$_SERVER['HTTP_REFERER'] = rawurldecode( $_GET['ref'] );
-	
+		
 	$url = @parse_url( rawurldecode( $_GET['url'] ) );
 	$slimstat_resolution = $_GET['res'];
 	$slimstat_title = $_GET['ttl'];
@@ -33,7 +40,8 @@ if ( isset( $_GET['ref'] ) && isset( $_GET['url'] ) && isset( $_GET['res'] ) && 
 		} else {
 			$_SERVER['REQUEST_URI'] = $url['path'];
 		}
-		@include_once( realpath( dirname( __FILE__ ) ).'/stats_include.php' );
+
+		include_once( realpath( dirname( __FILE__ ) ).'/stats_include.php' );
 	}
 }
 

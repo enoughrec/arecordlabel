@@ -24,12 +24,12 @@ var About = require('./components/about');
 var SlimStat = require('./lib/slimstat');
 
 React.renderComponent(
-	<Routes onActiveStateChange={SlimStat} location="history">
-		<Route name="home" path="/" handler={App} data={enrReleases}>
-    		<Route name="tag"       path="tag/:tag" handler={Releases} data={enrReleases} />
-			<Route name="release" 	path="release/:cat" handler={ReleaseDetail} data={enrReleases} />
-			<Route name="about" 	path="about" handler={About} data={enrReleases} />
-		</Route>
-	</Routes>,
-  	document.body
+    <Routes onActiveStateChange={SlimStat} location="history">
+        <Route name="home" path="/" handler={App} data={enrReleases}>
+            <Route name="tag"       path="tag/:tag" handler={Releases} data={enrReleases} />
+            <Route name="release"   path="release/:cat" handler={ReleaseDetail} data={enrReleases} />
+            <Route name="about"     path="about" handler={About} data={enrReleases} />
+        </Route>
+    </Routes>,
+    document.body
 );
