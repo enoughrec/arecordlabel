@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -20,28 +20,32 @@
  */
 
 function render_page() {
+	global $i18n;
+	
 	page_head();
 	
 	?>
-<h2 id="title" class="grid16">Log in</h2>
+<h2 id="title" class="grid16"><?php echo $i18n->hsc( 'login', 'title' ); ?></h2>
 
 <div id="main" class="grid16">
 
-<div id="side" class="grid4"><div id="sideinner" class="grid3 first">
-<p>Please enter your login details.</p>
+<div id="side" class="grid4"><div id="sideinner" class="grid3">
+<p class="first"></p>
 </div>
 </div>
 
-<div id="content" class="grid12 first">
+<div id="content" class="grid12">
 
-<form action="./" method="post" class="grid12 first">
+<form action="./" method="post" class="grid6">
+<h3><?php echo $i18n->hsc( 'login', 'please_login' ); ?></h3>
 
-<p class="first"><label for="username">User name</label><input type="text" name="username" value="" /></p>
+<fieldset class="tbody">
+<p><label for="username"><?php echo $i18n->hsc( 'login', 'username' ); ?></label><input type="text" name="username" value="" tabindex="1" class="input" /></p>
 
-<p><label for="password">Password</label><input type="password" name="password" value="" /></p>
+<p><label for="password"><?php echo $i18n->hsc( 'login', 'password' ); ?></label><input type="password" name="password" value="" tabindex="2" class="input" /></p>
 
-<p><input type="submit" value="Log in" /></p>
-
+<p><input type="submit" value="<?php echo $i18n->hsc( 'login', 'submit' ); ?>" tabindex="3" /></p>
+</fieldset>
 </form>
 
 </div>

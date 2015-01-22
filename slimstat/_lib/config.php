@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -32,34 +32,33 @@ if ( get_magic_quotes_gpc() ) {
 	$_REQUEST = array_merge( $_GET, $_POST );
 }
 
+require_once ('../auth.php');
+
 class SlimStatConfig {
+//	global $db;
 	/** Whether SlimStat is enabled */
 	var $enabled = true;
-	
-	/** Database connection */
-	var $db_server = 'localhost'; // Leave as localhost unless you know otherwise
-	var $db_username = 'sql'; // The username used to access your database
-	var $db_password = 'sql'; // The password used to access your database
-	var $db_database = 'ps'; // The database containing SlimStat’s tables
-	
+		
 	/** Database tables */
 	var $tbl_hits = 'slimstat_hits'; // Hits table
 	var $tbl_visits = 'slimstat_visits'; // Visits table
 	var $tbl_cache = 'slimstat_cache'; // Cache table
 	
 	/** The full name of your site */
-	var $sitename = '';
+	var $sitename = 'Enough Records';
 	
 	/** Username/password required to login to SlimStat */
 	var $slimstat_use_auth = false;
 	var $slimstat_username = '';
 	var $slimstat_password = '';
 	
-	/** Timezone */
+	/** Timezone. Must be one of PHP's supported timezones.
+	  * See http://php.net/manual/en/timezones.php for a list. */
 	var $timezone = 'Europe/London';
-	// var $timezone = 'America/New_York';
 	
-	/** Which language to use. Default is 'en-gb' */
+	/** Which language to use, e.g. 'en-gb'.
+	  * There must be a corresponding ini file in the _i18n directory.
+	  * If left blank, SlimStat will use the browser’s language. */
 	var $language = 'en-gb';
 	
 	/** Which URL to use for WHOIS lookups */
@@ -73,67 +72,91 @@ class SlimStatConfig {
 		'loan', 'mortgage', 'financ', 'rates', 'debt', 'dollar', 'cash',
 		'traffic', 'babes', 'valium' );
 	
-	var $time_fields = array(
-		'yr' => 'Year',
-		'mo' => 'Month',
-		'dy' => 'Day',
-		'hr' => 'Hour',
-		'mi' => 'Minute' );
-	
-	var $hit_fields = array(
-		'resource' => 'Pages',
-		'country' => 'Countries',
-		'language' => 'Languages',
-		'browser' => 'Browsers',
-		'version' => 'Versions',
-		'platform' => 'Operating systems',
-		'resolution' => 'Screen sizes' );
-	
-	var $visit_fields = array(
-		'remote_ip' => 'Visitors',
-		'search_terms' => 'Search terms',
-		'domain' => 'Domains',
-		'referrer' => 'Referrers',
-		'start_resource' => 'Entry pages',
-		'end_resource' => 'Exit pages',
-		'hits' => 'Hits' );
-	
 	/** Don’t log hits from these IP ranges */
 	var $ignored_ips = array();// '192.168.', '10.', '127.' );
 	
-	/** Whether to record user-agent strings in the database. The database
-	will be smaller if this is disabled */
+	/** Anonymise IPs with a mask. 255.255.255.255 means no masking.
+	0.0.0.0 will disable tracking IPs. **/
+	var $anonymise_ip_mask = '255.255.255.0';
+	
+	/** Whether to record user-agent strings in the database.
+	  * The database will be smaller if this is disabled */
 	var $log_user_agents = true;
 	
-	/** Whether to log hits from crawlers. The database will be smaller if
-	this is disabled */
+	/** Whether to log hits from crawlers.
+	  * The database will be smaller if this is disabled */
 	var $log_crawlers = false;
 	
 	/** Maximum number of minutes between hits in a visit */
 	var $visit_length = 30;
 	
 	function SlimStatConfig() {
-		SlimStat::set_timezone( $this->timezone );
+		//global $config;
+		global $slimstat, $db;
+		$slimstat->set_timezone( $this->timezone );
 		
-		if ( file_exists( '/home/sceneorg/ps/public_html/enough/slimstat/_i18n/'.preg_replace( "[^A-Za-z\-]", '', $this->language ).'.php' ) ) {
-			require_once( '/home/sceneorg/ps/public_html/enough/slimstat/_i18n/'.preg_replace( "[^A-Za-z\-]", '', $this->language ).'.php' );
-		} else { // fall back on en-gb
-			$this->language = 'en-gb';
-			require_once( '/home/sceneorg/ps/public_html/enough/slimstat/_i18n/en-gb.php' );
+		$this->db_server = $db["host"];
+		$this->db_username = $db["user"];
+		$this->db_database = $db["database"];
+		$this->db_password = $db["password"];
+		
+		// detect language if necessary
+		
+		if ( $this->language == '' ) {
+			$language = $slimstat->determine_language();
+			if ( strlen( $language ) == 5 ) {
+				$this->language = $language;
+			} else {
+				if ( $handle = opendir( realpath( dirname( dirname( __FILE__ ) ) ).'/_i18n' ) ) {
+					while ( false !== ( $file = readdir( $handle ) ) ) {
+						if ( $file{0} != '.' && strstr( $file, '.' ) ) {
+							list( $filename, $extn ) = explode( '.', $file, 2 );
+							if ( $extn == 'ini' && strtolower( substr( $filename, 0, 2 ) ) == $language ) {
+								$this->language = $filename;
+								break;
+							}
+						}
+					}
+					closedir( $handle );
+				}
+			}
 		}
 		
+		// check if i18n file exists
+		
+		if ( !file_exists( realpath( dirname( dirname( __FILE__ ) ) ).'/_i18n/'.preg_replace( "[^A-Za-z\-]", '', $this->language ).'.ini' ) ) {
+			$this->language = 'en-gb';
+		}
+		
+		require_once( realpath( dirname( __FILE__ ) ).'/i18n.php' );
+		
+		// set locale
+		
 		if ( mb_strlen( $this->language ) == 5 ) {
-			setlocale( LC_ALL, mb_substr( $this->language, 0, 2 ).'_'.mb_strtoupper( mb_substr( $this->language, 3, 2 ) ).'.utf8' );
+			$locale = mb_substr( $this->language, 0, 2 ).'_'.mb_strtoupper( mb_substr( $this->language, 3, 2 ) );
 		} else {
-			setlocale( LC_ALL, mb_substr( $this->language, 0, 2 ).'_'.mb_strtoupper( mb_substr( $this->language, 0, 2 ) ).'.utf8' );
+			$locale = mb_substr( $this->language, 0, 2 ).'_'.mb_strtoupper( mb_substr( $this->language, 0, 2 ) );
+		}
+		
+		if ( setlocale( LC_ALL, $locale.'.utf8' ) === false ) {
+			setlocale( LC_ALL, $locale );
 		}
 	}
 	
+	/*var $instance;
+	
 	function &get_instance() {
-		static $instance = array();
+		global $instance;
+		
+		$instance = array();
 		if ( empty( $instance ) ) {
-			$instance[] =& new SlimStatConfig();
+			// Assigning the return value of new by reference is deprecated in PHP 5.3
+			//if ( version_compare( PHP_VERSION, '5.3.0' ) >= 0 ) {
+				$instance[] = new SlimStatConfig();
+			//} else {
+			//	$instance[] =& new SlimStatConfig();
+			//}
 		}
 		return $instance[0];
-	}
+	}*/
 }

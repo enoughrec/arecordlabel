@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,10 +19,10 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-require_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/config.php' );
-require_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/functions.php' );
+require_once( realpath( dirname( __FILE__ ) ).'/_lib/config.php' );
+require_once( realpath( dirname( __FILE__ ) ).'/_lib/functions.php' );
 
-header( 'Content-type: text/plain' );
+header( 'Content-type: text/plain; charset=UTF-8' );
 
 $config = SlimStatConfig::get_instance();
 
@@ -254,3 +254,13 @@ while ( list( $visit ) = mysql_fetch_row( $select_old_result ) ) {
 		echo 'Error: '.mysql_error( $connection )."\n";
 	}
 }
+
+// empty cache (in case of old data showing zeroes)
+
+echo 'Emptying cache...'."\n";
+
+$cache_query = 'DELETE FROM `'.SlimStat::esc( $config->db_database ).'`.`'.SlimStat::esc( $config->tbl_cache ).'` ';
+$cache_query .= 'WHERE `app_version`=\''.SlimStat::esc( SlimStat::app_version() ).'\'';
+@mysql_query( $cache_query, $connection );
+
+echo 'Done.'."\n";

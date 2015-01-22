@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,8 +19,8 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-include_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/config.php' );
-include_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/functions.php' );
+include_once( realpath( dirname( __FILE__ ) ).'/_lib/config.php' );
+include_once( realpath( dirname( __FILE__ ) ).'/_lib/functions.php' );
 
 class SlimStatRecord {
 	var $config;
@@ -32,32 +32,39 @@ class SlimStatRecord {
 			return;
 		}
 		
+		// ignore hits from users who are logged in to slimstat
+		if ( isset( $_COOKIE['slimstatuser'] ) &&
+		     $_COOKIE['slimstatuser'] == SlimStat::build_cookie( $this->config->slimstat_username, $this->config->slimstat_password ) ) {
+			return;
+		}
+		
 		$data = array();
-		$data['remote_ip'] = $this->_determine_remote_ip();
+		$data['remote_ip'] = mb_substr( $this->_determine_remote_ip(), 0, 15 );
 		// check whether to ignore this hit
 		foreach ( $this->config->ignored_ips as $ip ) {
 			if ( mb_strpos( $data['remote_ip'], $ip ) === 0 ) {
-				error_log( 'ignored ip '.$ip.' '.$data['remote_ip'] );
 				return;
 			}
 		}
 		
 		$data['referrer'] = ( isset( $_SERVER['HTTP_REFERER'] ) ) ? $_SERVER['HTTP_REFERER'] : '';
 		$url = parse_url( $data['referrer'] );
+		$data['referrer'] = mb_substr( SlimStat::utf8_encode( $data['referrer'] ), 0, 255 );
 		
-		$data['country']  = $this->_determine_country( $data['remote_ip'] );
-		$data['language'] = $this->_determine_language();
+		$data['country']  = $this->_determine_country( $data['remote_ip'] ); // always 2 chars, no need to truncate
+		$data['language'] = mb_substr( SlimStat::determine_language(), 0, 255 );
 		$data['domain']   = ( isset( $url['host'] ) ) ? mb_eregi_replace( '^www.', '', $url['host'] ) : '';
+		$data['domain']   = mb_substr( $data['domain'], 0, 255 );
 		
-		$data['search_terms'] = $this->_determine_search_terms( $url );
+		$data['search_terms'] = mb_substr( SlimStat::utf8_encode( $this->_determine_search_terms( $url ) ), 0, 255 );
 		
 		$data['resolution'] = '';
 		if ( array_key_exists( 'slimstat_resolution', $GLOBALS ) ) {
-			$data['resolution'] = $GLOBALS['slimstat_resolution'];
+			$data['resolution'] = mb_substr( $GLOBALS['slimstat_resolution'], 0, 10 );
 		}
 		$data['title'] = '';
 		if ( array_key_exists( 'slimstat_title', $GLOBALS ) ) {
-			$data['title'] = $GLOBALS['slimstat_title'];
+			$data['title'] = mb_substr( SlimStat::utf8_encode( $GLOBALS['slimstat_title'] ), 0, 255 );
 		}
 		
 		if ( isset( $_SERVER['REQUEST_URI'] ) ) {
@@ -70,12 +77,16 @@ class SlimStatRecord {
 			$data['resource'] = $_SERVER['PHP_SELF'].'?'.$_SERVER['QUERY_STRING'];
 		} elseif ( isset( $_SERVER['PHP_SELF'] ) ) {
 			$data['resource'] = $_SERVER['PHP_SELF'];
+		} else {
+			$data['resource'] = '';
 		}
+		$data['resource'] = mb_substr( SlimStat::utf8_encode( $data['resource'] ), 0, 255 );
 		
 		$browser = $this->_parse_user_agent( $_SERVER['HTTP_USER_AGENT'] );
-		$data['platform'] = $browser['platform'];
-		$data['browser']  = $browser['browser'];
-		$data['version']  = SlimStat::parse_version( $browser['version'] );
+		$data['platform'] = mb_substr( $browser['platform'], 0, 50 );
+		$data['browser']  = mb_substr( $browser['browser'], 0, 50 );
+		$data['version']  = mb_substr( SlimStat::parse_version( $browser['version'] ), 0, 15 );
+		
 		// check whether to ignore this hit
 		if ( $data['browser'] == 'Crawler' && $this->config->log_crawlers == false ) {
 			return;
@@ -91,6 +102,9 @@ class SlimStatRecord {
 		);
 		
 		$connection = SlimStat::connect();
+		if ( !$connection ) {
+			return;
+		}
 		
 		// attempt to detect spam
 		
@@ -136,7 +150,7 @@ class SlimStatRecord {
 		@mysql_query( $query, $connection );
 		// error_log( mysql_error( $connection ) );
 		
-		if ( mysql_affected_rows( $connection ) == 0 ) {
+		if ( @mysql_affected_rows( $connection ) == 0 ) {
 			$query = 'INSERT INTO `'.SlimStat::esc( $this->config->db_database ).'`.`'.SlimStat::esc( $this->config->tbl_hits ).'` ( `';
 			$query .= implode( '`, `', array_keys( $data ) ).'`, `'.implode( '`, `', array_keys( $time ) ).'`, `hits` ) VALUES ( ';
 			foreach ( array_values( $data ) as $value ) {
@@ -160,7 +174,7 @@ class SlimStatRecord {
 		// if mysql_affected_rows() == 0, do insert
 		
 		if ( $this->config->log_user_agents == true ) {
-			$data['user_agent'] = SlimStat::esc( $_SERVER['HTTP_USER_AGENT'] );
+			$data['user_agent'] = SlimStat::esc( mb_substr( $_SERVER['HTTP_USER_AGENT'], 0, 255 ) );
 		}
 		
 		$prev_ts = $ts - ( $this->config->visit_length * 60 );
@@ -202,7 +216,7 @@ class SlimStatRecord {
 		@mysql_query( $query, $connection );
 		// error_log( mysql_error( $connection ) );
 		
-		if ( mysql_affected_rows( $connection ) == 0 && $data['domain'] == mb_eregi_replace( '^www.', '', $_SERVER['SERVER_NAME'] ) ) {
+		if ( @mysql_affected_rows( $connection ) == 0 && $data['domain'] == mb_eregi_replace( '^www.', '', $_SERVER['SERVER_NAME'] ) ) {
 			list( $a, $b, $c, $d ) = explode( '.', $data['remote_ip'], 4 );
 			$subnet_ip = $a.'.'.$b.'.'.$c.'.';
 			
@@ -237,7 +251,7 @@ class SlimStatRecord {
 			// error_log( mysql_error( $connection ) );
 		}
 		
-		if ( mysql_affected_rows( $connection ) == 0 ) {
+		if ( @mysql_affected_rows( $connection ) == 0 ) {
 			$query = 'INSERT INTO `'.SlimStat::esc( $this->config->db_database ).'`.`'.SlimStat::esc( $this->config->tbl_visits ).'` ( ';
 			foreach ( array_keys( $data ) as $key ) {
 				if ( $key == 'title' ) {
@@ -279,7 +293,7 @@ class SlimStatRecord {
 	 */
 	function _determine_remote_ip() {
 		$remote_addr = $_SERVER['REMOTE_ADDR'];
-		if ( ( $remote_addr == '127.0.0.1' || $remote_addr == $_SERVER['SERVER_ADDR'] ) &&
+		if ( ( $remote_addr == '127.0.0.1' || $remote_addr == '::1' || $remote_addr == $_SERVER['SERVER_ADDR'] ) &&
 		     array_key_exists( 'HTTP_X_FORWARDED_FOR', $_SERVER ) && $_SERVER['HTTP_X_FORWARDED_FOR'] != '' ) {
 			// There may be multiple comma-separated IPs for the X-Forwarded-For header
 			// if the traffic is passing through more than one explicit proxy. Take the
@@ -290,6 +304,10 @@ class SlimStatRecord {
 			$remote_addr = $remote_addrs[0];
 		}
 		
+		if ( $this->config->anonymise_ip_mask != '' && $this->config->anonymise_ip_mask != '255.255.255.255' ) {
+			$remote_addr = SlimStat::anonymise_ip( $remote_addr, $this->config->anonymise_ip_mask );
+		}
+		
 		return $remote_addr;
 	}
 	
@@ -298,30 +316,13 @@ class SlimStatRecord {
 	 */
 	function _determine_country( $_ip ) {
 		if ( SlimStat::is_geoip_installed() ) {
-			include_once( '/home/sceneorg/ps/public_html/enough/slimstat/_lib/geoip.php' );
-			$gi = geoip_open('/home/sceneorg/ps/public_html/enough/slimstat/_lib/GeoIP.dat', GEOIP_STANDARD );
+			include_once( realpath( dirname( __FILE__ ) ).'/_lib/geoip.php' );
+			$gi = geoip_open( realpath( dirname( __FILE__ ) ).'/_lib/GeoIP.dat', GEOIP_STANDARD );
 			return geoip_country_code_by_addr( $gi, $_ip );
 			geoip_close( $gi );
 		} else {
 			return '';
 		}
-	}
-	
-	/**
-	 * Determines the language used by the visitor’s browser.
-	 */
-	function _determine_language() {
-		global $_SERVER;
-		
-		if ( isset( $_SERVER['HTTP_ACCEPT_LANGUAGE'] ) ) {
-			// Capture up to the first delimiter (comma found in Safari)
-			preg_match( "/([^,;]*)/", $_SERVER['HTTP_ACCEPT_LANGUAGE'], $langs );
-			$lang_choice = $langs[0];
-		} else {
-			$lang_choice = '';
-		}
-		
-		return strtolower( $lang_choice );
 	}
 	
 	/**
@@ -370,7 +371,7 @@ class SlimStatRecord {
 					}
 					
 					if ( isset( $q[ $sniff[1] ] ) ) {
-						$search_terms = trim( stripslashes( utf8_decode( $q[ $sniff[1] ] ) ) );
+						$search_terms = trim( stripslashes( $q[ $sniff[1] ] ) );
 						break;
 					}
 				}
@@ -393,9 +394,15 @@ class SlimStatRecord {
 		// platform
 		if ( preg_match( '/Win/', $_ua ) ) {
 			$browser['platform'] = 'Windows';
+		} elseif ( preg_match( '/iPod/', $_ua ) ) {
+			$browser['platform'] = 'iPod';
+		} elseif ( preg_match( '/iPad/', $_ua ) ) {
+			$browser['platform'] = 'iPad';
 		} elseif ( preg_match( '/iPhone/', $_ua ) ) {
 			$browser['platform'] = 'iPhone';
-		} elseif ( preg_match( '/Symbian/', $_ua ) ) {
+		} elseif ( preg_match( '/Android/', $_ua ) ) {
+			$browser['platform'] = 'Android';
+		} elseif ( preg_match( '/Symbian/', $_ua ) || preg_match( '/SymbOS/', $_ua ) ) {
 			$browser['platform'] = 'Symbian';
 		} elseif ( preg_match( '/Nintendo Wii/', $_ua ) ) {
 			$browser['platform'] = 'Nintendo Wii';
@@ -417,11 +424,13 @@ class SlimStatRecord {
 		     mb_eregi( 'bot', $_ua ) ||
 		     mb_eregi( 'bloglines', $_ua ) ||
 		     mb_eregi( 'dtaagent', $_ua ) ||
+		     mb_eregi( 'feedfetcher', $_ua ) ||
 		     mb_eregi( 'ia_archiver', $_ua ) ||
 		     mb_eregi( 'java', $_ua ) ||
 		     mb_eregi( 'larbin', $_ua ) ||
 		     mb_eregi( 'mediapartners', $_ua ) ||
 		     mb_eregi( 'metaspinner', $_ua ) ||
+		     mb_eregi( 'mobile goo', $_ua ) || // http://help.goo.ne.jp/help/article/1142/
 		     mb_eregi( 'searchmonkey', $_ua ) ||
 		     mb_eregi( 'slurp', $_ua ) ||
 		     mb_eregi( 'spider', $_ua ) ||
@@ -434,6 +443,7 @@ class SlimStatRecord {
 		} else {
 			$sniffs = array( // name regexp, name for display, version regexp, version match, platform (optional)
 				array( 'Opera Mini', 'Opera Mini', "Opera Mini( |/)([[:digit:]\.]+)", 2 ),
+				array( 'Opera', 'Opera', "Version/([[:digit:]\.]+)", 1 ),
 				array( 'Opera', 'Opera', "Opera( |/)([[:digit:]\.]+)", 2 ),
 				array( 'MSIE', 'Internet Explorer', "MSIE ([[:digit:]\.]+)", 1 ),
 				array( 'Epiphany', 'Epiphany', "Epiphany/([[:digit:]\.]+)",  1 ),
@@ -451,8 +461,10 @@ class SlimStatRecord {
 				array( 'Thunderbird', 'Thunderbird', "Thunderbird/([[:digit:]\.]+)",  1 ),
 				array( 'Netscape', 'Netscape', "Netscape[0-9]?/([[:digit:]\.]+)", 1 ),
 				array( 'OmniWeb', 'OmniWeb', "OmniWeb/([[:digit:]\.]+)", 1 ),
+				array( 'Iron', 'Iron', "Iron/([[:digit:]\.]+)", 1 ),
 				array( 'Chrome', 'Chrome', "Chrome/([[:digit:]\.]+)", 1 ),
 				array( 'Chromium', 'Chromium', "Chromium/([[:digit:]\.]+)", 1 ),
+				array( 'Safari', 'Safari', "Version/([[:digit:]\.]+)", 1 ),
 				array( 'Safari', 'Safari', "Safari/([[:digit:]\.]+)", 1 ),
 				array( 'iCab', 'iCab', "iCab/([[:digit:]\.]+)", 1 ),
 				array( 'Konqueror', 'Konqueror', "Konqueror/([[:digit:]\.]+)", 1, 'Linux' ),
@@ -468,14 +480,16 @@ class SlimStatRecord {
 			);
 			
 			foreach ( $sniffs as $sniff ) {
-				if ( mb_ereg( $sniff[0], $_ua ) ) {
+				if ( mb_strpos( $_ua, $sniff[0] ) !== false ) {
 					$browser['browser'] = $sniff[1];
 					mb_ereg( $sniff[2], $_ua, $b );
-					$browser['version'] = $b[ $sniff[3] ];
-					if ( sizeof( $sniff ) == 5 ) {
-						$browser['platform'] = $sniff[4];
+					if ( sizeof( $b ) > $sniff[3] ) {
+						$browser['version'] = $b[ $sniff[3] ];
+						if ( sizeof( $sniff ) == 5 ) {
+							$browser['platform'] = $sniff[4];
+						}
+						break;
 					}
-					break;
 				}
 			}
 		}

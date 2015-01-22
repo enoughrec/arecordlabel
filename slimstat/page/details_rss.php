@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -22,7 +22,7 @@
 function render_page_rss() {
 	global $config, $i18n, $filters;
 	
-	header( 'Content-Type: application/rss+xml' );
+	header( 'Content-Type: application/rss+xml; charset=UTF-8' );
 	echo '<'.'?xml version="1.0" encoding="UTF-8"?'.">\n";
 	echo '<rss version="2.0">'."\n";
 	echo '<channel>'."\n";
@@ -53,13 +53,13 @@ function render_page_rss() {
 		echo '<link>http://'.$_SERVER['SERVER_NAME'].dirname( $_SERVER['PHP_SELF'] ).'/'.filter_url( $filters ).'</link>'."\n";
 		echo '<description>';
 		if ( array_key_exists( 'yr', $data ) ) {
-			echo 'Hits: '.array_sum( $data['yr'] ).'&lt;br /&gt;';
+			echo ucfirst( $i18n->hsc( 'details', 'hits' ) ).': '.array_sum( $data['yr'] ).'&lt;br /&gt;';
 		}
 		if ( array_key_exists( 'hits', $data ) ) {
-			echo 'Visits: '.array_sum( $data['hits'] ).'&lt;br /&gt;';
+			echo ucfirst( $i18n->hsc( 'details', 'visits' ) ).': '.array_sum( $data['hits'] ).'&lt;br /&gt;';
 		}
 		if ( array_key_exists( 'remote_ip', $data ) ) {
-			echo 'Unique IPs: '.sizeof( $data['remote_ip'] ).'&lt;br /&gt;';
+			echo ucfirst( $i18n->hsc( 'details', 'unique_ips' ) ).': '.sizeof( $data['remote_ip'] ).'&lt;br /&gt;';
 		}
 		
 		echo '</description>'."\n";

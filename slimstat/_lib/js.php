@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -19,21 +19,38 @@
  * 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
  */
 
-$base_href = '';
-if ( ( array_key_exists( 'HTTPS', $_SERVER ) && $_SERVER['HTTPS'] == 'on' ) ) {
-	$base_href .= 'https://';
-} else {
-	$base_href .= 'http://';
-}
-$base_href .= $_SERVER['SERVER_NAME'];
+$base_href = dirname( $_SERVER['SCRIPT_NAME'] );
 
-if ( dirname( $_SERVER['SCRIPT_NAME'] ) != '/' ) {
-	$base_href .= dirname( $_SERVER['SCRIPT_NAME'] );
-}
-
-header( 'Content-type: text/javascript' );
+header( 'Content-type: text/javascript; charset=UTF-8' );
 
 ?>
-document.write('<img src="<?php echo $base_href; ?>/stats_js.php?ref=' + escape(document.referrer) + '&amp;url=' + escape(document.URL));
-document.write('&amp;res=' + escape(screen.width+'x'+screen.height) + '&amp;ttl=' + encodeURIComponent(document.title) + '" style="position:absolute;top:-10px;left:0"');
-document.writeln(' width="1" height="1" alt="" />');
+function slimstatAddLoadEvent(func) {
+	var oldonload = window.onload;
+	if (typeof window.onload != 'function') {
+		window.onload = func;
+	} else {
+		window.onload = function() {
+			if (oldonload) {
+				oldonload();
+			}
+			func();
+		}
+	}
+}
+
+slimstatAddLoadEvent(function() {
+	var ssSrc = '<?php echo $base_href; ?>/stats_js.php?ref=' + encodeURIComponent(document.referrer)
+		+ '&url=' + encodeURIComponent(document.URL)
+		+ '&res=' + encodeURIComponent(screen.width+'x'+screen.height)
+		+ '&ttl=' + encodeURIComponent(document.title)
+		+ '&ts=<?php echo time(); ?>';
+	
+	var ssImg = document.createElement('img');
+	ssImg.setAttribute('id', 'slimstat<?php echo htmlspecialchars( SlimStat::app_version() ); ?>img');
+	ssImg.setAttribute('src', ssSrc);
+	ssImg.setAttribute('style', 'position:absolute;top:-10px;left:0');
+	ssImg.setAttribute('width', '1');
+	ssImg.setAttribute('height', '1');
+	ssImg.setAttribute('alt', '');
+	document.body.appendChild(ssImg);
+});

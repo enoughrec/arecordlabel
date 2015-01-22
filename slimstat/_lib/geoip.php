@@ -490,13 +490,3 @@ function geoip_region_by_addr ($gi,$addr) {
   $ipnum = ip2long($addr);
   return _get_region($gi, $ipnum);
 }
-
-function getdnsattributes ($l,$ip){
-  $r = new Net_DNS_Resolver();
-  $r->nameservers = array("ws1.maxmind.com");
-  $p = $r->search($l."." . $ip .".s.maxmind.com","TXT","IN");
-  $str = is_object($p->answer[0])?$p->answer[0]->string():'';
-  ereg("\"(.*)\"",$str,$regs);
-  $str = $regs[1];
-  return $str;
-}

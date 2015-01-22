@@ -2,7 +2,7 @@
 
 /*
  * SlimStat: simple web analytics
- * Copyright (C) 2009 Pieces & Bits Limited
+ * Copyright (C) 2010 Pieces & Bits Limited
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -23,30 +23,30 @@ page_head();
 
 ?>
 
-<h2 id="title" class="grid16">Welcome to SlimStat</h2>
+<h2 id="title" class="grid16"><?php echo $i18n->hsc( 'welcome', 'title' ); ?></h2>
 <div id="main" class="grid16">
 <div id="side" class="grid4"></div>
 <div id="content" class="grid12">
 <div class="grid12">
-<p class="first">Congratulations! You have successfully installed SlimStat.</p>
-<p>To get started, you need to include SlimStat in your site’s code for each page where you would like stats to be counted.</p>
-<p>You can use either JavaScript or PHP to do this.</p>
-<p>When you have done it, you’ll need to wait for people to start visiting your site.</p>
-<p>Enjoy viewing your stats!</p>
+<p class="first"><?php echo $i18n->hsc( 'welcome', 'p1' ); ?></p>
+<p><?php echo $i18n->hsc( 'welcome', 'p2' ); ?></p>
+<p><?php echo $i18n->hsc( 'welcome', 'p3' ); ?></p>
+<p><?php echo $i18n->hsc( 'welcome', 'p4' ); ?></p>
+<p><?php echo $i18n->hsc( 'welcome', 'p5' ); ?></p>
 
-<h3>Using JavaScript</h3>
-<p>Use code similar to this:</p>
+<h3><?php echo $i18n->hsc( 'welcome', 'javascript' ); ?></h3>
+<p><?php echo $i18n->hsc( 'welcome', 'javascript_text' ); ?></p>
 <pre>&lt;script type="text/javascript" src="<?php echo dirname( $_SERVER['SCRIPT_NAME'] ); ?>/?js"&gt;&lt;/script&gt;</pre>
 
-<h3>Using PHP</h3>
-<p>Use code similar to one of these two examples:</p>
+<h3><?php echo $i18n->hsc( 'welcome', 'php' ); ?></h3>
+<p><?php echo $i18n->hsc( 'welcome', 'php_text1' ); ?></p>
 <pre>&lt;?php
 @include_once( $_SERVER['DOCUMENT_ROOT'].'<?php echo dirname( $_SERVER['SCRIPT_NAME'] ); ?>/stats_include.php' );
 ?&gt;</pre>
 <pre>&lt;?php
 @include_once( '<?php echo dirname( dirname( __FILE__ ) ); ?>/stats_include.php' );
 ?&gt;</pre>
-<p>Don’t use <em>both</em> examples, because then each hit will be counted twice.</p>
+<p><?php echo $i18n->hsc( 'welcome', 'php_text2' ); ?></p>
 
 </div></div></div>
 
