@@ -30,6 +30,8 @@ React.renderComponent(
             <Route name="tag"       path="tag/:tag" handler={Releases} data={enrReleases} />
             <Route name="release"   path="release/:cat" handler={ReleaseDetail} data={enrReleases} />
             <Route name="about"     path="about" handler={About} data={enrReleases} />
+            <Route name="blog"      path="blog" handler={Blog} articles={articles} data={enrReleases} />
+            <Route name="blogPage"  path="blog/:titleSlug" handler={Blog} articles={articles} data={enrReleases} />
         </Route>
     </Routes>,
     document.body
