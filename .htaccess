@@ -13,27 +13,4 @@
     RewriteRule  ^blog/(.*)$         index.html?/$1 [NC,L]
 
 
-
-    RewriteCond %{HTTP:Accept-Encoding} gzip
-    RewriteCond %{REQUEST_FILENAME}.gz -f
-    RewriteRule (.*\.(js|css))$ $1.gz [L]
-
-    
-
-    
-
-    # RewriteRule ^(.*)+$  index.html?/$1 [NC,L]
-
 </IfModule>
-
-AddEncoding x-gzip .gz
-
-<FilesMatch .*\.css.gz>
-    ForceType text/css
-</FilesMatch>
-
-<FilesMatch .*\.js.gz>
-    ForceType application/x-javascript
-</FilesMatch>
-
-
