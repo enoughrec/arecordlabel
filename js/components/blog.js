@@ -4,47 +4,36 @@
 
 
 var React = require('react');
-var Link = require('react-router').Link;
 
+var Router = require('react-router');
+var Link = Router.Link;
+
+var ArticleList = require('./article-list');
 var Article = require('./article');
 
 var Blog = React.createClass({
-    renderTitles:function(){
-        var articles = this.props.articles;
-        var comps = articles.map(function(article){
-            var json = article.toJSON();
-            return (
-                <Link className="article-link" to={'/blog/' + json.slug}>
-                    <div className="article-title">{json.title}</div>
-                    <div className="article-date">{article.get('date').format('YYYY-MM-DD')}</div>
-                </Link>
-            )
-        });
-        return comps;
+    getArticle: function(slug){
+        return this.props.articles.getBySlug(slug);
     },
     render: function() {
-        if (this.props.params.titleSlug) {
-            var article = this.props.articles.getBySlug(this.props.params.titleSlug);
-            if (!article) {
-                this.transitionTo('/');
-            } else {
-                return (
-                    <Article data={article} />
-                );    
-            }
-            
-        } else {
-
-            var listing = this.renderTitles();
-
-            return (
-                <div className="release-full article">
-                    <h1>Blog</h1>
-                    {listing}
-                </div>
-            );    
-        }
+        var toRender;
+        var slug = this.props.params.titleSlug;
         
+        var article = this.getArticle(slug);
+        if (slug) {
+            if (article) {
+                toRender = <Article data={article} />;
+            } else {
+                Router.transitionTo('blog');
+            }
+        } else {
+            toRender = <ArticleList articles={this.props.articles} />
+        }
+        return (
+            <div className="release-full article">
+                {toRender}
+            </div>
+        );    
     }
 
 });
