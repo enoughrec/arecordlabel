@@ -528,6 +528,8 @@ strong {
     max-width: 700px;
     margin: 0 auto;
     border-bottom: 1px solid #eaeaea;
+    position: relative;
+    z-index: 1;
 }
 .list-article:last-child {
     border-bottom: none;   
@@ -536,6 +538,27 @@ strong {
 .list-article .right-content {
     width: calc(100% - 140px);
     display: inline-block;
+}
+
+.list-article .date {
+    position: absolute;
+    top: 96px;
+    left: -8px;
+    -webkit-transform: rotate(-90deg);
+    -webkit-transform-origin: bottom left;
+    -moz-transform: rotate(-90deg);
+    -moz-transform-origin: bottom left;
+    -ms-transform: rotate(-90deg);
+    -ms-transform-origin: bottom left;
+    transform: rotate(-90deg);
+    transform-origin: bottom left;
+    text-align: right;
+    width: 120px;
+    color: #9a9a9a;
+    font-size: 16px;
+    line-height: 1.3;
+    overflow: hidden;
+    height: 40px;
 }
 
 .list-article a > h1 {
