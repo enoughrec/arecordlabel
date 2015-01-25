@@ -23,22 +23,6 @@ var About = React.createClass({
 	
 	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We been active since 2001 and have no focus on any specific genre.</p>
 
-	<h1>Mailing List</h1>
-
-	<p>Subscribe to our announcemente mailing list</p>
-
-	<p>
-	<div id="mc_embed_signup">
-	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-	    <div id="mc_embed_signup_scroll">
-		<input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
-	    <div id="outside"><input type="text" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabindex="-1" /></div>
-	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
-	    </div>
-	</form>
-	</div>
-	</p>
-
 	<h1>Release Terms</h1>
 	
 	<p>Our entire catalogue is free for download.</p>
@@ -61,22 +45,34 @@ var About = React.createClass({
 	<li><b>[Esc.] Laboratory</b>, tagged as <Tag tag="[Esc.]">[Esc.]</Tag>. This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
 	<li><b>Thisko</b>, tagged as <Tag tag="thisk">thisk</Tag>. This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
 	</ul>
-	
-	<h1>News</h1>
 
-	<p>We are present on all major social networks (<a href="https://www.facebook.com/enoughrec">facebook</a>, <a href="https://twitter.com/enoughrec">twitter</a> and <a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts">google plus</a>).</p>
-	
+	<h1>Mailing List</h1>
+
+	<p>
+	<div id="mc_embed_signup">
+	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    <div id="mc_embed_signup_scroll">
+		<input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
+	    <div id="outside"><input type="text" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabindex="-1" /></div>
+	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
+	    </div>
+	</form>
+	</div>
+	</p>
+
 	<h1>Contact</h1>
 	
-	<p>Any further inquiries about Enough Records please contact Filipe 'ps' Cruz by <a href="mailto:psenough@gmail.com">email</a>.</p>
+	<p>We are present on all major social networks (<a href="https://www.facebook.com/enoughrec">facebook</a>, <a href="https://twitter.com/enoughrec">twitter</a> and <a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts">google plus</a>).</p>
+	
+	<p>Any further inquiries about Enough Records please contact Filipe 'ps' Cruz by <a href="mailto:ps@enoughrecords.org">email</a>.</p>
 	
 	<h1>Acknowledgements</h1>
 	
-	<p>Founded in 2001 by Fred, H4rv3st and ps.</p>
-		
-	<p>Our thanks go out to all the folks who helped improve, run and promote Enough Records throughout the years. You are too many to list without risk of forgetting someone important. You know who you are, thank you, Enough Records would not be what it is without you.</p>
+	<p>Enough Records was founded in 2001 by Fred, H4rv3st and ps.</p>
+	
+	<p>Thanks to everyone who helped us improve, run and promote Enough Records throughout the years, Enough Records would not be what it is without you.</p>
 
-	<p>Current website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, reuse and contribute.</p>
+	<p>Website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, re-use and contribute.</p>
 	
 </div>
 
