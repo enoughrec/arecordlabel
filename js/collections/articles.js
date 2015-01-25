@@ -9,12 +9,23 @@ var Article = Backbone.Model.extend({
     
     parse: function(data){
 
+        // convert html to text
+        var el = document.createElement('div');
+        el.innerHTML = data.body;
+        var firstP = el.querySelector('p:first-child');
+
+        var text = firstP.textContent || firstP.innerText || '';
+        var firstImage = el.querySelector('img');
+        // text = text.substr(0,300)+'...';
+
         var data = {
             title: data.attributes.title,
             date: moment(data.attributes.date),
             body: data.body,
             slug: slugify(data.attributes.title).replace(/[:'']/g, '').toLowerCase(),
-            tags: data.tags
+            tags: data.tags,
+            description: text,
+            image: firstImage.src
         }
         
         return data;
