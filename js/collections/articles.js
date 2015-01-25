@@ -13,7 +13,8 @@ var Article = Backbone.Model.extend({
             title: data.attributes.title,
             date: moment(data.attributes.date),
             body: data.body,
-            slug: slugify(data.attributes.title)
+            slug: slugify(data.attributes.title),
+            tags: data.tags
         }
         
         return data;
