@@ -573,9 +573,9 @@ p > strong:last-child {
     width: 120px;
     color: #9a9a9a;
     font-size: 16px;
-    line-height: 1.0;
+    line-height: 1.3;
     overflow: hidden;
-    height: 33px;
+    height: 40px;
 }
 .top-bar {
     position: fixed;
