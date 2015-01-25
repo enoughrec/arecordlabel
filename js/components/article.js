@@ -21,10 +21,15 @@ var Article = React.createClass({
             article = this.props.data, 
             time = readingTime(json.body);
 
+        var date = article.get('date');
+        var year = date.format('YYYY');
+        var dayMonth = date.format('MMMM Do');
+        var dateString = [dayMonth, (<br/>), year];
+
         return (
             <div className="centered-article">
                 <h1 className="article-title">{json.title}</h1>
-                <div className="article-date">{article.get('date').format('MMMM Do YYYY')}</div>
+                <div className="article-date">{dateString}</div>
                 <div>{time.text}</div>
                 <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
             </div>
