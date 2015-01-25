@@ -18,6 +18,7 @@
     "react-router": "^0.5.0",
     "react-tools": "^0.10.0",
     "reactify": "^0.13.1",
+    "reading-time": "0.0.1",
     "slugify": "^0.1.0",
     "uglify-js": "~2.4.0",
     "underscore": "~1.5.2",
