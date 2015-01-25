@@ -9,7 +9,7 @@
 var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
-var readingTime = require('reading-time');
+
 
 var Article = React.createClass({
     componentDidMount: function(){
@@ -19,7 +19,7 @@ var Article = React.createClass({
 
         var json    = this.props.data.toJSON(),
             article = this.props.data, 
-            time = readingTime(json.body);
+            time = json.readingTime.text;
 
         var date = article.get('date');
         var year = date.format('YYYY');
@@ -30,7 +30,7 @@ var Article = React.createClass({
             <div className="centered-article">
                 <h1 className="article-title">{json.title}</h1>
                 <div className="article-date">{dateString}</div>
-                <div>{time.text}</div>
+                <div>{time}</div>
                 <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
             </div>
         );

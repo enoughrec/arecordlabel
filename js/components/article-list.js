@@ -13,12 +13,14 @@ var ArticleList = React.createClass({
         var comps = articles.map(function(article){
             var json = article.toJSON();
             return (
-                <Link className="article-link" to={'/blog/' + json.slug}>
+                <div className="list-article">
+                    <Link className="article-link" to={'/blog/' + json.slug}>
                     <img src={json.image} />
-                    <h1 className="title">{json.title}</h1>
+                    <h1 className="title">{json.title}</h1></Link>
                     <div className="date">{article.get('date').format('YYYY-MM-DD')}</div>
+                    <div className="list-time">{json.readingTime.text}</div>
                     <div className="teaser">{json.description}</div>
-                </Link>
+                </div>
             )
         });
         return comps;

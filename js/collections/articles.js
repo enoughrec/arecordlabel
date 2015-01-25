@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var _ = require('lodash');
 var slugify = require('slugify');
 var moment = require('moment');
+var readingTime = require('reading-time');
 
 var data = require('../../data/articles');
 
@@ -25,7 +26,8 @@ var Article = Backbone.Model.extend({
             slug: slugify(data.attributes.title).replace(/[:'']/g, '').toLowerCase(),
             tags: data.tags,
             description: text,
-            image: firstImage.src
+            image: firstImage.src,
+            readingTime: readingTime(data.body)
         }
         
         return data;
