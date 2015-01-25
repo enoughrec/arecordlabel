@@ -14,12 +14,13 @@ var ArticleList = React.createClass({
             var json = article.toJSON();
             return (
                 <div className="list-article">
-                    <Link className="article-link" to={'/blog/' + json.slug}>
-                    <img src={json.image} />
-                    <h1 className="title">{json.title}</h1></Link>
-                    <div className="date">{article.get('date').format('YYYY-MM-DD')}</div>
-                    <div className="list-time">{json.readingTime.text}</div>
-                    <div className="teaser">{json.description}</div>
+                    <Link to={'/blog/' + json.slug}><img src={json.image} /></Link>
+                    <div className="right-content">
+                        <Link to={'/blog/' + json.slug}><h1 className="title">{json.title}</h1></Link>
+                        <div className="date">{article.get('date').format('YYYY-MM-DD')}</div>
+                        <div className="reading-time">{json.readingTime.text}</div>
+                        <div className="description">{json.description}</div>
+                    </div>
                 </div>
             )
         });
@@ -27,7 +28,12 @@ var ArticleList = React.createClass({
     },
     render: function() {
         var list = this.renderTitles();
-        return (<div>{list}</div>);
+        return (
+            <div>
+                <h1>Blog</h1>
+                {list}
+            </div>
+        );
     }
 
 });

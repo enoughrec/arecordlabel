@@ -522,6 +522,31 @@ strong {
     font-weight: bold;
 }
 
+.list-article {
+    min-height: 130px;
+    margin-bottom: 18px;
+}
+
+.list-article .right-content {
+    margin-left: 140px;
+}
+
+.list-article a {
+    text-decoration: none;
+    vertical-align: center;
+    display: inline-block;
+    height: 100%;
+}
+
+.list-article a:first-child {
+    float: left;
+    margin-right: 8px;
+}
+
+.list-article a:first-child  img {
+    max-width: 100px;
+}
+
 .aligncenter {
     margin: 0 auto;
     display: block;

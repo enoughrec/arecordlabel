@@ -10,14 +10,25 @@ var Article = Backbone.Model.extend({
     
     parse: function(data){
 
-        // convert html to text
+        // convert html to text via browser parser
         var el = document.createElement('div');
         el.innerHTML = data.body;
         var firstP = el.querySelector('p:first-child');
 
         var text = firstP.textContent || firstP.innerText || '';
         var firstImage = el.querySelector('img');
-        // text = text.substr(0,300)+'...';
+
+        if (firstImage) {
+            firstImage = firstImage.src;
+        } else {
+            // use the blue e logo as a backup, if there is no image in the article
+            firstImage = '/covers/enrmix17.jpg';
+        }
+        
+        // snip long first paragraphs at 300 characters
+        if (text.length > 303) {
+           text = text.substr(0,300)+'...'; 
+        }
 
         var data = {
             title: data.attributes.title,
@@ -26,7 +37,7 @@ var Article = Backbone.Model.extend({
             slug: slugify(data.attributes.title).replace(/[:'']/g, '').toLowerCase(),
             tags: data.tags,
             description: text,
-            image: firstImage.src,
+            image: firstImage,
             readingTime: readingTime(data.body)
         }
         
