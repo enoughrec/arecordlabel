@@ -525,22 +525,33 @@ strong {
 .list-article {
     min-height: 130px;
     margin-bottom: 18px;
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .list-article .right-content {
-    margin-left: 140px;
+    width: calc(100% - 140px);
+    display: inline-block;
 }
 
-.list-article a {
+.list-article a > h1 {
     text-decoration: none;
-    vertical-align: center;
+    
     display: inline-block;
     height: 100%;
 }
 
-.list-article a:first-child {
-    float: left;
+.list-article .image-link {
     margin-right: 8px;
+    width: 100px;
+    height: 100px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 14px;
+
 }
 
 .list-article a:first-child  img {
