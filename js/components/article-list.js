@@ -14,8 +14,8 @@ var ArticleList = React.createClass({
             var json = article.toJSON();
             return (
                 <Link className="article-link" to={'/blog/' + json.slug}>
-                    <div className="article-title">{json.title}</div>
-                    <div className="article-date">{article.get('date').format('YYYY-MM-DD')}</div>
+                    <h1 className="title">{json.title}</h1>
+                    <div className="date">{article.get('date').format('YYYY-MM-DD')}</div>
                 </Link>
             )
         });

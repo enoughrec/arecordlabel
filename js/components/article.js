@@ -12,6 +12,9 @@ var Link = Router.Link;
 var readingTime = require('reading-time');
 
 var Article = React.createClass({
+    componentDidMount: function(){
+        document.title = this.props.data.get('title');
+    },
     render: function() {
 
         var json    = this.props.data.toJSON(),
@@ -19,14 +22,11 @@ var Article = React.createClass({
             time = readingTime(json.body);
 
         return (
-            <div className="release-full article">
-                <Link to="/blog">back</Link>
-                <div className="centered-article">
-                    <h1 className="article-title">{json.title}</h1>
-                    <div className="article-date">{article.get('date').format('YYYY-MM-DD')}</div>
-                    <div>{time.text}</div>
-                    <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
-                </div>
+            <div className="centered-article">
+                <h1 className="article-title">{json.title}</h1>
+                <div className="article-date">{article.get('date').format('MMMM Do YYYY')}</div>
+                <div>{time.text}</div>
+                <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
             </div>
         );
     }

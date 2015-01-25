@@ -540,6 +540,14 @@ p > strong:last-child {
     font-style: normal;
     font-size: 15px;
     line-height: 1.5;
+    position: relative;
+    padding-left: 33px;
+}
+
+.centered-article h1 {
+    font-size: 40px;
+    margin: 12px 0 6px;
+    line-height: 1.1;
 }
 
 .centered-article p {
@@ -547,7 +555,20 @@ p > strong:last-child {
     margin: 18px 0;
     line-height: inherit;
 }
-
+.article-date {
+    position: absolute;
+    top: 90px;
+    left: 25px;
+    transform: rotate(-90deg);
+    transform-origin: bottom left;
+    text-align: right;
+    max-width: 120px;
+    color: #9a9a9a;
+    font-size: 16px;
+    line-height: 1.0;
+    overflow: hidden;
+    height: 33px;
+}
 .top-bar {
     position: fixed;
     z-index: 10;
