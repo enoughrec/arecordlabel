@@ -3,6 +3,7 @@ var _ = require('lodash');
 var slugify = require('slugify');
 var moment = require('moment');
 var readingTime = require('reading-time');
+var url = require('url');
 
 var data = require('../../data/articles');
 
@@ -15,6 +16,20 @@ var Article = Backbone.Model.extend({
         el.innerHTML = data.body;
         var firstP = el.querySelector('p:first-child');
 
+        // convert all non relative or site links to open in new window
+        var links = el.querySelectorAll('a');
+        var currentHost = document.location.host;
+
+        [].forEach.call(links, function(link){
+            var href = link.href;
+            var parsedUrl = url.parse(href);
+            if (parsedUrl.host !== currentHost) {
+                link.setAttribute('target', '_blank');
+            }
+        });
+
+        data.body = el.innerHTML;
+
         var text = firstP.textContent || firstP.innerText || '';
         var firstImage = el.querySelector('img');
 
@@ -25,9 +40,9 @@ var Article = Backbone.Model.extend({
             firstImage = '/covers/enrmix17.jpg';
         }
         
-        // snip long first paragraphs at 300 characters
-        if (text.length > 303) {
-           text = text.substr(0,300)+'...'; 
+        // snip long first paragraphs at 150 characters
+        if (text.length > 153) {
+           text = text.substr(0,150)+'...'; 
         }
 
         var data = {
