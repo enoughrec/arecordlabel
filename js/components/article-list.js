@@ -10,7 +10,7 @@ var Link = Router.Link;
 var ArticleList = React.createClass({
     renderTitles:function(){
         var articles = this.props.articles;
-        var comps = articles.map(function(article){
+        var comps = articles.map(function(article, idx){
 
 
             var json = article.toJSON();
@@ -22,9 +22,10 @@ var ArticleList = React.createClass({
             var year = date.format('YYYY');
             var dayMonth = date.format('MMMM Do');
             var dateString = [dayMonth, (<br/>), year];
+            var key = idx;
 
             return (
-                <div className="list-article">
+                <div className="list-article" key={key}>
                     <Link to={'/blog/' + json.slug} style={bgStyle} className="image-link"></Link>
                     <div className="right-content">
                         <Link to={'/blog/' + json.slug}><h1 className="title">{json.title}</h1></Link>

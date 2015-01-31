@@ -393,6 +393,12 @@ li {
     line-height: 13px;
 }
 
+.tags .info {
+    display: inline-block;
+    margin: 0 2px;
+}
+
+
 .playbutton {
     opacity: 0.5;
     position: absolute;

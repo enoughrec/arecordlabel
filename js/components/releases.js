@@ -44,7 +44,7 @@ var Releases = React.createClass({
     componentDidUpdate: function(){
         var tag = this.getTagFilter();
         if (tag) {
-            document.title = 'Releases tagged as:' + tag;
+            document.title = 'Releases tagged as: ' + tag;
         } else {
             document.title = 'Enough Records';
         }
