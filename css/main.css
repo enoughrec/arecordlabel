@@ -155,6 +155,12 @@ a {
     width: 100%;
 }
 
+.top-heading {
+    position: fixed;
+    top: 54px;
+    left: 6px;
+    z-index: 10;
+}
 
 
 .loader {
@@ -435,21 +441,24 @@ li {
     margin-top: 8px;
 }
 
-.release-full .tag {
+
+
+.tag {
     background: rgba(62, 168, 218, 0.9);
-    color: #FFF;
+    color: #FFF !important;
     padding: 2px 12px 2px 8px;
     border-radius: 8px 0 8px 0;
     font-size: 15px;
     margin-top: 2px;
     display: inline-block;
     font-weight: 400;
-    text-decoration: none;
+    text-decoration: none !important;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
+    line-height: 25px;
 }
 
-.release-full .tag:hover {
+.tag:hover {
     background: rgba(32, 138, 198, 0.9);
 }
 
@@ -648,7 +657,7 @@ p > strong:last-child {
     right: 0;
     height: 48px;
     background: rgba(62, 168, 218, 0.9);
-    border-bottom: 1px solid #333;
+    
     line-height: 48px;
     text-indent: 12px;
 }
@@ -794,7 +803,7 @@ p > strong:last-child {
     height: 55px;
     line-height: 55px;
     background: rgba(128,128,128,0.8);
-    border-top: 1px solid #333;
+    
     text-indent: 12px;
     text-shadow: -1px 0 1px #eee;
 }
