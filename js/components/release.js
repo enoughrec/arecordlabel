@@ -6,7 +6,6 @@ var React = require('react');
 var Router = require('react-router');
 var Link = Router.Link;
 
-
 var url = require('url');
 
 var Release = React.createClass({
@@ -20,8 +19,8 @@ var Release = React.createClass({
 			<Link className="release" to={"/release/" + data.cat}>
 				<div className="card">
 					<div className="face front">
-						<div className="tags">{data.tags.map(function(tag){
-							return <span className="tag" key={data.cat+tag}>{tag}</span>
+						<div className="tags">{data.tags.map(function(tagString){
+							return <span className="info">{tagString}</span>;
 						})}</div>
 					    <div className="cover">
 					        <img src={data.cover} />

@@ -9,28 +9,6 @@
     <link rel="icon" type="image/gif" href="/covers/32_ambient.gif" />
     <link rel="stylesheet" type="text/css" href="/css/main.css">
     <meta name="google-site-verification" content="1YQ83iQ-XoV2o1eRp9kaz1H5ssqhoANLXT3ntpSyvcw" />
-    <script type="text/javascript">
-    (function(){
-        
-        function queryString(key) {
-            var re = new RegExp( "[?&]" + key + "=([^&$]*)", "i" );
-            var offset = location.search.search( re );
-            if ( offset == -1 ) return null;
-            return RegExp.$1;
-        }
-        
-        // redirect for old incoming links
-        function checkUrl(){
-            var cat = queryString( "cat" );
-            if (cat) {
-                window.location.href = "http://enoughrecords.scene.org/release/"+cat;
-            }
-        }
-        
-        checkUrl();
-    })();   
-        
-    </script>
 </head>
 <body>
     <noscript>You will need to enable JS to make this work.</noscript>

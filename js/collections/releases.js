@@ -2,6 +2,7 @@ var Backbone = require('backbone');
 var ReleaseModel = require('../models/release');
 var _ = require('underscore');
 _.str = require('underscore.string');
+var convertLinks = require('../lib/convert-links');
 
 var moment = require('moment');
 
@@ -13,6 +14,8 @@ var moment = require('moment');
 var data = require('../../data/all.json').reverse().map(function(item) {
     item.key = "rel_" + _.uniqueId();
     item.momented = moment(item.release_date);
+    item.info_en = convertLinks(item.info_en);
+    item.info_pt = convertLinks(item.info_pt);
     return item;
 });
 

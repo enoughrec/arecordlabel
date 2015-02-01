@@ -1,6 +1,6 @@
 # arecordlabel
 
-## Rebooted site for enough records (in progress)
+## Rebooted site for enough records
 
 Using browserify and npm.
 

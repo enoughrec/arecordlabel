@@ -1,5 +1,13 @@
 var events = require('events');
 
-var Bus = new events.EventEmitter();
 
-module.exports = Bus;
+
+
+var bus = new events.EventEmitter();
+bus.off = function(){
+    return this.removeListener.apply(this, arguments);
+}.bind(bus);
+
+
+
+module.exports = bus;

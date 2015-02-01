@@ -21,7 +21,7 @@ var About = React.createClass({
 
 	<h1>About</h1>
 	
-	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We been active since 2001 and have no focus on any specific genre.</p>
+	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We have been active since 2001 and have no focus on any specific genre.</p>
 
 	<h1>Release Terms</h1>
 	
@@ -50,11 +50,11 @@ var About = React.createClass({
 
 	<p>
 	<div id="mc_embed_signup">
-	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
 	    <div id="mc_embed_signup_scroll">
-		<input type="email" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required />
-	    <div id="outside"><input type="text" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabindex="-1" /></div>
-	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button" />
+		<input type="email" name="EMAIL" className="email" id="mce-EMAIL" placeholder="email address" required />
+	    <div id="outside"><input type="hidden" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabIndex="-1" /></div>
+	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
 	    </div>
 	</form>
 	</div>
@@ -73,6 +73,7 @@ var About = React.createClass({
 	<p>Thanks to everyone who helped us improve, run and promote Enough Records throughout the years, Enough Records would not be what it is without you.</p>
 
 	<p>Website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, re-use and contribute.</p>
+
 	
 </div>
 
