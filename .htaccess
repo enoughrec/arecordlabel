@@ -12,11 +12,11 @@
     RewriteRule ^$ /release/%1 [QSD,R=301,L]
 
     # rewrite app urls
-    RewriteRule  ^about$             home.php?/$1 [NC,L]
+    RewriteRule  ^about$             index.html?/$1 [NC,L]
     RewriteRule  ^release/(.*)$      home.php?/$1 [NC,L]
-    RewriteRule  ^tag/(.*)$          home.php?/$1 [NC,L]
-    RewriteRule  ^blog$              home.php?/$1 [NC,L]
-    RewriteRule  ^blog/(.*)$         home.php?/$1 [NC,L]
+    RewriteRule  ^tag/(.*)$          index.html?/$1 [NC,L]
+    RewriteRule  ^blog$              index.html?/$1 [NC,L]
+    RewriteRule  ^blog/(.*)$         index.html?/$1 [NC,L]
 
 
 </IfModule>
