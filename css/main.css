@@ -541,17 +541,29 @@ strong {
     font-weight: bold;
 }
 
+h1.list-year {
+max-width: 700px;
+margin: 0 auto;
+text-align: center;
+font-size: 38px;
+font-weight: bolder;
+line-height: 1.2;
+border-bottom: 1px solid #eaeaea;
+padding-bottom: 4px;
+margin-bottom: 4px;
+}
+
 .list-article {
     min-height: 130px;
     margin-bottom: 18px;
     max-width: 700px;
     margin: 0 auto;
-    border-bottom: 1px solid #eaeaea;
+    border-top: 1px solid #eaeaea;
     position: relative;
     z-index: 1;
 }
-.list-article:last-child {
-    border-bottom: none;   
+.list-article:first-child, h1 + .list-article {
+    border-top: none;   
 }
 
 .list-article .right-content {

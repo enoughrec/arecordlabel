@@ -10,21 +10,28 @@ var Link = Router.Link;
 var ArticleList = React.createClass({
     renderTitles:function(){
         var articles = this.props.articles;
-        var comps = articles.map(function(article, idx){
+        var currentYear;
 
+        var comps = articles.reduce(function(nodes, article, idx){
+            
+            var date = article.get('date');
+            var year = date.format('YYYY');
+            var dayMonth = date.format('MMMM Do');
+            var dateString = [dayMonth, (<br/>), year];
+
+            if (currentYear !== year) {
+                currentYear = year;
+                nodes.push(<h1 className="list-year">{year}</h1>);
+            }
 
             var json = article.toJSON();
             var bgStyle = {
                 backgroundImage: 'url('+json.image+')'
             };
-
-            var date = article.get('date');
-            var year = date.format('YYYY');
-            var dayMonth = date.format('MMMM Do');
-            var dateString = [dayMonth, (<br/>), year];
+            
             var key = idx;
 
-            return (
+            nodes.push(
                 <div className="list-article" key={key}>
                     <Link to={'/blog/' + json.slug} style={bgStyle} className="image-link"></Link>
                     <div className="right-content">
@@ -35,7 +42,8 @@ var ArticleList = React.createClass({
                     </div>
                 </div>
             )
-        });
+            return nodes;
+        }.bind(this), []);
         return comps;
     },
     render: function() {
