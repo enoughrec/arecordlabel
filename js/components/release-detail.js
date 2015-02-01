@@ -109,47 +109,46 @@ var ReleaseDetail = React.createClass({
         var downloadLinks = this.getDownloadLinks();
 
         return (
-<div className="release-full">
-    <div className="leftframe">
-        <header>
-            <div className="cover">
-                <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
-                <img src={data.cover} alt={data.album + ' - ' + data.artist} />
+            <div className="release-full">
+                <div className="leftframe">
+                    <header>
+                        <div className="cover">
+                            <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
+                            <img src={data.cover} alt={data.album + ' - ' + data.artist} />
+                        </div>
+                        <div className="titles">
+                            <h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
+                        </div>
+                    </header>
+                    <div className="cc"><img src={"/iconss/" + data.cc_img}/></div>
+                </div>
+                <div className="details">
+                    <div className="release-date block">Released on <span>{formattedDate}</span></div>
+                    <div className="block info_en text-clamped " dangerouslySetInnerHTML={{__html: data.info_en}} />
+                    <div className="block info_pt text-clamped " dangerouslySetInnerHTML={{__html: data.info_pt}} />
+                    <div className="block">
+                        Tags:<br />
+                        {tags}
+                    </div>
+                    <div className={canShow(countries,"block")}>Nationality:<br />
+                        {countries}
+                    </div>
+                    <div className={canShow(downloadLinks, "download_links block")}>
+                        Download links:<br />
+                        {downloadLinks}
+                    </div>
+                    <div className={canShow(bySameArtist, "related")}>
+                        <h1>By same artist:</h1>
+                        {bySameArtist}
+                    </div>
+                    <div className={canShow(relatedLinks, "related")}>
+                        <h1>You may also like:</h1>
+                        {relatedLinks}
+                    </div>
+                </div>
+                <div className="clear"></div>
             </div>
-            <div className="titles">
-                <h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
-            </div>
-        </header>
-        <div className="cc"><img src={"/iconss/" + data.cc_img}/></div>
-    </div>
-    <div className="details">
-        <div className="release-date block">Released on <span>{formattedDate}</span></div>
-        <div className="block info_en text-clamped " dangerouslySetInnerHTML={{__html: data.info_en}} />
-        <div className="block info_pt text-clamped " dangerouslySetInnerHTML={{__html: data.info_pt}} />
-        <div className="block">
-            Tags:<br />
-            {tags}
-        </div>
-        <div className={canShow(countries,"block")}>Nationality:<br />
-            {countries}
-        </div>
-        <div className={canShow(downloadLinks, "download_links block")}>
-            Download links:<br />
-            {downloadLinks}
-        </div>
-        <div className={canShow(bySameArtist, "related")}>
-            <h1>By same artist:</h1>
-            {bySameArtist}
-        </div>
-        <div className={canShow(relatedLinks, "related")}>
-            <h1>You may also like:</h1>
-            {relatedLinks}
-        </div>
-    </div>
-    <div className="clear"></div>
-</div>
-
-            )
+        )
     }
 })
 

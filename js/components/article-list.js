@@ -42,7 +42,6 @@ var ArticleList = React.createClass({
         var list = this.renderTitles();
         return (
             <div>
-                <h1>Blog</h1>
                 {list}
             </div>
         );

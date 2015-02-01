@@ -5,6 +5,8 @@ var moment = require('moment');
 var readingTime = require('reading-time');
 var url = require('url');
 
+var convertLinks = require('../lib/convert-links');
+
 var data = require('../../data/articles');
 
 var Article = Backbone.Model.extend({
@@ -13,27 +15,14 @@ var Article = Backbone.Model.extend({
 
         // convert html to text via browser parser
         var el = document.createElement('div');
+        data.body = convertLinks(data.body);
         el.innerHTML = data.body;
-        var firstP = el.querySelector('p:first-child');
 
-        // convert all non relative or site links to open in new window
-        var links = el.querySelectorAll('a');
-        var currentHost = document.location.host;
+        var text = el.textContent || el.innerText || '';
 
-        [].forEach.call(links, function(link){
-            var href = link.href;
-            var parsedUrl = url.parse(href);
-            if (parsedUrl.host !== currentHost) {
-                link.setAttribute('target', '_blank');
-            }
-        });
-
-        data.body = el.innerHTML;
-
-        var text = firstP.textContent || firstP.innerText || '';
         var firstImage = el.querySelector('img');
 
-        if (firstImage) {
+        if (firstImage && firstImage.src) {
             firstImage = firstImage.src;
         } else {
             // use the blue e logo as a backup, if there is no image in the article
@@ -49,7 +38,7 @@ var Article = Backbone.Model.extend({
             title: data.attributes.title,
             date: moment(data.attributes.date),
             body: data.body,
-            slug: slugify(data.attributes.title).replace(/[:'']/g, '').toLowerCase(),
+            slug: slugify(data.attributes.title).replace(/[:']/g, '').toLowerCase(),
             tags: data.tags,
             description: text,
             image: firstImage,
