@@ -8,6 +8,9 @@ var Router = require('react-router');
 var Link = Router.Link;
 
 var ArticleList = React.createClass({
+    componentDidMount: function(){
+        document.title = 'Enough Records Blog';
+    },
     renderTitles:function(){
         var articles = this.props.articles;
         var currentYear;
