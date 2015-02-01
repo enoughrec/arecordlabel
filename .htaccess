@@ -13,7 +13,7 @@
 
     # rewrite app urls
     RewriteRule  ^about$             index.html?/$1 [NC,L]
-    RewriteRule  ^release/(.*)$      index.html?/$1 [NC,L]
+    RewriteRule  ^release/(.*)$      home.php?/$1 [NC,L]
     RewriteRule  ^tag/(.*)$          index.html?/$1 [NC,L]
     RewriteRule  ^blog$              index.html?/$1 [NC,L]
     RewriteRule  ^blog/(.*)$         index.html?/$1 [NC,L]
