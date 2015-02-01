@@ -27,7 +27,7 @@ var ReleaseDetail = React.createClass({
         // fix for &#1042; style unicode entities
         var s = document.createElement('span');
         s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();
-        document.title = s.innerHTML;
+        document.title = s.textContent || s.innerHTML;
     },
     componentDidMount: function(){
         window.scrollTo(0,0);
