@@ -108,6 +108,8 @@ var ReleaseDetail = React.createClass({
         var countries = this.getCountries(data.country);
         var downloadLinks = this.getDownloadLinks();
 
+        var sameArtistText = data.artist === 'Various Artists' ? 'More Compilations:' : 'Other releases by '+data.artist+':';
+
         return (
             <div className="release-full">
                 <div className="leftframe">
@@ -138,7 +140,7 @@ var ReleaseDetail = React.createClass({
                         {downloadLinks}
                     </div>
                     <div className={canShow(bySameArtist, "related")}>
-                        <h1>By same artist:</h1>
+                        <h1>{sameArtistText}</h1>
                         {bySameArtist}
                     </div>
                     <div className={canShow(relatedLinks, "related")}>
