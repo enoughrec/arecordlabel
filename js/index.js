@@ -7,7 +7,7 @@ var App = require('./app');
 
 var articles = require('./collections/articles');
 var ReleasesCollection = require('./collections/releases');
-var enrReleases = window.e = new ReleasesCollection();
+var enrReleases = new ReleasesCollection();
 enrReleases.fullReset(); // load data from our JSON
 
 var Router = require('react-router');

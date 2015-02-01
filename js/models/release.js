@@ -1,7 +1,7 @@
 var Backbone = require('backbone');
 var _ = require('underscore'); // augmented by _.str in index.js
 var path = require('path');
-var moment = window.moment = require('moment');
+var moment = require('moment');
 
 var ReleaseModel = Backbone.Model.extend({
 	idAttribute: 'cat',

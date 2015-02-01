@@ -65,6 +65,6 @@ var articles = new Articles(data, {parse: true});
 
 // expose to window for playing
 // @todo remove me when done!
-window.articles = articles;
+// window.articles = articles;
 
 module.exports = articles;

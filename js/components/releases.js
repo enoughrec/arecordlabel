@@ -27,7 +27,6 @@ var Releases = React.createClass({
     componentWillMount : function() {
         window.scrollTo(0,0);
         document.title = 'Enough Records';
-        window.e = this.props.data;
         appState.on('change:userSearch', this.updateSearch);
         this.updateSearch(null, appState.get('userSearch'));
 
