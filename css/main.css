@@ -906,4 +906,11 @@ p > strong:last-child {
 	padding-right: 12px;
 }
 
+.email {
+	padding: 7px;
+	margin-right: 8px;
+}
 
+#contacts a img {
+	margin-right: 6px;
+}

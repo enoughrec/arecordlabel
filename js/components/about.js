@@ -21,16 +21,18 @@ var About = React.createClass({
 
 	<h1>About</h1>
 	
-	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). We have been active since 2001 and have no focus on any specific genre.</p>
+	<p>Enough Records is a netlabel (<a href="http://en.wikipedia.org/wiki/Netlabel">wikipedia link</a>). Active since 2001. Based out of Portugal.</p>
 
 	<h1>Release Terms</h1>
+
+	<p>We operate non-profit.</p>
 	
 	<p>Our entire catalogue is free for download.</p>
 	
-	<p>Our releases are available in several free distribution platforms such as <a href="http://scene.org/dir.php?dir=%2Fmusic%2Fgroups%2Fenough_records/">Scene.Org</a>, <a href="http://archive.org/details/enough_records">Internet Archive</a>, <a href="http://sonicsquirrel.net/detail/label/enoughrecords/118">Sonic Squirrel</a>, <a href="http://freemusicarchive.org/label/Enough_Records/">Free Music Archive</a>, etc.</p>
-	
-	<p>Our releases are also available on a few commercial distribution and online radio platforms such as Last FM, Bandcamp, Spotify, iTunes, Amazon, Google Play, etc. Some of these platforms force us to put a price tag on our releases, we try to always set the possible minimum required. Any income from such platforms is used on promotional material for the label as described on our activity reports of <a href="http://enoughrecords.org/?p=450">2012</a> and <a href="http://enoughrecords.org/?p=726">2013</a>. We operate non-profit.</p>
-	
+	<p>Our releases are available in several free distribution platforms such as <a href="http://scene.org/dir.php?dir=%2Fmusic%2Fgroups%2Fenough_records/">Scene.Org</a>, <a href="http://archive.org/details/enough_records">Internet Archive</a>, <a href="http://sonicsquirrel.net/detail/label/enoughrecords/118">Sonic Squirrel</a>, <a href="http://freemusicarchive.org/label/Enough_Records/">Free Music Archive</a>, <a href="https://enoughrec.bandcamp.com/">Bandcamp</a>, Jamendo, LastFM, etc.</p>
+
+	<p>Our releases are also available through Routenote on a few commercial distribution and online radio platforms such iTunes, Amazon, Google Play, eMusic, Deezr, Rdio, Spotify, Youtube, Wimp, Music Unlimited, etc. Some of these platforms force us to put a price tag on our releases, we try to always set the possible minimum required.</p>
+
 	<p>Our releases are free of any DRM and have associated <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons BY-NC-SA 4.0</a> licenses (unless otherwise specified). Feel free to share, use and remix accordingly.</p>
 
 	<h1>Demo Policy</h1>
@@ -39,12 +41,10 @@ var About = React.createClass({
 		
 	<h1>Sub Labels</h1>
 
-	<ul>
-	<li><b>Catita!</b>, tagged as <Tag tag="c!">c!</Tag> in our database. It groups the 4 releases salvaged from digital oblivion as the Catita! netlabel stopped its activities. They focused on 8bit music.</li>
-	<li><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as <Tag tag="Anon">Anon</Tag>. Our socio-political activist sub-label.</li>
-	<li><b>[Esc.] Laboratory</b>, tagged as <Tag tag="[Esc.]">[Esc.]</Tag>. This sub-label groups the releases that are related to the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</li>
-	<li><b>Thisko</b>, tagged as <Tag tag="thisk">thisk</Tag>. This sub-label groups the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</li>
-	</ul>
+	<p><Tag tag="c!">c!</Tag> comprises 4 releases salvaged when the Catita! netlabel stopped its activities. They focused on 8bit music.</p>
+	<p><a href="http://enoughrecords.scene.org/anonymous_archives/">Anonymous Archives</a>, tagged as <Tag tag="Anon">Anon</Tag> is our socio-political activist sub-label.</p>
+	<p><Tag tag="[Esc.]">[Esc.]</Tag> tags releases from the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</p>
+	<p><Tag tag="thisk">thisk</Tag> lists the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</p>
 
 	<h1>Mailing List</h1>
 
@@ -52,8 +52,8 @@ var About = React.createClass({
 	<div id="mc_embed_signup">
 	<form action="//scene.us3.list-manage.com/subscribe/post?u=f8c1f1dae22f9657c634ea871&amp;id=163fce62d4" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" className="validate" target="_blank" noValidate>
 	    <div id="mc_embed_signup_scroll">
-		<input type="email" name="EMAIL" className="email" id="mce-EMAIL" placeholder="email address" required />
 	    <div id="outside"><input type="hidden" name="b_f8c1f1dae22f9657c634ea871_163fce62d4" tabIndex="-1" /></div>
+		<input type="email" name="EMAIL" className="email" id="mce-EMAIL" placeholder="email address" required />
 	    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" className="button" />
 	    </div>
 	</form>
@@ -62,15 +62,18 @@ var About = React.createClass({
 
 	<h1>Contact</h1>
 	
-	<p>We are present on all major social networks (<a href="https://www.facebook.com/enoughrec">facebook</a>, <a href="https://twitter.com/enoughrec">twitter</a> and <a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts">google plus</a>).</p>
-	
-	<p>Any further inquiries about Enough Records please contact Filipe 'ps' Cruz by <a href="mailto:ps@enoughrecords.org">email</a>.</p>
+	<p id="contacts">
+		<a href="mailto:ps@enoughrecords.org"><img src="/iconss/email.png" /></a>
+		<a href="https://www.facebook.com/enoughrec"><img src="/iconss/facebook.png" /></a>
+		<a href="https://twitter.com/enoughrec"><img src="/iconss/twitter.png" /></a>
+		<a href="https://plus.google.com/b/116362931350553021949/116362931350553021949/posts"><img src="/iconss/gplus.png" /></a>
+	</p>
 	
 	<h1>Acknowledgements</h1>
 	
-	<p>Enough Records was founded in 2001 by Fred, H4rv3st and ps.</p>
-	
-	<p>Thanks to everyone who helped us improve, run and promote Enough Records throughout the years, Enough Records would not be what it is without you.</p>
+	<p>Enough Records was founded in 2001 by Fred, H4rv3st and ps. Managed and curated by ps alone since 2003.</p>
+
+	<p>Thanks to everyone who helped us improve, run and promote Enough Records throughout the years, Enough Records would not be what it is without you. This includes organizing mixtapes, concerts, sending out packages in the mail, helping promote, curating compilation releases, etc. Big love to you.</p>
 
 	<p>Website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, re-use and contribute.</p>
 
