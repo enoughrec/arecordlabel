@@ -1,3 +1,5 @@
+[![Code Climate](https://codeclimate.com/github/enoughrec/arecordlabel/badges/gpa.svg)](https://codeclimate.com/github/enoughrec/arecordlabel)
+
 # arecordlabel
 
 ## Rebooted site for enough records
