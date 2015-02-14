@@ -31,7 +31,7 @@ var ReleaseModel = Backbone.Model.extend({
 		'release_date': function(date) {
 			if (!date || date === '0000-00-00') {
 				date = '2002-01-01';
-			};
+			}
 
 			this.set('momented',moment(date));
 			return date;
@@ -51,7 +51,7 @@ var ReleaseModel = Backbone.Model.extend({
 						musictags.push(tag);
 					}
 				});
-			};
+			}
 			this.set('country', country);
 			return musictags;
 		}
@@ -61,7 +61,10 @@ var ReleaseModel = Backbone.Model.extend({
 		if (typeof attr === 'object') {
 			var singleAttr;
 			for (singleAttr in attr) {
-				this.set.call(this, singleAttr, attr[singleAttr], options);
+				if (attr.hasOwnProperty(singleAttr)) {
+					this.set.call(this, singleAttr, attr[singleAttr], options);
+				}
+				
 			}
 			return this;
 
@@ -85,18 +88,18 @@ var ReleaseModel = Backbone.Model.extend({
 		return searchString;
 	},
 	defaults: {
-		album: "",
-		artist: "",
+		album: '',
+		artist: '',
 		bandcamp: null,
-		cat: "ENR",
+		cat: 'ENR',
 		clearbits: false,
-		cover: "http://tpolm.org/~ps/enough/covers/enrmp001.jpg",
+		cover: 'http://tpolm.org/~ps/enough/covers/enrmp001.jpg',
 		discogs: false,
 		download: false,
 		info_en: false,
 		info_pt: false,
 		jamendo: false,
-		release_date: "2001-01-01",
+		release_date: '2001-01-01',
 		scene_org: false,
 		sonicsquirrel: false,
 		soundcloud: false,

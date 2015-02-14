@@ -12,7 +12,7 @@ var moment = require('moment');
 // hacky, but works and is simple ..and actually may not need this, 
 // but lets see where it goes
 var data = require('../../data/all.json').reverse().map(function(item) {
-    item.key = "rel_" + _.uniqueId();
+    item.key = 'rel_' + _.uniqueId();
     item.momented = moment(item.release_date);
     item.info_en = convertLinks(item.info_en);
     item.info_pt = convertLinks(item.info_pt);
@@ -27,9 +27,11 @@ var Releases = Backbone.Collection.extend({
         return model1.get('momented') > model2.get('momented') ? -1 : 1;
     },
     search: function(letters) {
-        if (letters == "") return this;
+        if (letters === ''){ 
+            return this;
+        }
 
-        var pattern = new RegExp(letters, "gi");
+        var pattern = new RegExp(letters, 'gi');
         var releases = this.filter(function(item) {
             var searchString = item.getSearchData();
             return pattern.test(searchString);
@@ -41,26 +43,23 @@ var Releases = Backbone.Collection.extend({
         ignore = ignore || false;
         var hits = new Releases();
 
-        if (tags && tags instanceof Array) {
+        var releases = this.filter(function(item) {
 
-            var releases = this.filter(function(item) {
+            if (item.get('cat') === ignore || item.get('artist') === ignore) {
+                return; // it is this release, no need to include
+            }
 
-                if (item.get('cat') === ignore || item.get('artist') === ignore) {
-                    return; // it is this release, no need to include
-                }
+            var itemTags = item.get('tags');
+            var result = _.intersection(tags, itemTags);
 
-                var itemTags = item.get('tags');
-                var result = _.intersection(tags, itemTags);
+            if (result.length) {
+                item.matchLength = result.length;
+            } else {
+                item.matchLength = 0;
+            }
 
-                if (result.length) {
-                    item.matchLength = result.length;
-                } else {
-                    item.matchLength = 0;
-                }
-
-                return result.length;
-            });
-        }
+            return result.length;
+        });
         
         releases.sort(function(a,b){
             return a.matchLength > b.matchLength ? -1 : 1;
@@ -114,7 +113,7 @@ var Releases = Backbone.Collection.extend({
     },
     getByTag: function(tag) {
         var hits = _(this.filter(function(data) {
-            return !!~ (data.get('tags').indexOf(tag));
+            return data.get('tags').indexOf(tag) > -1;
         })).value();
         return new Releases(hits);
     },

@@ -3,7 +3,7 @@ var _ = require('lodash');
 
 var sections = bulk(__dirname, '../js/articles/**/*.fm');
 
-var output = sections['..']['js']['articles'];
+var output = sections['..'].js.articles;
 
 var articles = [];
 

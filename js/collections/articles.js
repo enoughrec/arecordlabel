@@ -1,9 +1,7 @@
 var Backbone = require('backbone');
-var _ = require('lodash');
 var slugify = require('slugify');
 var moment = require('moment');
 var readingTime = require('reading-time');
-var url = require('url');
 
 var convertLinks = require('../lib/convert-links');
 
@@ -34,7 +32,7 @@ var Article = Backbone.Model.extend({
            text = text.substr(0,150)+'...'; 
         }
 
-        var data = {
+        var parsed = {
             title: data.attributes.title,
             date: moment(data.attributes.date),
             body: data.body,
@@ -43,9 +41,9 @@ var Article = Backbone.Model.extend({
             description: text,
             image: firstImage,
             readingTime: readingTime(data.body)
-        }
+        };
         
-        return data;
+        return parsed;
     }
 });
 

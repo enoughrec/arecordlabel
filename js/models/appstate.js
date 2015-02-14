@@ -1,7 +1,4 @@
 var Backbone = require('backbone');
-var _ = require('underscore'); // augmented by _.str in index.js
-
-var bus = require('../bus');
 
 var State = Backbone.Model.extend({
 	setSearch: function(value){
