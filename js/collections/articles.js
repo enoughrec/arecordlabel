@@ -63,8 +63,4 @@ var Articles = Backbone.Collection.extend({
 
 var articles = new Articles(data, {parse: true});
 
-// expose to window for playing
-// @todo remove me when done!
-// window.articles = articles;
-
 module.exports = articles;
