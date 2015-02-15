@@ -25,6 +25,10 @@ var parseJSX = function parseJSX(source, env) {
                 attribs: attribs,
             };
 
+            // remove bad attribs
+            // just style?
+            delete attribs.style;
+
             // convert html class attribute into DOM attribute
             if (attribs.class) {
                 attribs.className = attribs.class;
@@ -74,7 +78,6 @@ var JSXRender = React.createClass({
             return ReactDOM.div.apply(null, [{ className: "JSXRender" }].concat(parseJSX(code, env)));
         }
         catch(e) {
-            debugger;
             return ReactDOM.div({ className: "JSXRender JSXRender-error" }, "Error: ", e.toString());
         }
     },
