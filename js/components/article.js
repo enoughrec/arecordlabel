@@ -2,12 +2,13 @@
 * @jsx React.DOM
 */
 
-/**
-* @jsx React.DOM
-*/
 
 var React = require('react');
 var Router = require('react-router');
+var JSXRender = require('../lib/jsx-render');
+
+// components available to articles
+var Tag = require('./tag');
 var Link = Router.Link;
 
 
@@ -26,12 +27,20 @@ var Article = React.createClass({
         var dayMonth = date.format('MMMM Do');
         var dateString = [dayMonth, (<br/>), year];
 
+        var articleEnvironment = {
+            Tag: Tag,
+            Link: Link,
+            script: null
+        };
+
+        var renderedArticle = <JSXRender env={articleEnvironment} code={json.body} />;
+
         return (
             <div className="centered-article">
                 <h1 className="article-title">{json.title}</h1>
                 <div className="article-date">{dateString}</div>
                 <div>{time}</div>
-                <div className="post" dangerouslySetInnerHTML={{__html: json.body}}></div>
+                <div className="post">{renderedArticle}</div>
             </div>
         );
     }
