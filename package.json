@@ -9,6 +9,7 @@
     "bulkify": "^1.0.2",
     "envify": "^1.2.0",
     "frontmatterify": "^1.0.0",
+    "htmlclean": "^2.3.2",
     "json-front-matter": "^0.1.6",
     "lodash": "^2.4.1",
     "moment": "~2.1.0",
@@ -27,6 +28,7 @@
   "devDependencies": {
     "browserify": "~8.1.1",
     "envify": "~1.2.0",
+    "htmlparser2": "^3.8.2",
     "reactify": "~0.4.0",
     "statics": "~0.1.0",
     "uglifyjs": "~2.3.6",
