@@ -11,6 +11,7 @@ var JSXRender = require('../lib/jsx-render');
 var Tag = require('./tag');
 var Link = Router.Link;
 
+var Release = require('./release-cover');
 
 var Article = React.createClass({
     componentDidMount: function(){
@@ -28,7 +29,8 @@ var Article = React.createClass({
         var dateString = [dayMonth, (<br/>), year];
 
         var articleEnvironment = {
-            Tag: Tag,
+            tag: Tag,
+            release: Release,
             Link: Link,
             script: null
         };

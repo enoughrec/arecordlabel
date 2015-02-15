@@ -208,6 +208,11 @@ a {
 
 }
 
+.release-cover {
+    margin: 0 auto;
+    width: 300px;
+}
+
 .release-full {
     float: left;
     background: #fff;
@@ -224,7 +229,8 @@ a {
     bottom: 6px;
 }
 
-.release-full .cover {
+.release-full .cover, .post .cover {
+    position: relative;
     display: block;
     width: 300px;
     height: 300px;
@@ -279,7 +285,10 @@ a {
     line-height: 22px;
 }
 
-.release-full h1 span {
+.titles span.title {
+    font-size: 22px;
+    margin: 4px 0;
+    line-height: 22px;
     display: block;
     word-wrap: break-word;
 }
@@ -411,19 +420,25 @@ li {
     border: 1px solid rgba(255,255,255, 0.65);
     border-radius: 50%;
     color: rgba(255, 255, 255, 0.75);
-    top: 124px;
-    left: 117px;
+    top: calc(50% - 45px);
+    left: calc(50% - 45px);
     font-size: 47px;
-    -webkit-transition: opacity 0.333s ease-in-out;
-    -moz-transition: opacity 0.333s ease-in-out;
-    -o-transition: opacity 0.333s ease-in-out;
-    -ms-transition: opacity 0.333s ease-in-out;
-    transition: opacity 0.333s ease-in-out;
+    -webkit-transition: all 0.333s ease-in-out;
+    -moz-transition: all 0.333s ease-in-out;
+    -o-transition: all 0.333s ease-in-out;
+    -ms-transition: all 0.333s ease-in-out;
+    transition: all 0.333s ease-in-out;
     cursor: pointer;
+    width: 90px;
+    height: 90px;
+    text-align: center;
+    line-height: 1;
+    -webkit-transform: rotate(-180deg);
 }
 
-.cover:hover .playbutton {
+.playbutton:hover {
     opacity: 1;
+    -webkit-transform: rotate(0deg);
 }
 
 .playbutton.fontawesome-play:before {
