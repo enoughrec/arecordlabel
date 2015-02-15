@@ -3,6 +3,8 @@ var slugify = require('slugify');
 var moment = require('moment');
 var readingTime = require('reading-time');
 
+var htmlclean = require('htmlclean');
+
 var convertLinks = require('../lib/convert-links');
 
 var data = require('../../data/articles');
@@ -14,6 +16,8 @@ var Article = Backbone.Model.extend({
         // convert html to text via browser parser
         var el = document.createElement('div');
         data.body = convertLinks(data.body);
+        // remove whitespace so JSX render doesn't choke
+        data.body = htmlclean(data.body);
         el.innerHTML = data.body;
 
         var text = el.textContent || el.innerText || '';

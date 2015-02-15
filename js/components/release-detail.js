@@ -119,7 +119,7 @@ var ReleaseDetail = React.createClass({
                             <img src={data.cover} alt={data.album + ' - ' + data.artist} />
                         </div>
                         <div className="titles">
-                            <h1><span className="album">{data.album}</span> <span className="artist">{data.artist}</span></h1>
+                            <h1><span className="title album">{data.album}</span> <span className="title artist">{data.artist}</span></h1>
                         </div>
                     </header>
                     <div className="cc"><img src={"/iconss/" + data.cc_img}/></div>
