@@ -1,6 +1,6 @@
 // code from jsx-render package by elie rotenberg
 // not using the package as it references an old version of react
-// and updating it to convert some HTML attributes to DOM
+// and updating it to convert some HTML attributes to DOM, do some housekeeping
 
 var _ = require("lodash");
 var htmlparser = require("htmlparser2");
@@ -25,9 +25,11 @@ var parseJSX = function parseJSX(source, env) {
                 attribs: attribs,
             };
 
-            // remove bad attribs
-            // just style?
-            delete attribs.style;
+            // remove dodgy/breaking attribs
+            ['style','width','height'].forEach(function(attr){
+                delete attribs[attr];
+            });
+            
 
             // convert html class attribute into DOM attribute
             if (attribs.class) {

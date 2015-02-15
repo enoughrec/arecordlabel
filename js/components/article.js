@@ -31,7 +31,7 @@ var Article = React.createClass({
         var articleEnvironment = {
             tag: Tag,
             release: Release,
-            Link: Link,
+            link: Link,
             script: null
         };
 

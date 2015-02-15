@@ -462,6 +462,14 @@ li {
     padding: 4px 8px;
 }
 
+.post img {
+    max-width: 75%;
+}
+
+.post .cover img {
+    max-width: 100%;
+}
+
 .tagvis {
     cursor: pointer;
     cursor: hand;
@@ -878,8 +886,10 @@ p > strong:last-child {
 
     .bottom-bar {
         display: none;
-    }
+    }  
 
+
+    /* this is what disables playback functions on mobile phones */
     .playbutton {
         display: none;   
     }
