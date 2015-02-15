@@ -433,12 +433,10 @@ li {
     height: 90px;
     text-align: center;
     line-height: 1;
-    -webkit-transform: rotate(-180deg);
 }
 
 .playbutton:hover {
     opacity: 1;
-    -webkit-transform: rotate(0deg);
 }
 
 .playbutton.fontawesome-play:before {
@@ -455,6 +453,13 @@ li {
     border-left: 1px solid #fff;
     margin-right: 5px;
     padding-left: 4px;
+}
+
+.post .tag {
+    line-height: 1;
+    margin: 0;
+    margin-left: 2px;
+    padding: 4px 8px;
 }
 
 .tagvis {

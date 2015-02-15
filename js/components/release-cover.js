@@ -4,7 +4,7 @@
 
 var React = require('react');
 var bus = require('../bus');
-
+var Link = require('react-router').Link;
 var Releases = require('../collections/releases');
 
 var releases = new Releases();
@@ -20,17 +20,17 @@ var ReleaseCover = React.createClass({
     },
     render: function() {
         var data = this.props.release.toJSON();
-
+        var url = '/release/'+this.props.cat;
         return (
             <div className="release-cover">
                 <div className="cover">
                     <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
                     <img src={data.cover} alt={data.album + ' - ' + data.artist} />
                 </div>
-                <div className="titles">
+                <Link to={url} className="titles">
                     <span className="album title">{data.album}</span>
                     <span className="artist title">{data.artist}</span>
-                </div>
+                </Link>
             </div>
         );
     }
