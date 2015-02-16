@@ -6,7 +6,6 @@ var _ = require("lodash");
 var htmlparser = require("htmlparser2");
 var React = require("react");
 var ReactDOM = React.DOM;
-var assert = require("assert");
 
 var parseJSX = function parseJSX(source, env) {
     env = _.extend({}, React.DOM, env);
@@ -38,7 +37,7 @@ var parseJSX = function parseJSX(source, env) {
             }
 
         },
-        onclosetag: function onclosetag(tagName) {
+        onclosetag: function onclosetag(/* tagName */) {
             curr.parent.children.push(curr);
             curr = curr.parent;
         },
