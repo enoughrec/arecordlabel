@@ -45,6 +45,11 @@ var ReleaseModel = Backbone.Model.extend({
 
 				
 				_.each(tags, function(tag){
+					// can remove once https://github.com/enoughrec/arecordlabel/issues/48 is fixed
+					if (tag == '') {
+						return;
+					}
+					
 					if (tag[0] === '.') {
 						country.push(tag);
 					} else {
