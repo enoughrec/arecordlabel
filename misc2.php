@@ -18,6 +18,7 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if ($cat == "enrmp136") $title = "enrmp136_structura_-_inominavel_live01";
 	if ($cat == "enrmp130") $title = "enrmp130_eclectric_-_operators_concepts";
 	if ($cat == "enrmp159") $title = "enrmp159_velvet_narcosis_-_neutral";
+	if ($cat == "enrmp184") $title = "enrmp184_umm_-_demo_2008";
 	if ($cat == "enrmp187") $title = "enrmp187_seetyca_-_antlitz";
 	if ($cat == "enrmp203") $title = "enrmp203_proyecto_de_prueba___void_null_-_proyecto_de_prueba___void_null_";
 	if ($cat == "enrmp247") $title = "enrmp247_structura_-_karawane_live_thislac2009";
@@ -26,6 +27,7 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if ($cat == "enrmp282") $title = "enrmp282_jared_balogh_-_chaotic_life_fin___revitalized_eyes";	
 	if ($cat == "enrmp308") $title = "enrmp308_-_an_uto";
 	if ($cat == "enrmp322") $title = "enrmp322_-_1984___back_to_the_future";
+	if ($cat == "enrmp371") $title = "enrmp371_umm_-_estupidez_e_p_";
 
 	$archiveorg = "http://www.archive.org/details/".$title;
 	
