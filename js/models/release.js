@@ -42,8 +42,6 @@ var ReleaseModel = Backbone.Model.extend({
 			var country = [];
 
 			if (_.isArray(tags)) {
-
-				
 				_.each(tags, function(tag){
 					if (tag[0] === '.') {
 						country.push(tag);
@@ -52,6 +50,7 @@ var ReleaseModel = Backbone.Model.extend({
 					}
 				});
 			}
+			this.set('musictags', musictags);
 			this.set('country', country);
 			return musictags;
 		}
@@ -79,12 +78,12 @@ var ReleaseModel = Backbone.Model.extend({
 
 	},
 	getSearchData: function(){
-		
 		var artist = this.get('artist') || '',
 			album = this.get('album') || '',
 			// info = this.get('info_en') || '',
 			cat = this.get('cat') || '';
-		var searchString = [artist,album,cat].join(' ');
+			tags = this.get('musictags').join(' ') || '';
+		var searchString = [artist,album,cat,tags].join(' ');
 		return searchString;
 	},
 	defaults: {
@@ -92,8 +91,7 @@ var ReleaseModel = Backbone.Model.extend({
 		artist: '',
 		bandcamp: null,
 		cat: 'ENR',
-		clearbits: false,
-		cover: 'http://tpolm.org/~ps/enough/covers/enrmp001.jpg',
+		cover: 'http://enoughrecords.scene.org/covers/300_ambient.jpg',
 		discogs: false,
 		download: false,
 		info_en: false,

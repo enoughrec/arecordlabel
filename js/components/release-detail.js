@@ -34,7 +34,7 @@ var ReleaseDetail = React.createClass({
     },
     getDownloadLinks: function(){
 
-        var sources = ["fma", "archiveorg", "scene_org", "clearbits", "sonicsquirrel", "soundshiva", "dogmazic", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
+        var sources = ["fma", "archiveorg", "scene_org", "sonicsquirrel", "soundshiva", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
         var release = this.props.release.toJSON();
 
         var downloadLinks = sources.map(function(source){
@@ -136,15 +136,15 @@ var ReleaseDetail = React.createClass({
                         {countries}
                     </div>
                     <div className={canShow(downloadLinks, "download_links block")}>
-                        Download links:<br />
+                        <h1>Download links:</h1>
                         {downloadLinks}
                     </div>
                     <div className={canShow(bySameArtist, "related")}>
-                        <h1>{sameArtistText}</h1>
+                        {sameArtistText}<br />
                         {bySameArtist}
                     </div>
                     <div className={canShow(relatedLinks, "related")}>
-                        <h1>You may also like:</h1>
+                        You may also like:<br />
                         {relatedLinks}
                     </div>
                 </div>

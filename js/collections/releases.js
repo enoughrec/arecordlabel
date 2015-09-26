@@ -39,7 +39,7 @@ var Releases = Backbone.Collection.extend({
         return new Releases(releases);
     },
     getSimilarByTag: function(tags, ignore, limit) {
-        limit = limit || 20;
+        limit = limit || 5;
         ignore = ignore || false;
         var hits = new Releases();
 
@@ -77,7 +77,6 @@ var Releases = Backbone.Collection.extend({
 
             var itemTags = item.get('tags');
             var result = _.intersection(tags, itemTags);
-            
 
             if (result.length) {
                 return true;
