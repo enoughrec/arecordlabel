@@ -13,7 +13,7 @@
     "json-front-matter": "^0.1.6",
     "lodash": "^2.4.1",
     "moment": "~2.1.0",
-    "play-audio": "0.0.3",
+    "play-audio": "https://github.com/azer/play-audio",
     "react": "^0.11.1",
     "react-infinite-scroll": "^0.1.4",
     "react-router": "0.5.3",
@@ -51,7 +51,8 @@
     "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d  .",
     "build-gzip": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm | gzip -9 - > build/build.js.gz ",
     "build": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > build/build.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "get-data": "curl -o ./data/all.json -X GET 'http://enoughrecords.scene.org/getlist4.php?archive=true'"
   },
   "browserify": {
     "transform": [
