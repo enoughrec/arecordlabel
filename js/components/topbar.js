@@ -22,6 +22,9 @@ var Topbar = React.createClass({
             link: '/about',
             label: 'About'
         }, {
+            link: '/tag',
+            label: 'Tags'
+        }, {
             link: '/blog',
             label: 'Blog'
         }];
