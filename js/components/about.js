@@ -37,7 +37,7 @@ var About = React.createClass({
 
 	<h1>Demo Policy</h1>
 	
-	<p>We are closed to demos from new artists. We are trying to focus more on promoting our current (and very long) roster of artists. That doesn't mean it's impossible to debut a new artist on Enough, just highly unlikely.</p>
+	<p>We are once again open to demos. Please send your submissions to <a href="mailto:ps@enoughrecords.org">ps</a>, no attached binaries by email please, share download links only!</p>
 		
 	<h1>Sub Labels</h1>
 

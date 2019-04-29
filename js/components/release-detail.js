@@ -18,6 +18,10 @@ function canShow(items, className){
     return className;
 }
 
+String.prototype.splice = function(idx, rem, str) {
+    return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
+};
+
 var ReleaseDetail = React.createClass({
     componentWillMount: function(){
         var cat = this.props.params.cat;
@@ -26,7 +30,7 @@ var ReleaseDetail = React.createClass({
         
         // fix for &#1042; style unicode entities
         var s = document.createElement('span');
-        s.innerHTML = '' + data.album + ' - ' + data.artist + '  | ' + data.cat.toUpperCase();
+        s.innerHTML = '' + data.album + ' - ' + data.artist + ' | ' + data.cat.toUpperCase();
         document.title = s.textContent || s.innerHTML;
     },
     componentDidMount: function(){
@@ -34,12 +38,17 @@ var ReleaseDetail = React.createClass({
     },
     getDownloadLinks: function(){
 
-        var sources = ["fma", "archiveorg", "scene_org", "sonicsquirrel", "soundshiva", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "amazon", "googleplay", "spotify", "discogs", "rym", "musicbrainz"];
+        var sources = ["fma", "archiveorg", "scene_org", "sonicsquirrel", "soundshiva", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "discogs", "rym", "musicbrainz", "youtube"];
         var release = this.props.release.toJSON();
 
         var downloadLinks = sources.map(function(source){
             if (release[source]) {
-                return <a href={release[source]} target="_blank"><img src={'/iconss/'+source+'.png'}/></a>;
+            	/*if ((source == 'mixcloud') && (release.cat.substring(0,7) == 'enrshow')) {
+            		var mixcloud_pt = release[source].splice(release[source].length-1,0,'-pt');
+            		return <span><a href={release[source]} target="_blank"><img src={'/iconss/'+source+'.png'}/></a><a href={mixcloud_pt} target="_blank"><img src={'/iconss/'+source+'.png'}/></a></span>;
+            	} else {*/
+                	return <a href={release[source]} target="_blank"><img src={'/iconss/'+source+'_64.png'}/></a>;
+                //}
             };
         });
         return downloadLinks;
@@ -136,7 +145,7 @@ var ReleaseDetail = React.createClass({
                         {countries}
                     </div>
                     <div className={canShow(downloadLinks, "download_links block")}>
-                        <h1>Download links:</h1>
+                        <h1>Free Download:</h1>
                         {downloadLinks}
                     </div>
                     <div className={canShow(bySameArtist, "related")}>

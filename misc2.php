@@ -7,6 +7,7 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	$title = $cat;
 	if (strncmp($cat,'enrmp',5) == 0) $title.="_".str_replace(' ', '_', strtolower($artist_name))."_-_";
 	if (strncmp($cat,'enrmix',6) == 0) $title.="_";
+	if (strncmp($cat,'enrshow',7) == 0) $title.="_";
 	if (strncmp($cat,'enrcmp',6) == 0) $title.="_-_";
 	$title.=str_replace(' ', '_', strtolower($album_name));
 	$title = replacetitlechars(stripslashes($title));
@@ -47,6 +48,7 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if ($cat == "enrmp269") $archiveorg = "http://www.archive.org/details/enrmp269_varia_-_magic___omega";
 	if ($cat == "enrmp271") $archiveorg = "http://www.archive.org/details/enrmp271_duas_semi_colcheias_invertidas_-_saditrevnisaiehclocimessaud";
 	if ($cat == "enrmp314") $archiveorg = "http://www.archive.org/details/enrmp314_duas_semi_colcheias_invertidas_-_4";
+	if ($cat == "enrmp430") $archiveorg = "http://www.archive.org/details/enrmp430_duas_semi_colcheias_invertidas___parpar_-_dsci___parpar_split";
 	if ($cat == "enrmix20") $archiveorg = "http://archive.org/details/Freihoch2-2013-10-15-enoughRecords";
 
 	return $archiveorg;

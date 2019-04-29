@@ -24,6 +24,9 @@ var Topbar = React.createClass({
         }, {
             link: '/blog',
             label: 'Blog'
+        }, {
+            link: '/radio',
+            label: 'Radio'
         }];
 
         var comps = links.map(function(link){
