@@ -24,7 +24,7 @@
     "slugify": "^0.1.1",
     "uglify-js": "^2.8.29",
     "underscore": "~1.5.2",
-    "underscore.string": "~2.3.3"
+    "underscore.string": "~3.3.5"
   },
   "devDependencies": {
     "browserify": "~8.1.1",
