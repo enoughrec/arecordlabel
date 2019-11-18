@@ -43,9 +43,6 @@
 		A:hover		{ color: #D6D6D6; text-decoration:underline; }
 </style>
 </head> 
-<?
-	@include_once( '/srv/hosted/enoughrecords/sites/enoughrecords.scene.org/slimstat/stats_include.php' );
-?>
 <body onload="updateText()"> 
 	<div id="container">
 		<div style="text-align: center;">

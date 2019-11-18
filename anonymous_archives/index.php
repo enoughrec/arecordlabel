@@ -103,9 +103,6 @@
 </script>
 
 </head> 
-<?
-	@include_once( '/srv/hosted/enoughrecords/sites/enoughrecords.scene.org/slimstat/stats_include.php' );
-?>
 <body onload="loadFrame()"> 
 	<div id="container">
 			<h1>Anonymous Archives</h1>
@@ -125,8 +122,5 @@
 			<div id="content" style="text-align: center;"></div>
 	</div>
 
-<!--<div style="position: absolute; top:0px"> 
-	<a href="http://internetdefenseleague.org"><img src="http://internetdefenseleague.org/images/badges/final/banner_left.png" alt="Member of The Internet Defense League" /></a>
-</div>-->
 </body> 
 </html> 

@@ -23,10 +23,10 @@ var Radio = require('./components/radio');
 // slim stat tracking
 // the router calls it every time the route changes, so we track internal navigation 
 // as well as just first page hits
-var SlimStat = require('./lib/slimstat');
+//var SlimStat = require('./lib/slimstat');
 
 React.renderComponent(
-    <Routes onActiveStateChange={SlimStat} location="history">
+    <Routes location="history">
         <Route name="home" path="/" handler={App} data={enrReleases}>
             <Route name="tag"       path="tag/:tag" handler={Releases} data={enrReleases} />
             <Route name="release"   path="release/:cat" handler={ReleaseDetail} data={enrReleases} />

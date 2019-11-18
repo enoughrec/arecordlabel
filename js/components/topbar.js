@@ -19,14 +19,17 @@ var Topbar = React.createClass({
             link:'/',
             label:'Enough Records'
         }, {
-            link: '/about',
-            label: 'About'
-        }, {
-            link: '/blog',
-            label: 'Blog'
-        }, {
             link: '/radio',
             label: 'Radio'
+        }/*, {
+            link: '/books',
+            label: 'Enough Books'
+        }*/, {
+            link: '/blog',
+            label: 'Articles'
+        }, {
+            link: '/about',
+            label: 'About'
         }];
 
         var comps = links.map(function(link){

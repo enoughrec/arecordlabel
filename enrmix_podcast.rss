@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" media="screen" href="/~d/styles/rss2enclosuresfull.xsl"?><?xml-stylesheet type="text/css" media="screen" href="http://feeds.feedburner.com/~d/styles/itemcontent.css"?><rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:feedburner="http://rssnamespace.org/feedburner/ext/1.0" version="2.0">
+  <channel>
+    <title>Enough Records mixtapes</title>
+    <link>http://enoughrecords.scene.org</link>
+    <description>Free music for free people</description>
+    <generator></generator>
+    <docs>http://blogs.law.harvard.edu/tech/rss</docs>
+
+    <language>en-us</language>
+    <copyright>Copyright 2010</copyright>
+    <webMaster>filipe_cruz@netcabo.pt</webMaster>
+    <pubDate>Sun, 03 Oct 2010 22:13:00 -0700</pubDate>
+    <lastBuildDate>Sun, 03 Oct 2010 22:13:00 -0700</lastBuildDate>
+    <category>Music</category>
+
+    <image>
+      <url>http://enoughrecords.scene.org/covers/300_ambient.jpg</url>
+      <title>Enough Records mixtapes</title>
+      <link>http://enoughrecords.scene.org</link>
+   	 <description>Free music for free people</description>
+
+    </image>
+    
+    <itunes:author>Enough Records</itunes:author>
+    <itunes:subtitle>Free music for free people</itunes:subtitle>
+    <itunes:summary>Free music for free people</itunes:summary>
+    <itunes:keywords>electronic, electronica, industrial, indie, pop, ambient, cinematic</itunes:keywords>
+    <itunes:explicit>no</itunes:explicit>
+
+    <itunes:image href="http://enoughrecords.scene.org/covers/300_ambient.jpg" />
+    <itunes:owner>
+      <itunes:name>Enough Records</itunes:name>
+      <itunes:email>filipe_cruz@netcabo.pt</itunes:email>
+    </itunes:owner>
+    <itunes:block>no</itunes:block>
+    <itunes:category text="Music" />
+
+    <atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="self" type="application/rss+xml" href="http://feeds.feedburner.com/enoughrec" />
+    <feedburner:info uri="enoughrec" />
+    <!--<atom10:link xmlns:atom10="http://www.w3.org/2005/Atom" rel="hub" href="http://pubsubhubbub.appspot.com/" />-->
+    <feedburner:emailServiceId>enoughrec</feedburner:emailServiceId>
+    <feedburner:feedburnerHostname>http://feedburner.google.com</feedburner:feedburnerHostname>
+    
+    <item>
+      <title>Zero Is Enough - Special RadiaLX 100704</title>
+      <link>http://http.de.scene.org/pub/music/groups/enough_records/enrmix08_zero_is_enough___special_radialx_100704/01_zero_is_enough___special_radialx_100704.mp3</link>
+      <description><![CDATA[<img src="http://enoughrecords.scene.org/covers/enrmix08.jpg"/><br />Sampler Mixtape of Enough Records catalogue, mixed by Merankorii, special for the <a href="http://radialx.radiozero.pt/" rel="nofollow">RadiaLX</a> radioshow, with music in the vein of cinematic and dark ambient. Cover artwork by <a href="http://www.francisconoa.com/" rel="nofollow">Francisco Noá</a>.<br />
+<br />
+Tracklist:<br />
+01) Vysehrad - Comsat<br />
+02) ps - lost in familiar alleys<br />
+03) Merankorii - Cry<br />
+04) (morse) - F, Volume I<br />
+05) Adrian Juarez - Hummel (Roman Slavka Remix)<br />
+06) structura - inominavel p04<br />
+07) Jari Pitkänen - Nemesia<br />
+08) +ko+ko+ - Thunder One<br />
+09) Jorge Nunes - dodó das maurícias<br />
+10) Turmoil - The World Is A Toilet<br />
+11) nny - zro:ne<br />
+12) Ambiansu - The Train's Bar<br />
+13) seetyca - die hände eiskalt<br />
+14) Sparagmos - Sparagmos<br />
+14) Proyecto de Prueba - 145<br />
+14) Deison - Frame 05<br />]]></description>
+      <pubDate>Mon, 02 Aug 2010 22:12:19 -0700</pubDate>
+      <enclosure url="http://http.de.scene.org/pub/music/groups/enough_records/enrmix08_zero_is_enough___special_radialx_100704/01_zero_is_enough___special_radialx_100704.mp3" length="82081509" type="audio/mpeg" />
+
+      <guid isPermaLink="false">enrmix08</guid>
+      <itunes:author>Enough Records</itunes:author>
+      <itunes:subtitle>enrmix08 - Zero Is Enough - Special RadiaLX 100704</itunes:subtitle>
+      <itunes:summary>Sampler Mixtape of Enough Records catalogue, mixed by Merankorii, special for the <a href="http://radialx.radiozero.pt/" rel="nofollow">RadiaLX</a> radioshow, with music in the vein of cinematic and dark ambient. Cover artwork by <a href="http://www.francisconoa.com/" rel="nofollow">Francisco Noá</a>.
+
+Tracklist:
+01) Vysehrad - Comsat
+02) ps - lost in familiar alleys
+03) Merankorii - Cry
+04) (morse) - F, Volume I
+05) Adrian Juarez - Hummel (Roman Slavka Remix)
+06) structura - inominavel p04
+07) Jari Pitkänen - Nemesia
+08) +ko+ko+ - Thunder One
+09) Jorge Nunes - dodó das maurícias
+10) Turmoil - The World Is A Toilet
+11) nny - zro:ne
+12) Ambiansu - The Train's Bar
+13) seetyca - die hände eiskalt
+14) Sparagmos - Sparagmos
+14) Proyecto de Prueba - 145
+14) Deison - Frame 05</itunes:summary>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:duration>57:00</itunes:duration>
+      <feedburner:origLink>http://http.de.scene.org/pub/music/groups/enough_records/enrmix08_zero_is_enough___special_radialx_100704/01_zero_is_enough___special_radialx_100704.mp3</feedburner:origLink>
+    </item>
+    
+    <item>
+      <title>NTTL Special 091121</title>
+      <link>http://http.de.scene.org/pub/music/groups/enough_records/enrmix07_nttl_special_091121/01_nttl_special_091121.mp3</link>
+      <description><![CDATA[<img src="http://enoughrecords.scene.org/covers/enrmix07.jpg"/><br />Sampler Mixtape of Enough Records catalogue, mixed by ps on 21st November 2009, special for <a href="http://dot.cult.bg/notitle/">nttl</a> podcast, with music ranging in the vein of cinematic. Release <a href="http://dot.cult.bg/notitle/wp/?p=3491">page</a>. Artwork by <a href="http://www.joanadias.com/">Joana Dias</a>.<br />
+<br />
+Tracklist:<br />
+01 fp - trace 4 (00:00)<br />
+02 aquarelle - episódio2 (03:50)<br />
+03 Amitron_7 - The Old Man Had Upon His Face an Equation... (07:08)<br />
+04 Luis Antero - ohp 10:00 am (12:35)<br />
+05 Jari Pitkänen - Lumien (14:17)<br />
+06 Jari Pitkänen - Muistot (19:07)<br />
+07 Jari Pitkänen - Nousevat (27:25)<br />
+08 Ostin - Dream (30:28)<br />
+09 Alterior - Pneumatics (34:50)<br />
+10 Infetu - Worm ii (37:04)<br />
+11 Joanna - Sen (Insomnia remix by MOAN) (38:14)]]></description>
+      <pubDate>Sat, 21 Nov 2009 22:12:19 -0700</pubDate>
+      <enclosure url="http://http.de.scene.org/pub/music/groups/enough_records/enrmix07_nttl_special_091121/01_nttl_special_091121.mp3" length="54705420" type="audio/mpeg" />
+
+      <guid isPermaLink="false">enrmix07</guid>
+      <itunes:author>Enough Records</itunes:author>
+      <itunes:subtitle>enrmix07 - NTTL Special 091121</itunes:subtitle>
+      <itunes:summary>Sampler Mixtape of Enough Records catalogue, mixed by ps on 21st November 2009, special for <a href="http://dot.cult.bg/notitle/">nttl</a> podcast, with music ranging in the vein of cinematic. Release <a href="http://dot.cult.bg/notitle/wp/?p=3491">page</a>. Artwork by <a href="http://www.joanadias.com/">Joana Dias</a>.
+
+Tracklist:
+01 fp - trace 4 (00:00)
+02 aquarelle - episódio2 (03:50)
+03 Amitron_7 - The Old Man Had Upon His Face an Equation... (07:08)
+04 Luis Antero - ohp 10:00 am (12:35)
+05 Jari Pitkänen - Lumien (14:17)
+06 Jari Pitkänen - Muistot (19:07)
+07 Jari Pitkänen - Nousevat (27:25)
+08 Ostin - Dream (30:28)
+09 Alterior - Pneumatics (34:50)
+10 Infetu - Worm ii (37:04)
+11 Joanna - Sen (Insomnia remix by MOAN) (38:14)</itunes:summary>
+      <itunes:explicit>no</itunes:explicit>
+      <itunes:duration>45:35</itunes:duration>
+      <feedburner:origLink>http://http.de.scene.org/pub/music/groups/enough_records/enrmix07_nttl_special_091121/01_nttl_special_091121.mp3</feedburner:origLink>
+    </item>
+    
+    
+   
+  </channel>
+</rss>
