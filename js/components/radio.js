@@ -28,9 +28,9 @@ var About = React.createClass({
 	
 	<p>Currently being broadcast at:<br />
 	- <a href="http://radiomanobras.pt/">Rádio Manobras</a>, Sunday 15:00 - 17:00 (PT)<br />
-	- <a href="http://radioquantica.com/">Rádio Quântica</a>, Every third Thursday 14:00 - 16:00 (PT)<br />
+	- <a href="http://radioquantica.com/">Rádio Quântica</a>, every third Thursday 14:00 - 16:00 (PT)<br />
 	- <a href="http://piratona.alg-a.org/">Rádio Piratona</a>, Sunday 09:00, Tuesday 00:00, Thursday 04:00, Saturday 00:00<br />
-	- <a href="http://internetpublicradio.live/">Internet Public Radio</a>, Every third Monday, 19:00 - 21:00 (PT)</p>	
+	- <a href="http://internetpublicradio.live/">Internet Public Radio</a>, every third Thursday, 17:00-19:00 (PT)</p>	
 	
 	<h1>Radio &amp; Livestream Archives</h1>
 

@@ -63,10 +63,8 @@ var About = React.createClass({
 	<p><Tag tag="[Esc.]">[Esc.]</Tag> tags releases from the <a href="http://www.esc-laboratory.com/">[Esc.] Laboratory</a> collective from Germany.</p>
 	<p><Tag tag="thisk">thisk</Tag> lists the releases related or co-released with our friends from <a href="http://thisco.net/">Thisco Records</a>.</p>
 	
-	<h1>Acknowledgements</h1>
+	<h1>Website</h1>
 	
-	<p>Enough Records was founded in 2001 by Fred, H4rv3st and ps. Managed and curated by ps alone since 2003. But it's not a solo effort, thanks to all the nameless folks who help us run and promote Enough Records. This includes organizing mixtapes, concerts, compilations, sending out packages in the mail, spamming online, etc. Enough Records would not be what it is without your love and support.</p>
-
 	<p>Website developed by <a href="http://twitter.com/danpeddle" target="_blank">Dan Peddle</a> and ps as an <a href="https://github.com/enoughrec/arecordlabel/">open source project</a>, feel free to fork, re-use and contribute.</p>
 
 </div>

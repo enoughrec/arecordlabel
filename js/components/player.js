@@ -125,10 +125,10 @@ var Player = React.createClass({
         return (
             <div className="player">
                 <span className="controls" onClick={this.doControl}>
-                    <span data-ctrl="back" className="fa fontawesome-backward"></span>
-                    <span data-ctrl="stop" className="fa fontawesome-stop"></span>
-                    <span data-ctrl="play" id="play-state" className={this.state.playing ? "fa fontawesome-pause" : "fa fontawesome-play"}></span>
-                    <span data-ctrl="forward" className="fa fontawesome-forward"></span>
+                    <span data-ctrl="back" className="fa fa-backward"></span>
+                    <span data-ctrl="stop" className="fa fa-stop"></span>
+                    <span data-ctrl="play" id="play-state" className={this.state.playing ? "fa fa-pause" : "fa fa-play"}></span>
+                    <span data-ctrl="forward" className="fa fa-forward"></span>
                 </span>
                 {coverAndLink}
                 <span className={this.state.playing ? 'now-playing' : 'now-playing nothing'}>{trackName}</span>

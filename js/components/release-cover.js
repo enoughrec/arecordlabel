@@ -24,7 +24,7 @@ var ReleaseCover = React.createClass({
         return (
             <div className="release-cover">
                 <div className="cover">
-                    <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
+                    <div className="playbutton fa fa-play" onClick={this.startPlaying}></div>
                     <img src={data.cover} alt={data.album + ' - ' + data.artist} />
                 </div>
                 <Link to={url} className="titles">

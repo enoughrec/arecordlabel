@@ -36,10 +36,10 @@ var ReleaseDetail = React.createClass({
     componentDidMount: function(){
         window.scrollTo(0,0);
     },
-    getDownloadLinks: function(){
+    getDownloadLinks: function(release){
 
-        var sources = ["fma", "archiveorg", "scene_org", "sonicsquirrel", "soundshiva", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "discogs", "rym", "musicbrainz", "youtube"];
-        var release = this.props.release.toJSON();
+        var sources = ["fma", "archiveorg", "scene_org", "sonicsquirrel", "jamendo", "bandcamp", "soundcloud", "mixcloud", "lastfm", "itunes", "discogs", "spotify", "audius", "audiomack", "resonate", "youtube", "freeebooks", "bookrix", "amazon", "goodreads", "manybooks", "smashwords", "blurb", "scribd"];
+        //var release = this.props.release.toJSON();
 
         var downloadLinks = sources.map(function(source){
             if (release[source]) {
@@ -74,7 +74,7 @@ var ReleaseDetail = React.createClass({
             return (<img className="artist-country" title="" src={"/flags/_flag_" + country + ".png"} />);
         });
     },
-    getRelatedLinks: function(data){
+    getRelatedLinks: function(data){   	
         var relatedRelease = this.props.data.getMayAlsoLike({
             tags: data.tags,
             artist: data.artist,
@@ -87,9 +87,12 @@ var ReleaseDetail = React.createClass({
         }.bind(this));
 
         return links;
-
     },
     getBySameArtist: function(data){
+
+    	if ((data.cat.substring(0,7) == 'enrshow') && data.artist == 'ps') return {};
+    	if ((data.cat.substring(0,6) == 'enrmix') && data.artist == 'ps') return {};
+
         var bySameArtist = this.props.data.getByArtist(data.artist, data.cat);
 
         var links = bySameArtist.map(function(model){
@@ -98,6 +101,18 @@ var ReleaseDetail = React.createClass({
         }.bind(this));
 
         return links;
+    },
+    getCoverThing: function(data){
+    	if (data.cat.substring(0,6) == 'enrtxt') {
+    		return(<div className="cover">
+                	<img src={data.cover} alt={data.album + ' - ' + data.artist} />
+                </div>);
+    	} else {
+    		return(<div className="cover">
+                	<div className="playbutton fa fa-play" onClick={this.startPlaying}></div>
+                    <img src={data.cover} alt={data.album + ' - ' + data.artist} />
+                </div>);
+    	}
     },
     startPlaying: function(){
         // push this release to the playlist queue
@@ -115,18 +130,16 @@ var ReleaseDetail = React.createClass({
 
         var tags = this.getTags(data.tags);
         var countries = this.getCountries(data.country);
-        var downloadLinks = this.getDownloadLinks();
-
+        var downloadLinks = this.getDownloadLinks(data);
+		var coverThing = this.getCoverThing(data);
+		
         var sameArtistText = data.artist === 'Various Artists' ? 'More Compilations:' : 'Other releases by '+data.artist+':';
 
         return (
             <div className="release-full">
                 <div className="leftframe">
                     <header>
-                        <div className="cover">
-                            <div className="playbutton fontawesome-play" onClick={this.startPlaying}></div>
-                            <img src={data.cover} alt={data.album + ' - ' + data.artist} />
-                        </div>
+                        {coverThing}
                         <div className="titles">
                             <h1><span className="title album">{data.album}</span> <span className="title artist">{data.artist}</span></h1>
                         </div>

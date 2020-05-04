@@ -9,6 +9,8 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if (strncmp($cat,'enrmix',6) == 0) $title.="_";
 	if (strncmp($cat,'enrshow',7) == 0) $title.="_";
 	if (strncmp($cat,'enrcmp',6) == 0) $title.="_-_";
+	if (strncmp($cat,'enrtxt',6) == 0) $title.="_".str_replace(' ', '_', strtolower($artist_name))."_-_";
+
 	$title.=str_replace(' ', '_', strtolower($album_name));
 	$title = replacetitlechars(stripslashes($title));
 	
