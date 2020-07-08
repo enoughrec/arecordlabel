@@ -136,7 +136,12 @@ class rss_feed  {
       $xml .= '<category>' . $rss_item['category'] . '</category>' . "\n";
       $xml .= '<source>' . $rss_item['source'] . '</source>' . "\n";
  
-      $xml .= '<enclosure url="' . $rss_item['link'] . '" type="audio/mpeg"/>' . "\n";
+	  $filesize = 0;
+	  $thislink = $rss_item['link'];
+	  if ($thislink != null) $thisheaders = get_headers($thislink,1);
+	  $filesize = $thisheaders['Content-Length'];
+ 
+      $xml .= '<enclosure url="' . $rss_item['link'] . '" length="'. $filesize .'" type="audio/mpeg"/>' . "\n";
       $xml .= '<itunes:summary>' . $rss_item['description'] . '</itunes:summary>' . "\n";
       $xml .= '<itunes:explicit>No</itunes:explicit>' . "\n";
 	  $catnumber = intval(explode("w",$rss_item['cat'])[1]);
@@ -145,8 +150,13 @@ class rss_feed  {
 	  } else {
 		$xml .= '<itunes:duration>7200</itunes:duration>' . "\n";
 	  }
-      $xml .= '<itunes:image href="' . $rss_item['cover'] . '"/>' . "\n";
-      $xml .= '<itunes:season>1</itunes:season>' . "\n";
+      //$xml .= '<itunes:image href="' . $rss_item['link'] . '"/>' . "\n";
+	  if (($catnumber == 41) || ($catnumber == 26) || ($catnumber == 25) || ($catnumber == 17)) {
+		$xml .= '<itunes:image href="' . substr($rss_item['link'],0,-3).'jpg' . '"/>' . "\n";
+	  } else {
+		$xml .= '<itunes:image href="' . substr($rss_item['link'],0,-3).'png' . '"/>' . "\n";
+	  }		
+	  $xml .= '<itunes:season>1</itunes:season>' . "\n";
       $xml .= '<itunes:episode>' . $catnumber . '</itunes:episode>' . "\n";
       $xml .= '<itunes:episodeType>full</itunes:episodeType>' . "\n";
 	  
@@ -280,7 +290,7 @@ $a_channel = array(
   "language" => "en",
   "image_title" => "Enough Records Radio Show",
   "image_link" => "http://enoughrecords.scene.org",
-  "image_url" => "http://enoughrecords.scene.org/covers/300_ambient.png",
+  "image_url" => "http://enoughrecords.scene.org/covers/1400_ambient.jpg",
   "author" => "Enough Records",
   "email" => "ps@enoughrecords.org"
 );
