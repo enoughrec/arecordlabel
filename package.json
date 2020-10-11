@@ -12,7 +12,7 @@
     "frontmatterify": "^1.0.0",
     "htmlclean": "^2.7.10",
     "json-front-matter": "^0.1.6",
-    "lodash": "^2.4.2",
+    "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "play-audio": "git+https://github.com/azer/play-audio.git#f2b0815bc2eba41dc981494ab94633eb66753bc1",
     "react": "^0.11.2",
@@ -24,7 +24,7 @@
     "slugify": "^0.1.1",
     "uglify-js": "^2.8.29",
     "underscore": "~1.5.2",
-    "underscore.string": "~2.3.3"
+    "underscore.string": "~3.3.5"
   },
   "devDependencies": {
     "browserify": "~8.1.1",
