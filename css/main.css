@@ -733,6 +733,7 @@ p > strong:last-child {
     line-height: 1.5;
     position: relative;
     padding-left: 33px;
+    padding-right: 33px;
 }
 
 .centered-article h1 {
@@ -766,6 +767,7 @@ p > strong:last-child {
     overflow: hidden;
     height: 40px;
 }
+
 .top-bar {
     position: fixed;
     z-index: 10;
@@ -773,8 +775,7 @@ p > strong:last-child {
     left: 0;
     right: 0;
     height: 48px;
-    background: rgba(62, 168, 218, 0.9);
-    
+    background: rgba(62, 168, 218, 0.9);    
     line-height: 48px;
     text-indent: 12px;
 }
@@ -795,6 +796,7 @@ p > strong:last-child {
     padding-left: 12px;
     margin-left: 12px;
     font-size: 18px;
+    white-space: nowrap;
 }
 
 .tag-navigation {

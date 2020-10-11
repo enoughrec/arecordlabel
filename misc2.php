@@ -31,9 +31,12 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if ($cat == "enrmp308") $title = "enrmp308_-_an_uto";
 	if ($cat == "enrmp322") $title = "enrmp322_-_1984___back_to_the_future";
 	if ($cat == "enrmp371") $title = "enrmp371_umm_-_estupidez_e_p_";
+	if ($cat == "enrmp453") $title = "enrmp453_doissemicircuitosinvertidos_-_live_at_l_a_m_a__sessions";
+	if ($cat == "enrmp455") $title = "enrmp455_ps_-_go______yourself";
 
 	$archiveorg = "http://www.archive.org/details/".$title;
 	
+	if ($cat == "enrcmp09") $archiveorg = "http://www.archive.org/details/enrcmp09";
 	if ($cat == "enrmp009") $archiveorg = "http://www.archive.org/details/enrmp009_ps_-_benfield_no_travel_sprite_bubbles_and_a_rice_cup_o";
 	if ($cat == "enrmp013") $archiveorg = "http://www.archive.org/details/enrmp013_ps_-_dont";
 	if ($cat == "enrmp043") $archiveorg = "http://www.archive.org/details/enrmp043_fp_-_traces";
@@ -51,7 +54,7 @@ function getArchiveOrg($cat, $artist_name, $album_name) {
 	if ($cat == "enrmp271") $archiveorg = "http://www.archive.org/details/enrmp271_duas_semi_colcheias_invertidas_-_saditrevnisaiehclocimessaud";
 	if ($cat == "enrmp314") $archiveorg = "http://www.archive.org/details/enrmp314_duas_semi_colcheias_invertidas_-_4";
 	if ($cat == "enrmp430") $archiveorg = "http://www.archive.org/details/enrmp430_duas_semi_colcheias_invertidas___parpar_-_dsci___parpar_split";
-	if ($cat == "enrmix20") $archiveorg = "http://archive.org/details/Freihoch2-2013-10-15-enoughRecords";
+	if ($cat == "enrmix20") $archiveorg = "http://www.archive.org/details/Freihoch2-2013-10-15-enoughRecords";
 
 	return $archiveorg;
 }
