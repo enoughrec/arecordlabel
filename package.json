@@ -15,7 +15,7 @@
     "lodash": "^4.17.19",
     "moment": "^2.24.0",
     "play-audio": "git+https://github.com/azer/play-audio.git#f2b0815bc2eba41dc981494ab94633eb66753bc1",
-    "react": "^0.11.2",
+    "react": "^0.14.0",
     "react-infinite-scroll": "^0.1.5",
     "react-router": "0.5.3",
     "react-tools": "^0.10.0",
