@@ -97,6 +97,7 @@ class rss_feed  {
     $xml .= '<link>' . $this->channel_properties["link"] . '</link>' . "\n";
     $xml .= '<description>' . $this->channel_properties["description"] . '</description>' . "\n";
     $xml .= '<author>' . $this->channel_properties["author"] . '</author>' . "\n";
+    $xml .= '<copyright>Enough Records</copyright>' . "\n";
   
     // channel optional properties
     if(array_key_exists("language", $this->channel_properties)) {
@@ -112,6 +113,7 @@ class rss_feed  {
 
 	$xml .= '<itunes:author>' . $this->channel_properties["author"] . '</itunes:author>' . "\n";
 	$xml .= '<itunes:summary>' . $this->channel_properties["description"] . '</itunes:summary>' . "\n";	
+	$xml .= '<itunes:subtitle>' . $this->channel_properties["description"] . '</itunes:subtitle>' . "\n";	
 	$xml .= '<itunes:type>episodic</itunes:type>' . "\n";
 	$xml .= '<itunes:owner>' . "\n";
 	$xml .= '	<itunes:name>' . $this->channel_properties["author"] . '</itunes:name>' . "\n";
@@ -119,7 +121,7 @@ class rss_feed  {
 	$xml .= '</itunes:owner>' . "\n";
 	$xml .= '<itunes:explicit>No</itunes:explicit>' . "\n";
 	$xml .= '<itunes:category text="Music">' . "\n";
-	$xml .= '	<itunes:category text="Music"/>' . "\n";
+	$xml .= '	<itunes:category text="Music History" />' . "\n";
 	$xml .= '</itunes:category>' . "\n";
 	$xml .= '<itunes:image href="' . $this->channel_properties["image_url"] . '"/>' . "\n";
 
@@ -142,7 +144,11 @@ class rss_feed  {
 	  $filesize = $thisheaders['Content-Length'];
  
       $xml .= '<enclosure url="' . $rss_item['link'] . '" length="'. $filesize .'" type="audio/mpeg"/>' . "\n";
-      $xml .= '<itunes:summary>' . $rss_item['description'] . '</itunes:summary>' . "\n";
+      $xml .= '<guid>' . $rss_item['cat'] . '</guid>' . "\n";
+	  $xml .= '<itunes:title>' . strip_tags($rss_item['title'])  . '</itunes:title>' . "\n";
+      $xml .= '<itunes:author>' . strip_tags($rss_item['artist'])  . '</itunes:author>' . "\n";
+      $xml .= '<itunes:summary>' . strip_tags($rss_item['description'])  . '</itunes:summary>' . "\n";
+      $xml .= '<itunes:subtitle>' . strip_tags($rss_item['description'])  . '</itunes:subtitle>' . "\n";
       $xml .= '<itunes:explicit>No</itunes:explicit>' . "\n";
 	  $catnumber = intval(explode("w",$rss_item['cat'])[1]);
 	  if ($catnumber < 26) {
