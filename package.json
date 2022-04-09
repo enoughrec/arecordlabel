@@ -13,7 +13,7 @@
     "htmlclean": "^2.7.10",
     "json-front-matter": "^0.1.6",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "play-audio": "git+https://github.com/azer/play-audio.git#f2b0815bc2eba41dc981494ab94633eb66753bc1",
     "react": "^0.14.0",
     "react-infinite-scroll": "^0.1.5",
