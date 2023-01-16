@@ -6,32 +6,37 @@
   "dependencies": {
     "backbone": "~1.0.0",
     "brfs": "^1.6.1",
+    "browserify": "^17.0.0",
     "bulk-require": "^0.2.1",
     "bulkify": "^1.4.2",
+    "create-react-class": "^15.7.0",
     "envify": "^1.2.0",
     "frontmatterify": "^1.0.0",
     "htmlclean": "^2.7.10",
     "json-front-matter": "^0.1.6",
+    "jsx-render": "^1.1.1",
     "lodash": "^4.17.21",
-    "moment": "^2.24.0",
+    "merge": "^2.1.1",
+    "moment": "^2.29.4",
     "play-audio": "git+https://github.com/azer/play-audio.git#f2b0815bc2eba41dc981494ab94633eb66753bc1",
-    "react": "^0.14.0",
-    "react-infinite-scroll": "^0.1.5",
-    "react-router": "0.5.3",
-    "react-tools": "^0.10.0",
+    "react": "^18.2.0",
+    "react-addons": "^0.9.1-deprecated",
+    "react-dom": "^18.2.0",
+    "react-infinite-scroll-component": "^6.1.0",
+    "react-router": "^6.6.2",
+    "react-router-dom": "^6.6.2",
     "reactify": "^0.13.1",
     "reading-time": "0.0.1",
     "slugify": "^0.1.1",
     "uglify-js": "^2.8.29",
     "underscore": "~1.12.1",
-    "underscore.string": "~3.3.5"
+    "underscore.string": "^3.3.6",
+    "watchify": "^4.0.0"
   },
   "devDependencies": {
-    "browserify": "~8.1.1",
     "htmlparser2": "^3.10.1",
     "statics": "~0.1.0",
-    "uglifyjs": "^2.4.10",
-    "watchify": "^2.2.1"
+    "uglifyjs": "^2.4.10"
   },
   "main": "js/index.js",
   "author": "Dan Peddle <dan@flarework.com>",
@@ -48,11 +53,13 @@
   },
   "scripts": {
     "start": "STATIC_ROOT=./static watchify -o build/build.js -v -d  .",
+    "s": "set STATIC_ROOT=./static& watchify -o build/build.js -v -d  .",
     "build-gzip": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm | gzip -9 - > build/build.js.gz ",
     "build": "STATIC_ROOT=./static NODE_ENV=production browserify . > build/build.js",
     "build-ugly": "STATIC_ROOT=./static NODE_ENV=production browserify . | uglifyjs -cm > build/build.js",
+    "b": "set STATIC_ROOT=./static& set NODE_ENV=production& browserify . | uglifyjs -cm > build/build.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "get-data": "curl -o ./data/all.json -X GET 'http://enoughrecords.scene.org/getlist4.php?archive=true'"
+    "get-data": "curl -o ./data/all.json -X GET https://enoughrecords.scene.org/getlist4.php?archive=true"
   },
   "browserify": {
     "transform": [

@@ -1,0 +1,184 @@
+<html>
+<head>
+<title>Stfu Porto</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<style type="text/css">
+<!--
+body,td,th {
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	font-size: 10px;
+	color: #FFFFFF;
+}
+body {
+	background-color: #01A0E2;
+}
+a {
+	font-size: 10px;
+	color: #01A0E2;
+	font-weight: bold;
+}
+a:link {
+	text-decoration: none;
+}
+a:visited {
+	text-decoration: none;
+	color: #01A0E2;
+}
+a:hover {
+	text-decoration: none;
+	color: #000000;
+}
+a:active {
+	text-decoration: none;
+	color: #000000;
+}
+-->
+</style>
+<script type="text/JavaScript">
+<!--
+function MM_swapImgRestore() { //v3.0
+  var i,x,a=document.MM_sr; for(i=0;a&&i<a.length&&(x=a[i])&&x.oSrc;i++) x.src=x.oSrc;
+}
+
+function MM_preloadImages() { //v3.0
+  var d=document; if(d.images){ if(!d.MM_p) d.MM_p=new Array();
+    var i,j=d.MM_p.length,a=MM_preloadImages.arguments; for(i=0; i<a.length; i++)
+    if (a[i].indexOf("#")!=0){ d.MM_p[j]=new Image; d.MM_p[j++].src=a[i];}}
+}
+
+function MM_findObj(n, d) { //v4.01
+  var p,i,x;  if(!d) d=document; if((p=n.indexOf("?"))>0&&parent.frames.length) {
+    d=parent.frames[n.substring(p+1)].document; n=n.substring(0,p);}
+  if(!(x=d[n])&&d.all) x=d.all[n]; for (i=0;!x&&i<d.forms.length;i++) x=d.forms[i][n];
+  for(i=0;!x&&d.layers&&i<d.layers.length;i++) x=MM_findObj(n,d.layers[i].document);
+  if(!x && d.getElementById) x=d.getElementById(n); return x;
+}
+
+function MM_swapImage() { //v3.0
+  var i,j=0,x,a=MM_swapImage.arguments; document.MM_sr=new Array; for(i=0;i<(a.length-2);i+=3)
+   if ((x=MM_findObj(a[i]))!=null){document.MM_sr[j++]=x; if(!x.oSrc) x.oSrc=x.src; x.src=a[i+2];}
+}
+//-->
+</script>
+</head>
+<body leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" onLoad="MM_preloadImages('[Ckz].gif','[NNy].gif','[Aenedra].gif','[Svart Greiner].gif','[Pygar].gif','[Quip].gif','[Replicant].gif','[Decibeats].gif','[Violet].gif','Porto-Ribeira-antiga.jpg','Unknow-Forces-of-Everyday.gif','[M].gif')">
+<!-- ImageReady Slices (1.psd) -->
+<table id="Table_01" width="800" height="600" border="0" cellpadding="0" cellspacing="0">
+	<tr>
+		<td colspan="5" rowspan="2">
+			<img src="1_01.gif" width="471" height="184" alt=""></td>
+		<td colspan="3">
+			  <img src="Rio-Douro-e-Porto.gif" width="300" height="177" border="0" alt=""><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image43','','Porto-Ribeira-antiga.jpg',1)"></a></td>
+		<td rowspan="8">
+			<img src="1_03.gif" alt="" width="29" height="600" border="0" usemap="#Map3"></td>
+	</tr>
+	<tr>
+		<td colspan="3">
+			<img src="1_04.gif" width="300" height="7" alt=""></td>
+	</tr>
+	<tr>
+		<td rowspan="6">
+			<img src="1_05.gif" alt="" width="166" height="416" border="0" usemap="#Map"></td>
+		<td>
+			<table id="Table_02" width="148" height="118" border="0" cellpadding="0" cellspacing="0">
+				<tr>
+					<td>
+						<a href="#"
+							onmouseover="window.status='Ckz';  return true;"
+							onmouseout="window.status='';  return true;"></a><a href="http://last.fm/music/ckz" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image31','','[Ckz].gif',1)"><img src="Ckz.gif" name="Image31" width="148" height="118" border="0"></a></td>
+				</tr>
+			</table></td>
+		<td rowspan="6">
+			<img src="1_07.gif" width="5" height="416" alt=""></td>
+		<td>
+			<a href="#"
+				onmouseover="window.status='NNY';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://www.myspace.com/earational" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image32','','[NNy].gif',1)"><img src="NNY.gif" name="Image32" width="148" height="118" border="0"></a></td>
+		<td rowspan="6">
+			<img src="1_09.gif" width="4" height="416" alt=""></td>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Aenedra';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image33','','[Aenedra].gif',1)"><img src="Aenedra.gif" name="Image33" width="148" height="118" border="0"></a></td>
+		<td rowspan="6">
+			<img src="1_11.gif" width="4" height="416" alt=""></td>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Svart Greiner';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://www.myspace.com/svartegreiner" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image34','','[Svart Greiner].gif',1)"><img src="Svart-Greiner.gif" name="Image34" width="148" height="118" border="0"></a></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="1_13.gif" width="148" height="4" alt=""></td>
+		<td>
+			<img src="1_14.gif" width="148" height="4" alt=""></td>
+		<td>
+			<img src="1_15.gif" width="148" height="4" alt=""></td>
+		<td rowspan="3">
+			<a href="#"
+				onmouseover="window.status='Replycant';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://www.myspace.com/ezylohmtek" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image38','','[Replicant].gif',1)"><img src="Replycant.gif" name="Image38" width="148" height="126" border="0"></a></td>
+	</tr>
+	<tr>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Pygar';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://pygar.pt.vu/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image35','','[Pygar].gif',1)"><img src="Pygar.gif" name="Image35" width="148" height="118" border="0"></a></td>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Quip';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://www.myspace.com/ufoel" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image29','','Unknow-Forces-of-Everyday.gif',1)"><img src="[Unknow-Forces-of-Everyday].gif" name="Image29" width="148" height="118" border="0"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image40','','[Unknow-Forces-of-Everyday].gif',1)"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image36','','[Quip].gif',1)"></a></td>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Svart Greiner';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://www.myspace.com/svartegreiner" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image37','','[Svart-Greiner_].gif',1)"><img src="Svart-Greiner_.gif" name="Image37" width="148" height="118" border="0"></a></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="1_20.gif" width="148" height="4" alt=""></td>
+		<td>
+			<img src="1_21.gif" width="148" height="4" alt=""></td>
+		<td>
+			<img src="1_22.gif" width="148" height="4" alt=""></td>
+	</tr>
+	<tr>
+		<td>
+			<a href="#"
+				onmouseover="window.status='Decibeats';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image39','','[Decibeats].gif',1)"></a><a href="http://www.e-twopoints.com/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image41','','[E-45].gif',1)"><img src="E-4C.gif" name="Image41" width="148" height="118" border="0"></a></td>
+		<td>
+			<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image42','','[Violet].gif',1)"><img src="Violet.gif" name="Image42" width="148" height="118" border="0"></a><a href="#"
+				onmouseover="window.status='Violet';  return true;"
+				onmouseout="window.status='';  return true;"></a></td>
+		<td>
+			<a href="#" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image39','','[Decibeats].gif',1)"><img src="Decibeats.gif" name="Image39" width="148" height="118" border="0"></a><a href="#"
+				onmouseover="window.status='E:4C';  return true;"
+				onmouseout="window.status='';  return true;"></a></td>
+		<td>
+			<a href="http://connexionbizarre.net/"
+				onmouseover="window.status='M.';  return true;"
+				onmouseout="window.status='';  return true;"></a><a href="http://connexionbizarre.net/" onMouseOut="MM_swapImgRestore()" onMouseOver="MM_swapImage('Image36','','[M].gif',1)"><img src="M.gif" name="Image36" width="148" height="118" border="0"></a></td>
+	</tr>
+	<tr>
+		<td>
+			<img src="1_27.gif" alt="" width="148" height="54" border="0" usemap="#Map2"></td>
+		<td>
+			<img src="1_28.gif" width="148" height="54" alt=""></td>
+		<td>
+			<img src="1_29.gif" width="148" height="54" alt=""></td>
+		<td>
+			<img src="1_30.gif" alt="" width="148" height="54" border="0" usemap="#Map4"></td>
+	</tr>
+</table>
+<a href="file:///C|/Documents and Settings/Helder/Os meus documentos/As minhas imagens/StfuPorto.html"></a><!-- End ImageReady Slices -->
+
+<map name="Map"><area shape="rect" coords="11,370,137,386" href="http://www.stfumusic.org" target="_blank">
+<area shape="rect" coords="11,388,183,404" href="http://enoughrecords.scene.org" target="_blank">
+</map>
+<map name="Map2"><area shape="rect" coords="1,26,13,42" href="http://enoughrecords.scene.org" target="_blank">
+</map>
+<map name="Map3"><area shape="rect" coords="3,428,14,520" href="mailto:sixfreelancer@gmail.com" target="_blank">
+</map>
+<map name="Map4"><area shape="rect" coords="17,26,150,44" href="mailto:fabricadsom@gmail.com" target="_blank">
+</map></body>
+</html>

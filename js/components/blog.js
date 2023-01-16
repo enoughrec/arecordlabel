@@ -4,14 +4,14 @@
 
 
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var Router = require('react-router');
 var Link = Router.Link;
 
 var ArticleList = require('./article-list');
 var Article = require('./article');
 
-var Blog = React.createClass({
+var Blog = createReactClass({
     getArticle: function(slug){
         return this.props.articles.getBySlug(slug);
     },

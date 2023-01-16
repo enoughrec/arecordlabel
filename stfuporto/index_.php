@@ -1,0 +1,17 @@
+<p>we're gonna have some relevant info about stfu porto here soon.<br />
+like artist bios and mp3 clips and that kind of stuff, just waiting for our designer to move ass.. honestly.<br />
+<br />
+in the meantime, be aware that <a href="http://enoughrecords.scene.org">EnoughRecords</a> and <a href="http://testtube.monocromatica.com/">Test Tube</a> are proud to announce the following dates and lineups for <a href="http://stfu.regicide.org/">STFU</a>.pt March 2007:<br />
+<br />
+STFU Porto @ <a href="http://www.myspace.com/fabricadesom">Fabrica de Som</a> (Rua Rodrigues de Freitas 23-27)<br />
+22 thu - <a href="http://last.fm/music/ckz">CKZ</a> (live), <a href="http://www.myspace.com/earational">NNY</a> (madeira, live), aenedra (live), <a href="http://www.myspace.com/svartegreiner">Svarte Greiner</a> (norway, djset)<br />
+23 fri - <a href="http://pygar.pt.vu/">Pygar</a> (live), <a href="http://www.myspace.com/ufoel">Unknown Forces of Everyday Life</a> (uk, live), <a href="http://www.myspace.com/svartegreiner">Svarte Greiner</a> (norway, live), <a href="http://www.myspace.com/ezylohmtek">[Replycant]</a> (djset)<br />
+24 sat - <a href="http://www.e-twopoints.com/">e:4c</a> (live), Violets & The Mutants (live), deciBeats (live), <a href="http://connexionbizarre.net/">M.</a> (djset)<br />
+<br />
+STFU Lisbon @ <a href="http://www.zedosbois.org/">ZDB</a><br />
+30 fri - Phoebus (live), <a href="http://www.myspace.com/ubeboet">Ubeboet</a> (spain, live), <a href="http://www.myspace.com/svartegreiner">Svarte Greiner</a> (norway, live)<br />
+<br />
+STFU Torres Vedras @ <a href="http://www.ccctv.org/">CCCTV</a><br />
+31 sat - <a href="http://www.ruigato.info/">Rui Gato</a> (live), <a href="http://www.myspace.com/ubeboet>Ubeboet</a> (spain, live), <a href="http://www.myspace.com/svartegreiner">Svarte Greiner</a> (norway, live)<br />
+<br />
+</p>

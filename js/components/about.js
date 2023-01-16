@@ -4,13 +4,13 @@
 
 
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var Router = require('react-router');
 var Link = Router.Link;
 
 var Tag = require('./tag');
 
-var About = React.createClass({
+var About = createReactClass({
 	componentWillMount: function(){
 		document.title = 'About';
 	},

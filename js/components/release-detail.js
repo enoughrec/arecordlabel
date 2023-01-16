@@ -2,6 +2,7 @@
  * @jsx React.DOM
  */
 var React = require('react');
+var createReactClass = require('create-react-class');
 var bus = require('../bus');
 
 var url = require('url');
@@ -22,7 +23,7 @@ String.prototype.splice = function(idx, rem, str) {
     return this.slice(0, idx) + str + this.slice(idx + Math.abs(rem));
 };
 
-var ReleaseDetail = React.createClass({
+var ReleaseDetail = createReactClass({
     componentWillMount: function(){
         var cat = this.props.params.cat;
         this.props.release = this.props.data.findWhere({cat:cat});

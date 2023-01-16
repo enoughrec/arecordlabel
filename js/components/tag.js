@@ -2,12 +2,14 @@
  * @jsx React.DOM
  */
 
+
+var React = require('react');
+var createReactClass = require('create-react-class');
+
 var Router = require('react-router');
 var Link = Router.Link;
 
-var React = require('react');
-
-var Tag = React.createClass({
+var Tag = createReactClass({
 
     render: function() {
         var url = '/tag/' + this.props.tag;

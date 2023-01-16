@@ -1,0 +1,57 @@
+
+@font-face {
+		  font-family: myfont;
+		  src: url('font.ttf');
+}
+
+html {
+    height: 100%;
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+  	font-family: myfont;
+  	color: #A6A6A6;
+  	background-color: #FFFFFF;
+}
+
+#container
+{
+  	margin: 4em 6em 4em 6em;
+}
+
+h1{
+  font-family: myfont;
+  border: none;
+  color: #737373;
+  font-style: normal;
+  text-align: left;
+}
+
+p{
+  font-weight: normal;
+  margin: 1em 1em 1em 1em;
+  text-align: justify;
+  font-size: 1.5em;
+}
+
+a{
+  color: #737373;
+  text-decoration: none;
+}
+
+a:hover
+ {
+    color: #BFBFBF;
+}
+
+ul{
+	list-style-type:decimal;
+    font-size: 1.5em;
+}
+
+ul li {
+	margin: 0 1em;
+	
+}

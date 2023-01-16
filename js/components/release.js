@@ -2,13 +2,13 @@
  * @jsx React.DOM
  */
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var Router = require('react-router');
 var Link = Router.Link;
 
 var url = require('url');
 
-var Release = React.createClass({
+var Release = createReactClass({
 	render: function(){
 		var data = this.props.data.toJSON();
 

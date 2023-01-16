@@ -1,0 +1,15 @@
+M-PeX - Somnatika [enrmp479]
+
+[EN] Chiptune EEG-based sonification recorded during sleep. All electronic sounds are MIDI note sequences coded from sleep EEG signals. Electronic sections within tracks are sonified excerpts of sleep EEG from different stages. In a few cases, in a complementary and artistic fashion, arpeggios were added to MIDI notes. The instruments and the octaves in scales were also artistically chosen, as well as beats per minute (BPM). The portuguese guitar was recorded over the EEG-MIDI sonification. Latest album release by <a href="https://mpex.bandcamp.com/">M-PeX</a>.
+
+[PT] Sonificacao em chiptune, de EEG gravado durante o sono. Todos os sons electronicos sao sequencias de notas MIDI codificadas de sinais EEG gravados durante o sono. As seccoes electronicas dos temas sao excertos sonificados do registo EEG de diferentes fases do sono. Nalguns casos, de forma complementar e artistica, foram adicionados arpejos nas notas MIDI. Os instrumentos e as oitavas nas escalas tambem foram escolhidos artisticamente, assim como a escolha das batidas por minuto (BPM). A guitarra portuguesa foi gravada depois da sonificacao EEG-MIDI. Mais recente album de <a href="https://mpex.bandcamp.com/">M-PeX</a>.
+
+https://archive.scene.org/pub/music/groups/enough_records/enrmp479_m-pex_-_somnatika.zip
+https://www.archive.org/details/enrmp479_m-pex_-_somnatika
+https://freemusicarchive.org/music/M-PeX/somnatika
+https://soundcloud.com/mpex/sets/m-pex-somnatika
+https://mpex.bandcamp.com/album/somnatika
+https://www.youtube.com/playlist?list=PL7V69Mscm84wx8K6o7XMln42IJEuVoTVS
+https://enoughrecords.scene.org
+
+

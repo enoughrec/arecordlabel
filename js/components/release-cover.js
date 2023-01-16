@@ -3,6 +3,7 @@
  */
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 var bus = require('../bus');
 var Link = require('react-router').Link;
 var Releases = require('../collections/releases');
@@ -10,7 +11,7 @@ var Releases = require('../collections/releases');
 var releases = new Releases();
 releases.fullReset();
 
-var ReleaseCover = React.createClass({
+var ReleaseCover = createReactClass({
     componentWillMount: function(){
         var cat = this.props.cat;
         this.props.release = releases.findWhere({cat:cat});

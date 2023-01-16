@@ -4,8 +4,9 @@
 
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 var Router = require('react-router');
-var JSXRender = require('../lib/jsx-render');
+var JSXRender = require('jsx-render');
 
 // components available to articles
 var Tag = require('./tag');
@@ -13,7 +14,7 @@ var Link = Router.Link;
 
 var Release = require('./release-cover');
 
-var Article = React.createClass({
+var Article = createReactClass({
     componentDidMount: function(){
         document.title = this.props.data.get('title');
     },

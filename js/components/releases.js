@@ -2,16 +2,17 @@
  * @jsx React.DOM
  */
 
-var React = require('react/addons');
-var InfiniteScroll = require('react-infinite-scroll')(React);
-var cx = React.addons.classSet;
+var React = require('react');
+var createReactClass = require('create-react-class');
+var InfiniteScroll = require('react-infinite-scroll-component');
+//var cx = React.addons.classSet;
 var Release = require('./release');
 
 var appState = require('../state');
 
 var Tag = require('./tag');
 
-var Releases = React.createClass({
+var Releases = createReactClass({
     loadMoreQuantity: 12,
     getInitialState: function(){
         return {

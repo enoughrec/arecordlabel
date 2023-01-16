@@ -3,11 +3,11 @@
  */
 
 var React = require('react');
-
+var createReactClass = require('create-react-class');
 var Router = require('react-router');
 var Link = Router.Link;
 
-var ArticleList = React.createClass({
+var ArticleList = createReactClass({
     componentDidMount: function(){
         document.title = 'Enough Records Blog';
     },

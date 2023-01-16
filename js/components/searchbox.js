@@ -2,15 +2,13 @@
  * @jsx React.DOM
  */
 
-
-var React = require('react/addons');
+var React = require('react');
+var createReactClass = require('create-react-class');
 var _ = require('lodash');
 var appState = require('../state');
 var Router = require('react-router');
 
-
-
-var Searchbox = React.createClass({
+var Searchbox = createReactClass({
     getInitialState: function() {
         return {value: ''};
     },
@@ -49,19 +47,16 @@ var Searchbox = React.createClass({
 
         var hasSearch = this.state.value.length > 0;
 
-        
-
         var controlClasses = React.addons.classSet({
             'fontawesome-remove': hasSearch,
             'fontawesome-search': !hasSearch
         });
-        
+
         return (
             <div className="top-bar-searchbox">
                 <input onKeyUp={this.onKeyUp} onChange={this.handleChange} value={this.state.value} placeholder="search releases"/>
                 <div className={controlClasses} onClick={this.resetValue} />
             </div>
-            
         )
     }
 });

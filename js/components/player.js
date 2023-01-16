@@ -4,6 +4,7 @@
 
 
 var React = require('react');
+var createReactClass = require('create-react-class');
 var path = require('path');
 var play = require('play-audio');
 
@@ -13,7 +14,7 @@ var Link = Router.Link;
 var bus = require('../bus');
 
 
-var Player = React.createClass({
+var Player = createReactClass({
     getInitialState: function(){
         var playerWidget = play([],document.body).autoplay();
         playerWidget.volume(1);

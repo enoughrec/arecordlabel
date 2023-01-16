@@ -4,6 +4,8 @@
 
 
 var React = require('react');
+var createReactClass = require('create-react-class');
+
 var Router = require('react-router');
 
 var Locations = Router.Routes;
@@ -12,7 +14,7 @@ var Link = Router.Link;
 
 var Searchbox = require('./searchbox');
 
-var Topbar = React.createClass({
+var Topbar = createReactClass({
     render: function(){
         
         var links = [{
