@@ -1,0 +1,9 @@
+Joshua Banks Mailman
+
+Murmurs of the Moist (2012)
+
+Program Note:
+I improvised Murmurs of the Moist (2012) using the FluxNoisations interactive system, which I developed after co-developing Fluxations with Sofia Paraskeva. FluxNoisations allows me to spontaneously manipulate several sonic qualities of three streams of percussive noise which are generated algorithmically in real-time. I manipulate these through controlled movements of my hands and body, a sort of dance.  The system also generates graphics in real-time, which are also manipulated by the same hand and body movement.   
+	When improvising with the system, I often explore by trying to attain sounds that are "in between" two or more sounds I've just made, thus striving for increasingly finer grained nuances, while listening and responding to what emerges sonically and visually. This process of improvising with Fluxations and FluxNoisations is discussed in "Improvising Synesthesia" in Leonardo Electronic Almanac v.19/2, 2013.
+	Both systems (FluxNoisations and Fluxations) use an infrared camera and Sofia Paraskeva's wireless gloves as a full-body controller for music (sound) and graphic (visual) generative algorithms I developed and programmed in the RTcmix computer music language and Processing computer graphics environment. The generated sounds are based on physical models of real objects.
+	Visit http://www.joshuabanksmailman.com for more info about my work.

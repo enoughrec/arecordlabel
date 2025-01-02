@@ -14,7 +14,7 @@ $query ='select enralbums.cat as cat, enralbums.artist as artist, enralbums.albu
 $query.=' enralbums.shortnfo as info_en,';
 $query.=' enralbums.sceneorg as scene_org';
 $query.=' from enralbums where enralbums.cat like \'enrshow%\'';
-$query.=' order by enralbums.release_date';
+$query.=' order by enralbums.release_date desc';
 	
 $list = array();
 
@@ -40,7 +40,7 @@ while($tmp = mysqli_fetch_array($result)) {
 	$tmp_array['album'] = $tmp['album'];
 	$tmp_array['release_date'] = $tmp['release_date'];
 	$tmp_array['info_en'] = $tmp['info_en'];
-	$tmp_array['cover'] = 'http://enoughrecords.scene.org/covers/'.$tmp['cat'].'.jpg';
+	$tmp_array['cover'] = 'https://enoughrecords.scene.org/covers/'.$tmp['cat'].'.jpg';
 	$tmp_array['tracks'] = json_decode( file_get_contents('../nfo/tracks_'.$tmp['cat'].'.json'), true);
 	
 	array_push($list, $tmp_array);
@@ -56,9 +56,18 @@ while($tmp = mysqli_fetch_array($result)) {
  * @license    MIT http://opensource.org/licenses/MIT
  * @version    0.1.0 (28 July 2013)
  *
+ * fixed some things to support php 8.2 on Feb 2024 
  */
 class rss_feed  {
  
+	private array $topics_list;
+	private string $xmlns;
+	private array $a_channel;
+	private string $site_url;
+	private string $site_name;
+	private bool $full_feed;
+	private array $channel_properties;
+
   /**
    * Constructor
    *
@@ -133,10 +142,11 @@ class rss_feed  {
       $xml .= '<item>' . "\n";
       $xml .= '<title>' . $rss_item['title'] . '</title>' . "\n";
       $xml .= '<link>' . $rss_item['link'] . '</link>' . "\n";
-      $xml .= '<description>' . $rss_item['description'] . '</description>' . "\n";
+      $xml .= '<description><![CDATA[' . $rss_item['description'] . ']]></description>' . "\n";
+      $xml .= '<content:encoded><![CDATA[' . $rss_item['description'] . ']]></content:encoded>' . "\n";
       $xml .= '<pubDate>' . $rss_item['pubDate'] . '</pubDate>' . "\n";
       $xml .= '<category>' . $rss_item['category'] . '</category>' . "\n";
-      $xml .= '<source>' . $rss_item['source'] . '</source>' . "\n";
+      $xml .= '<source>' . $rss_item['link'] . '</source>' . "\n";
  
 	  $filesize = 0;
 	  $thislink = $rss_item['link'];
@@ -145,10 +155,10 @@ class rss_feed  {
  
       $xml .= '<enclosure url="' . $rss_item['link'] . '" length="'. $filesize .'" type="audio/mpeg"/>' . "\n";
       $xml .= '<guid>' . $rss_item['cat'] . '</guid>' . "\n";
-	  $xml .= '<itunes:title>' . strip_tags($rss_item['title'])  . '</itunes:title>' . "\n";
-      $xml .= '<itunes:author>' . strip_tags($rss_item['artist'])  . '</itunes:author>' . "\n";
-      $xml .= '<itunes:summary>' . strip_tags($rss_item['description'])  . '</itunes:summary>' . "\n";
-      $xml .= '<itunes:subtitle>' . strip_tags($rss_item['description'])  . '</itunes:subtitle>' . "\n";
+	  $xml .= '<itunes:title>' . strip_tags($rss_item['title'] ?? '')  . '</itunes:title>' . "\n";
+      $xml .= '<itunes:author>' . strip_tags($rss_item['artist'] ?? '')  . '</itunes:author>' . "\n";
+      $xml .= '<itunes:summary><![CDATA[' . $rss_item['description']  . ']]></itunes:summary>' . "\n";
+      $xml .= '<itunes:subtitle><![CDATA[' . $rss_item['description']  . ']]></itunes:subtitle>' . "\n";
       $xml .= '<itunes:explicit>No</itunes:explicit>' . "\n";
 	  $catnumber = intval(explode("w",$rss_item['cat'])[1]);
 	  if ($catnumber < 26) {
@@ -237,12 +247,17 @@ class rss_feed  {
  
       // title
       $a_rss_item['title'] = $topic['album'];
+
+	  // artist
+      $a_rss_item['artist'] = $topic['artist'];
  
       // link
       $a_rss_item['link'] = $topic['tracks'][0]; //$this->site_url . '/' . $topic['url'];
  
       // description
-      $a_rss_item['description'] = $topic['info_en'];//'';
+      //$a_rss_item['description'] = '<![CDATA[' . $topic['info_en'] . ']]>';
+		$a_rss_item['description'] = $topic['info_en'];
+ 
  
       //if($topic['image']) {
       //  $img_url = $this->site_url . $topic['image'];
@@ -258,7 +273,7 @@ class rss_feed  {
       $a_rss_item['category'] = "Music"; //$topic["category"];
  
       // source
-      $a_rss_item['source'] = "http://enoughrecords.scene.org/" . $topic['cat']; //$this->site_name;
+      $a_rss_item['source'] = "https://enoughrecords.scene.org/" . $topic['cat']; //$this->site_name;
  
       if($this->full_feed) {
         // content
@@ -291,18 +306,20 @@ $xmlns = 'xmlns:content="http://purl.org/rss/1.0/modules/content/"
 // configure appropriately - pontikis.net is used as an example
 $a_channel = array(
   "title" => "Enough Records Radio Show",
-  "link" => "http://enoughrecords.scene.org",
+  "link" => "https://enoughrecords.scene.org",
   "description" => "Music from Enough Records, the first Portuguese netlabel, releasing free music for free people since 2001.",
   "language" => "en",
   "image_title" => "Enough Records Radio Show",
-  "image_link" => "http://enoughrecords.scene.org",
-  "image_url" => "http://enoughrecords.scene.org/covers/1400_ambient.jpg",
+  "image_link" => "https://enoughrecords.scene.org",
+  "image_url" => "https://enoughrecords.scene.org/covers/1400_ambient.jpg",
   "author" => "Enough Records",
   "email" => "ps@enoughrecords.org"
 );
-$site_url = 'http://enoughrecords.scene.org'; // configure appropriately
+$site_url = 'https://enoughrecords.scene.org'; // configure appropriately
 $site_name = 'Enough Records Radio Show'; // configure appropriately
- 
+
+//var_dump($list);
+
 $rss = new rss_feed($list, $xmlns, $a_channel, $site_url, $site_name);
 echo $rss->create_feed();
 ?>

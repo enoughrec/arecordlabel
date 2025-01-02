@@ -101,12 +101,11 @@
 	}
 
 </script>
-
 </head> 
 <body onload="loadFrame()"> 
 	<div id="container">
 			<h1>Anonymous Archives</h1>
-			<p>socio-political activism through music, a sub-label of <a href="http://enoughrecords.scene.org">EnoughRecords Netlabel</a></p>
+			<p>socio-political activism through music, a sub-label of <a href="https://enoughrecords.scene.org">EnoughRecords Netlabel</a></p>
 			<select id="sel" onchange="loadFrame(this.options[this.selectedIndex].value)">
 				<option value="twilight">Twilight Star Channeling</option>
 				<option value="1984">1984 / Back To The Future</option>

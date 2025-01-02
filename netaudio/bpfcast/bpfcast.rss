@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+	<rss xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" version="2.0">
+	<channel itunes:owner="BPFcast">
+		<title>BPFcast</title>
+		<link>http://beatsplayfree.blogspot.com</link>
+		<description>Beats Play Free</description>
+		<itunes:author>Beats Play Free</itunes:author>
+		<itunes:category text="Music" />
+		<copyright>&#xA9; 2008-2009 Beats Play Free</copyright>
+		<language>en-us</language>
+		<lastBuildDate>Sat, 18 Feb 2009 00:00:00 GMT</lastBuildDate>
+		<ttl>1</ttl>
+		<item>
+			<title>BPFcast #11</title>
+			<itunes:author>Work Buy Consume</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Na 11ª edição do BPFcast dedica-se uma hora ao hip-hop numa vertente mais instrumental e abstracta com raízes bem vintage cheias de alma e alguma poesia. O “Beatsploitation” é uma viagem pelo hip-hop que, sendo actual, bebe influências de ontem e de hoje: de Bullitt a Shaft aos dramatismos de amores presentes não correspondidos, enfim, cabe tudo.</description>
+			<pubDate>Wed, 15 Apr 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://www.archive.org/download/BPFcast11_WorkBuyConsumeDie/Bpfcast11-Beatsploitation.mp3" length="68757507" type="audio/mpeg"/>
+		</item>
+                <item>
+			<title>BPFcast #10</title>
+			<itunes:author>BrainDance</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>BrainDance Live DJ Set @ Trampolim [Torres Novas, PT] BPF Session on the 31st of January 2009.</description>
+			<pubDate>Tue, 25 Feb 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://www.archive.org/download/BrainDancebpf_310109_BrainDance/braindance_bpf_tn.mp3" length="114223879" type="audio/mpeg"/>
+		</item>
+                <item>
+			<title>BPFcast #09</title>
+			<itunes:author>URB</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>URB Live Set @ Trampolim [Torres Novas, PT] 31st of January 2009</description>
+			<pubDate>Sun, 07 Feb 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://ia310804.us.archive.org/3/items/UrbLiveActTrampolim/urb_liveact_310109.mp3" length="71882456" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #08</title>
+			<itunes:author>Bionic</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Bionic Live DJ Set @ Trampolim [Torres Novas, PT] BPF Session on the 31st of January 2009 (pt2).</description>
+			<pubDate>Sun, 07 Feb 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://www.archive.org/download/BionicBionicTrampolimTorresNov/bpf_310109_bionic_pt2.mp3" length="129938948" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPF002 - Inverno 2008</title>
+			<itunes:author>VVAA</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Compila��o de Inverno 2008</description>
+			<pubDate>Tue, 24 Sep 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20090205.mp3" length="139971365" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #07</title>
+			<itunes:author>Bionic</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Bionic Live DJ Set @ Trampolim [Torres Novas, PT] BPF Session on the 31st of January 2009 (pt1).</description>
+			<pubDate>Sun, 02 Feb 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://www.archive.org/download/BPFCast07/bpf_310109_bionic_pt1.mp3" length="95125210" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #06</title>
+			<itunes:author>BrainDance</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Episode #06 of BPFCast. It beggins with some downtempo electronic stuff, and after a few experimental and post-rock tunes it ends with some Aerotone's indietronica sounds.</description>
+			<pubDate>Sun, 04 Jan 2009 00:00:00 GMT</pubDate>
+			<enclosure url="http://www.archive.org/download/BPFCast06/Braindance_Bpfcast06.mp3" length="86211109" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #05</title>
+			<itunes:author>Ogata T3tsuo</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>chiptune mix by Ogata T3tsuo</description>
+			<pubDate>Tue, 27 Oct 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20081027.mp3" length="78078080" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPF001 - Outono 2008</title>
+			<itunes:author>VVAA</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Compila��o de Outono 2008</description>
+			<pubDate>Tue, 24 Sep 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080923.mp3" length="103184158" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #04</title>
+			<itunes:author>Deestant Rockers</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>Deestant Rockers Dubmix '08 - Part 2</description>
+			<pubDate>Tue, 24 Sep 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080913.mp3" length="157168606" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #03</title>
+			<itunes:author>ps</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>mixed by ps</description>
+			<pubDate>Wed, 25 Jun 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080625.mp3" length="88956409" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #02</title>
+			<itunes:author>ps</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>mixed by ps</description>
+			<pubDate>Mon, 28 Apr 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080423.mp3" length="81960332" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #01 (second hour)</title>
+			<itunes:author>Leonel Silva</itunes:author>
+			<itunes:duration></itunes:duration>
+			<description>mixed by Leonel Silva</description>
+			<pubDate>Wed, 26 Mar 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080326.mp3" length="85713189" type="audio/mpeg"/>
+		</item>
+		<item>
+			<title>BPFcast #01 (first hour)</title>
+			<itunes:author>Leonel Silva</itunes:author>
+			<itunes:duration>1:02:02</itunes:duration>
+			<description>mixed by Leonel Silva</description>
+			<pubDate>Tue, 25 Mar 2008 00:00:00 GMT</pubDate>
+			<enclosure url="http://enoughrecords.scene.org/netaudio/bpfcast/bpfcast20080325.mp3" length="89326864" type="audio/mpeg"/>
+		</item>
+	</channel>
+	</rss>

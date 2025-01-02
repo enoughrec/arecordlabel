@@ -1,4 +1,4 @@
-body {
+*, html, body {
 	background: #1D1E22;
     color: #eee;
 }
@@ -6,7 +6,6 @@ body {
 a {
 	color: grey;
 }
-
 
 input, textarea {
 	color: #eee;
