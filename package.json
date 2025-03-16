@@ -27,11 +27,11 @@
     "underscore.string": "~3.3.5"
   },
   "devDependencies": {
-    "browserify": "~8.1.1",
+    "browserify": "~17.0.0",
     "htmlparser2": "^3.10.1",
     "statics": "~0.1.0",
     "uglifyjs": "^2.4.10",
-    "watchify": "^2.2.1"
+    "watchify": "^4.0.0"
   },
   "main": "js/index.js",
   "author": "Dan Peddle <dan@flarework.com>",
